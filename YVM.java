@@ -1,34 +1,34 @@
 public abstract class YVM {
 
-  public iadd();
+  public void iadd();
   
-  public isub();
+  public void isub();
   
-  public imul();
+  public void imul();
   
-  public idiv();
+  public void idiv();
   
-  public inot();
+  public void inot();
   
-  public ineg();
+  public void ineg();
   
-  public iand();
+  public void iand();
   
-  public ior();
+  public void ior();
   
-  public iinf();
+  public void iinf();
   
-  public isup();
+  public void isup();
   
-  public iinfegal();
+  public void iinfegal();
   
-  public isupegal();
+  public void isupegal();
   
-  public iegal();
+  public void iegal();
   
-  public idiff();
+  public void idiff();
   
-  public iconst(int valeur);
+  public void iconst(int valeur);
   
   public istore(int offset);
   
