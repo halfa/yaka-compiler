@@ -15,11 +15,10 @@ options{
 
 PARSER_BEGIN(Yaka)
 
-
-
 public class Yaka {
 
-
+  
+  
   public static void main(String args[]) { 
     Yaka analyseur;
     java.io.InputStream input;
@@ -36,7 +35,7 @@ public class Yaka {
       System.out.println("Lecture sur l'entree standard...");
       input = System.in;
     } else {
-      System.out.println("Usage: java Gram [fichier]");
+      System.out.println("Usage: java Yaka [fichier]");
       return;
     }
     try {
@@ -203,8 +202,6 @@ void expression() : {}
   )?
 }
 
-
-
 void simpleExpr() : {}
 {
    terme() 
@@ -267,5 +264,4 @@ void opNeg() : {}
 { "-" 		
  | <NON>	
 }
-
 
