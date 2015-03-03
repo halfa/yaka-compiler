@@ -30,8 +30,12 @@ public class YVMasm extends YVM {
 		Ecriture.ecrireStringln(nomFich,"push bx");
 	}
 
-	public void inot(){}
-	public void ineg(){}
+	public void inot(){
+		//todo
+	}
+	public void ineg(){
+		//todo
+	}
 	
 	public void iand(){
 		Ecriture.ecrireStringln(nomFich,"pop bx");
@@ -128,7 +132,7 @@ public class YVMasm extends YVM {
 	}
 
 	public void iffaux(String etiquette){
-		
+		//todo
 	}
 
 	public void goto(String etiquette){
