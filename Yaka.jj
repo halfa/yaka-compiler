@@ -141,10 +141,11 @@ void analyse() : {}
    <FPROGRAMME> 
 }
 
+
 void bloc() : {}{
  (declConst())*
  (declVar())*		
-   suiteExpr() 
+   suiteInstr()  // modifié
 }
 
 void declConst() : {}
@@ -189,6 +190,37 @@ void type() :{}
 void suiteExpr() : {}
 { (expression() (";" (expression())? )*)? }
 
+// ajouté
+
+void suiteInstr() : {}
+{
+instruction() (
+	";"(instruction())?
+	)*
+}
+
+void instuction() : {}
+{
+affectation() | lecture() | ecriture()	
+}
+
+void affectation() : {}
+{
+<ident> "=" expression() 	
+	
+}
+
+void lecture() : {}
+{
+<LIRE> "(" <ident> ")"	
+}
+
+void ecriture() :{}
+{
+<ECRIRE>("(" expression() | chaine() ")") | <ALALIGNE>	
+}
+
+// fin ajout
 
 
 /*
@@ -233,8 +265,8 @@ void valeur () : {}
  | <ident> 		
  | <VRAI> 		
  | <FAUX> 		
- 
 }
+
 
 void opRel() : {}
 {
