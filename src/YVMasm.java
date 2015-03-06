@@ -1,3 +1,5 @@
+import java.io.OutputStream;
+
 public class YVMasm extends YVM {
 	private OutputStream nomFich;
 
@@ -38,7 +40,7 @@ public class YVMasm extends YVM {
 	public void ineg(){
 		Ecriture.ecrireStringln(nomFich,"pop ax");
 		Ecriture.ecrireStringln(nomFich,"mov bx,-1");
-		Ecriture.ecrireStringln(nomFich,"imul bx")
+		Ecriture.ecrireStringln(nomFich,"imul bx");
 		Ecriture.ecrireStringln(nomFich,"push ax");
 	}
 	
