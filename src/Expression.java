@@ -19,6 +19,10 @@ public class Expression {
 		ops.push(c);
 
 	}
+	
+	public void pushValue(Type t){
+		types.push(t);
+	}
 
 	public Type evaluate() {
 		Type t1 = types.pop();
@@ -43,7 +47,8 @@ public class Expression {
 					break;
 				}
 			default:
-				break;
+				types.push(Type.ERROR);
+				return Type.ERROR;
 			}
 		case BOOLEAN:
 			switch (t2) {
