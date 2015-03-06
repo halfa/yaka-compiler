@@ -1,9 +1,9 @@
 
 public abstract class Ident {
 
-	Types type;
+	Type type;
 	
-	public int getType(){
+	public Type getType(){
 		return type;
 	}
 	
