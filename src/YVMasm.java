@@ -31,10 +31,15 @@ public class YVMasm extends YVM {
 	}
 
 	public void inot(){
-		//todo
+		Ecriture.ecrireStringln(nomFich,"pop ax");
+		Ecriture.ecrireStringln(nomFich,"and ax,FALSE");
+		Ecriture.ecrireStringln(nomFich,"push ax");
 	}
 	public void ineg(){
-		//todo
+		Ecriture.ecrireStringln(nomFich,"pop ax");
+		Ecriture.ecrireStringln(nomFich,"mov bx,-1");
+		Ecriture.ecrireStringln(nomFich,"imul bx")
+		Ecriture.ecrireStringln(nomFich,"push ax");
 	}
 	
 	public void iand(){
@@ -132,16 +137,21 @@ public class YVMasm extends YVM {
 	}
 
 	public void iffaux(String etiquette){
-		//todo
+		Ecriture.ecrireStringln(nomFich,"pop ax");
+		Ecriture.ecrireStringln(nomFich,"cmp ax,FALSE");
+		Ecriture.ecrireStringln(nomFich,"je "+etiquette);
 	}
 
-	public void goto(String etiquette){
+	public void jump(String etiquette){
 		Ecriture.ecrireStringln(nomFich,"jmp "+etiquette);
 	}
 
 	public void entete(){
 		Ecriture.ecrireStringln(nomFich,".model SMALL");
 		Ecriture.ecrireStringln(nomFich,".586");
+		Ecriture.ecrireStringln(nomFich,".DATA");
+		Ecriture.ecrireStringln(nomFich,"FALSE EQU 0");
+		Ecriture.ecrireStringln(nomFich,"TRUE EQU 1");
 		Ecriture.ecrireStringln(nomFich,".CODE");
 		Ecriture.ecrireStringln(nomFich,"debut :");
 		Ecriture.ecrireStringln(nomFich,"	STARTUPCODE");
