@@ -1,4 +1,5 @@
 bin/
+.settings/
 .metadata
 *.class
 .project
