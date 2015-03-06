@@ -1,16 +1,23 @@
-public abstract class YVM {
+import java.io.OutputStream;
+
+public class YVM {
+	private OutputStream fichYvm;
 	
 	/**
 	 * Haut de pile : int / int
 	 * Aditionne les deux éléments en sommet de pile 
 	 */
-	public void iadd(){};
+	public void iadd(){
+		Ecriture.ecrireStringln(fichYvm,"iadd");
+	};
 	
 	/**
 	 * Haut de pile : int / int
 	 * Soustrait le deuxième élément de la pile par le premier
 	 */
-	public void isub(){};
+	public void isub(){
+		Ecriture.ecrireStringln(fichYvm,"isub");
+	};
 	
 	/**
 	 * Haut de pile : int / int
