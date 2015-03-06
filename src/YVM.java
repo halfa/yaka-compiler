@@ -1,48 +1,49 @@
 public abstract class YVM {
 
-	public void iadd();
+	public void iadd(){};
 
-	public void isub();
+	public void isub(){};
 
-	public void imul();
+	public void imul(){};
 
-	public void idiv();
+	public void idiv(){};
 
-	public void inot();
+	public void inot(){};
 
-	public void ineg();
+	public void ineg(){};
 
-	public void iand();
+	public void iand(){};
 
-	public void ior();
+	public void ior(){};
 
-	public void iinf();
+	public void iinf(){};
 
-	public void isup();
+	public void isup(){};
 
-	public void iinfegal();
+	public void iinfegal(){};
 
-	public void isupegal();
+	public void isupegal(){};
 
-	public void iegal();
+	public void iegal(){};
 
-	public void idiff();
+	public void idiff(){};
 
-	public void iconst(int valeur);
+	public void iconst(int valeur){};
 
-	public istore(int offset);
+	public void istore(int offset){};
 
-	public iload(int offset);
+	public void iload(int offset){};
 
-	public ifeq(String etiquette);
+	public void ifeq(String etiquette){};
 
-	public iffaux(String etiquette);
+	public void iffaux(String etiquette){};
 
-	public goto(String etiquette);
+	/* goto is a reserved word */
+	public void jump(String etiquette){};
 
-	public entete();
+	public void entete(){};
 
-	public ouvrePrinc(int var);
+	public void ouvrePrinc(int var){};
 
-	public void queue();
+	public void queue(){};
 }
