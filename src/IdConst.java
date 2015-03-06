@@ -10,9 +10,4 @@ public class IdConst extends Ident{
 	public char getVal(){
 		return val;
 	}
-	
-	
 }
-
-
-
