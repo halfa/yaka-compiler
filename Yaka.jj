@@ -2,7 +2,7 @@
  *
  *       Auteur: Pedrono Marie-Jo
  *
- * 	création : 13 février 2002
+ * 	crÃ©ation : 13 fÃ©vrier 2002
  *
  *     nature : projet etudiant
  *
@@ -78,7 +78,7 @@ SKIP :
 }
 
 
-/* Mots réservés*/
+/* Mots rÃ©servÃ©s*/
 
 TOKEN :
 {
@@ -145,7 +145,7 @@ void analyse() : {}
 void bloc() : {}{
  (declConst())*
  (declVar())*		
-   suiteInstr()  // modifié
+   suiteInstr()  // modifiÃ©
 }
 
 void declConst() : {}
@@ -190,7 +190,7 @@ void type() :{}
 void suiteExpr() : {}
 { (expression() (";" (expression())? )*)? }
 
-// ajouté
+// ajoutÃ©
 
 void suiteInstr() : {}
 {
