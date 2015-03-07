@@ -23,130 +23,172 @@ public class YVM {
 	 * Haut de pile : int / int
 	 * Multiplie les deux éléments en haut de pile
 	 */
-	public void imul(){};
+	public void imul(){
+		Ecriture.ecrireStringln(fichYvm,"imul");
+	};
 
 	/**
 	 * Haut de pile : int / int
 	 * Soustrait le deuxième élément de la pile par le premier
 	 */
-	public void idiv(){};
+	public void idiv(){
+		Ecriture.ecrireStringln(fichYvm,"idiv");
+	};
 	
 	/**
 	 * Haut de pile : bool
-	 * Transforme l'élément (booléen) en haut de pile par son opposé
+	 * Transforme l'élément en haut de pile par son opposé
 	 */
-	public void inot(){};
+	public void inot(){
+		Ecriture.ecrireStringln(fichYvm,"inot");
+	};
 	
 	/**
 	 * Haut de pile : int
 	 * Transforme l'élément en haut de pile par son opposé
 	 */
-	public void ineg(){};
+	public void ineg(){
+		Ecriture.ecrireStringln(fichYvm,"ineg");
+	};
 	
 	/**
 	 * Haut de pile : bool / bool
 	 * Fait un test ET sur les deux éléments en haut de la pile
 	 */
-	public void iand(){};
+	public void iand(){
+		Ecriture.ecrireStringln(fichYvm,"iand");
+	};
 	
 	/**
 	 * Haut de pile : bool / bool
 	 * Fait un test OU sur les deux éléments en haut de la pile
 	 */
-	public void ior(){};
+	public void ior(){
+		Ecriture.ecrireStringln(fichYvm,"ior");
+	};
 
 	/**
 	 * Haut de pile : int / int
 	 * Met TRUE en haut de pile si le deuxième élément de la pile est inférieur au premier
 	 */
-	public void iinf(){};
+	public void iinf(){
+		Ecriture.ecrireStringln(fichYvm,"iinf");
+	};
 
 	/**
 	 * Haut de pile : int / int
 	 * Met TRUE en haut de pile si le deuxième élément de la pile est supérieur au premier 
 	 */
-	public void isup(){};
+	public void isup(){
+		Ecriture.ecrireStringln(fichYvm,"isup");
+	};
 
 	/**
 	 * Haut de pile : int / int
 	 * Met TRUE en haut de pile si le deuxième élément de la pile est inférieur ou égal au premier
 	 */
-	public void iinfegal(){};
+	public void iinfegal(){
+		Ecriture.ecrireStringln(fichYvm,"iinfegal");
+	};
 
 	/**
 	 * Haut de pile : int / int
 	 * Met TRUE en haut de pile si le deuxième élément de la pile est supérieur ou égal au premier
 	 */
-	public void isupegal(){};
+	public void isupegal(){
+		Ecriture.ecrireStringln(fichYvm,"isupegal");
+	};
 
 	/**
 	 * Haut de pile : bool / bool
 	 * Met TRUE en haut de pile si le deuxième élément de la pile est égal au premier
 	 */
-	public void iegal(){};
+	public void iegal(){
+		Ecriture.ecrireStringln(fichYvm,"iegal");
+	};
 	
 	/**
 	 * Haut de pile : bool / bool
-	 * Met TRUE en haut de pile si le deuxième élément de la pile est inférieur au premier
+	 * Met TRUE en haut de pile si le deuxième élément de la pile est infÃ©rieur au premier
 	 */
-	public void idiff(){};
+	public void idiff(){
+		Ecriture.ecrireStringln(fichYvm,"idiff");
+	};
 
 	/**
 	 * Met la valeur "valeur" en sommet de pile
 	 * @param valeur
 	 */
-	public void iconst(int valeur){};
+	public void iconst(int valeur){
+		Ecriture.ecrireStringln(fichYvm,"iconst "+valeur);
+	};
 
 	/**
 	 * Haut de pile : anything
 	 * Met la valeur se trouvant en sommet de pile dans la variable d'offset "offset"
 	 * @param offset
 	 */
-	public void istore(int offset){};
+	public void istore(int offset){
+		Ecriture.ecrireStringln(fichYvm,"istore "+offset);
+	};
 
 	/**
 	 * Haut de pile : anything
 	 * Met en sommet de pile la valeur contenue dans la variable d'offset "offset"
 	 * @param offset
 	 */
-	public void iload(int offset){};
+	public void iload(int offset){
+		Ecriture.ecrireStringln(fichYvm,"iload "+offset);
+	};
 
 	/**
-	 * Compare la valeur se trouvant en sommet de pile à 0.
-	 * Si la valeur est 0, alors l'expression suivante exécutée se trouve à l'étiquette "etiquette"
+	 * Compare la valeur se trouvant en sommet de pile Ã  0.
+	 * Si la valeur est 0, alors l'expression suivante exécutée se trouve à  l'étiquette "etiquette"
 	 * @param etiquette
 	 */
-	public void ifeq(String etiquette){};
+	public void ifeq(String etiquette){
+		Ecriture.ecrireStringln(fichYvm,"ifeq "+etiquette);
+	};
 
 	/**
-	 * Compare la valeur se trouvant en sommet de pile à FAUX.
-	 * Si la valeur est FAUX, alors l'expression suivante exécutée se trouve à l'étiquette "etiquette"
+	 * Compare la valeur se trouvant en sommet de pile Ã  FAUX.
+	 * Si la valeur est FAUX, alors l'expression suivante exécutée se trouve à  l'étiquette "etiquette"
 	 * @param etiquette
 	 */
-	public void iffaux(String etiquette){};
+	public void iffaux(String etiquette){
+		Ecriture.ecrireStringln(fichYvm,"iffaux "+etiquette);
+	};
 
 	/**
 	 * La prochaine instruction exécutée se trouve après l'étiquette "etiquette"
 	 * goto is a reserved word
 	 * @param etiquette
 	 */
-	public void jump(String etiquette){};
+	public void jump(String etiquette){
+		Ecriture.ecrireStringln(fichYvm,"goto "+etiquette);
+	};
 
 	/**
 	 * APPELER AVANT LA CREATION D'UN FICHIER .asm
 	 * Génère l'entete d'un fichier .asm
 	 */
-	public void entete(){}; 
+	public void entete(){
+		Ecriture.ecrireStringln(fichYvm,"entete");
+	}; 
 	
 	/**
 	 * Permet de réserver directement un ensemble de variable dans la pile
 	 * @param var
 	 */
-	public void ouvrePrinc(int var){}; 
+	public void ouvrePrinc(int var){
+		Ecriture.ecrireStringln(fichYvm,"ouvrePrinc "+var);
+	}; 
 	
 	/**
 	 * APPELER A LA FERMETURE D'UN FICHIER .asm
 	 * Génère la fin d'un fichier .asm
 	 */
-	public void queue(){};
+	public void queue(){
+		Ecriture.ecrireStringln(fichYvm,"queue");
+	};
 }
