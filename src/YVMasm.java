@@ -14,10 +14,11 @@ public class YVMasm extends YVM {
 	 * Aditionne les deux éléments en sommet de pile 
 	 */
 	public void iadd(){
-		Ecriture.ecrireStringln(fich,"pop bx");
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"add ax,bx");
-		Ecriture.ecrireStringln(fich,"push bx");
+		Ecriture.ecrireStringln(fich,"	;iadd");
+		Ecriture.ecrireStringln(fich,"	pop bx");
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	add ax,bx");
+		Ecriture.ecrireStringln(fich,"	push bx");
 	}
 
 	/**
@@ -25,10 +26,11 @@ public class YVMasm extends YVM {
 	 * Soustrait le deuxième élément de la pile par le premier
 	 */
 	public void isub(){
-		Ecriture.ecrireStringln(fich,"pop bx");
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"sub ax,bx");
-		Ecriture.ecrireStringln(fich,"push bx");
+		Ecriture.ecrireStringln(fich,"	;isub");
+		Ecriture.ecrireStringln(fich,"	pop bx");
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	sub ax,bx");
+		Ecriture.ecrireStringln(fich,"	push bx");
 	}
 
 	/**
@@ -36,10 +38,11 @@ public class YVMasm extends YVM {
 	 * Multiplie les deux éléments en haut de pile
 	 */
 	public void imul(){
-		Ecriture.ecrireStringln(fich,"pop bx");
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"imul bx");
-		Ecriture.ecrireStringln(fich,"push bx");
+		Ecriture.ecrireStringln(fich,"	 ;imul");
+		Ecriture.ecrireStringln(fich,"	pop bx");
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	imul bx");
+		Ecriture.ecrireStringln(fich,"	push bx");
 	}
 
 	/**
@@ -47,11 +50,12 @@ public class YVMasm extends YVM {
 	 * Soustrait le deuxième élément de la pile par le premier
 	 */
 	public void idiv(){
-		Ecriture.ecrireStringln(fich,"pop bx");
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"cwd");
-		Ecriture.ecrireStringln(fich,"idiv bx");
-		Ecriture.ecrireStringln(fich,"push bx");
+		Ecriture.ecrireStringln(fich,"	;idiv");
+		Ecriture.ecrireStringln(fich,"	pop bx");
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	cwd");
+		Ecriture.ecrireStringln(fich,"	idiv bx");
+		Ecriture.ecrireStringln(fich,"	push bx");
 	}
 
 	/**
@@ -59,9 +63,10 @@ public class YVMasm extends YVM {
 	 * Transforme l'élément (booléen) en haut de pile par son opposé
 	 */
 	public void inot(){
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"and ax,FALSE");
-		Ecriture.ecrireStringln(fich,"push ax");
+		Ecriture.ecrireStringln(fich,"	;inot");
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	and ax,FALSE");
+		Ecriture.ecrireStringln(fich,"	push ax");
 	}
 	
 	/**
@@ -69,10 +74,11 @@ public class YVMasm extends YVM {
 	 * Transforme l'élément en haut de pile par son opposé
 	 */
 	public void ineg(){
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"mov bx,-1");
-		Ecriture.ecrireStringln(fich,"imul bx");
-		Ecriture.ecrireStringln(fich,"push ax");
+		Ecriture.ecrireStringln(fich,"	;ineg");
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	mov bx,-1");
+		Ecriture.ecrireStringln(fich,"	imul bx");
+		Ecriture.ecrireStringln(fich,"	push ax");
 	}
 	
 	/**
@@ -80,10 +86,11 @@ public class YVMasm extends YVM {
 	 * Fait un test ET sur les deux éléments en haut de la pile
 	 */
 	public void iand(){
-		Ecriture.ecrireStringln(fich,"pop bx");
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"and ax,bx");
-		Ecriture.ecrireStringln(fich,"push ax");
+		Ecriture.ecrireStringln(fich,"	;iand");
+		Ecriture.ecrireStringln(fich,"	pop bx");
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	and ax,bx");
+		Ecriture.ecrireStringln(fich,"	push ax");
 	}
 
 	/**
@@ -91,10 +98,11 @@ public class YVMasm extends YVM {
 	 * Fait un test OU sur les deux éléments en haut de la pile
 	 */
 	public void ior(){
-		Ecriture.ecrireStringln(fich,"pop bx");
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"or ax,bx");
-		Ecriture.ecrireStringln(fich,"push ax");
+		Ecriture.ecrireStringln(fich,"	;ior");
+		Ecriture.ecrireStringln(fich,"	pop bx");
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	or ax,bx");
+		Ecriture.ecrireStringln(fich,"	push ax");
 	}
 
 	/**
@@ -102,13 +110,14 @@ public class YVMasm extends YVM {
 	 * Met TRUE en haut de pile si le deuxième élément de la pile est inférieur au premier
 	 */
 	public void iinf(){
-		Ecriture.ecrireStringln(fich,"pop bx");
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"cmp ax,bx");
-		Ecriture.ecrireStringln(fich,"jge $+6");
-		Ecriture.ecrireStringln(fich,"push TRUE");
-		Ecriture.ecrireStringln(fich,"jmp $+4");
-		Ecriture.ecrireStringln(fich,"push FALSE");
+		Ecriture.ecrireStringln(fich,"	;iinf");
+		Ecriture.ecrireStringln(fich,"	pop bx");
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	cmp ax,bx");
+		Ecriture.ecrireStringln(fich,"	jge $+6");
+		Ecriture.ecrireStringln(fich,"	push TRUE");
+		Ecriture.ecrireStringln(fich,"	jmp $+4");
+		Ecriture.ecrireStringln(fich,"	push FALSE");
 	}
 
 	/**
@@ -116,13 +125,14 @@ public class YVMasm extends YVM {
 	 * Met TRUE en haut de pile si le deuxième élément de la pile est supérieur au premier 
 	 */
 	public void isup(){
-		Ecriture.ecrireStringln(fich,"pop bx");
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"cmp bx,ax");
-		Ecriture.ecrireStringln(fich,"jge $+6");
-		Ecriture.ecrireStringln(fich,"push TRUE");
-		Ecriture.ecrireStringln(fich,"jmp $+4");
-		Ecriture.ecrireStringln(fich,"push FALSE");
+		Ecriture.ecrireStringln(fich," ;iinf");
+		Ecriture.ecrireStringln(fich,"	pop bx");
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	cmp bx,ax");
+		Ecriture.ecrireStringln(fich,"	jge $+6");
+		Ecriture.ecrireStringln(fich,"	push TRUE");
+		Ecriture.ecrireStringln(fich,"	jmp $+4");
+		Ecriture.ecrireStringln(fich,"	push FALSE");
 	}
 	
 	/**
@@ -130,13 +140,14 @@ public class YVMasm extends YVM {
 	 * Met TRUE en haut de pile si le deuxième élément de la pile est inférieur ou égal au premier
 	 */
 	public void iinfegal(){
-		Ecriture.ecrireStringln(fich,"pop bx");
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"cmp ax,bx");
-		Ecriture.ecrireStringln(fich,"jg $+6");
-		Ecriture.ecrireStringln(fich,"push TRUE");
-		Ecriture.ecrireStringln(fich,"jmp $+4");
-		Ecriture.ecrireStringln(fich,"push FALSE");
+		Ecriture.ecrireStringln(fich,"	;iinfegal");
+		Ecriture.ecrireStringln(fich,"	pop bx");
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	cmp ax,bx");
+		Ecriture.ecrireStringln(fich,"	jg $+6");
+		Ecriture.ecrireStringln(fich,"	push TRUE");
+		Ecriture.ecrireStringln(fich,"	jmp $+4");
+		Ecriture.ecrireStringln(fich,"	push FALSE");
 	}
 
 	/**
@@ -144,13 +155,14 @@ public class YVMasm extends YVM {
 	 * Met TRUE en haut de pile si le deuxième élément de la pile est supérieur ou égal au premier
 	 */
 	public void isupegal(){
-		Ecriture.ecrireStringln(fich,"pop bx");
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"cmp bx,ax");
-		Ecriture.ecrireStringln(fich,"jg $+6");
-		Ecriture.ecrireStringln(fich,"push TRUE");
-		Ecriture.ecrireStringln(fich,"jmp $+4");
-		Ecriture.ecrireStringln(fich,"push FALSE");
+		Ecriture.ecrireStringln(fich,"	;isupegal");
+		Ecriture.ecrireStringln(fich,"	pop bx");
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	cmp bx,ax");
+		Ecriture.ecrireStringln(fich,"	jg $+6");
+		Ecriture.ecrireStringln(fich,"	push TRUE");
+		Ecriture.ecrireStringln(fich,"	jmp $+4");
+		Ecriture.ecrireStringln(fich,"	push FALSE");
 	}
 
 	/**
@@ -158,13 +170,14 @@ public class YVMasm extends YVM {
 	 * Met TRUE en haut de pile si le deuxième élément de la pile est égal au premier
 	 */
 	public void iegal(){
-		Ecriture.ecrireStringln(fich,"pop bx");
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"cmp ax,bx");
-		Ecriture.ecrireStringln(fich,"jne $+6");
-		Ecriture.ecrireStringln(fich,"push TRUE");
-		Ecriture.ecrireStringln(fich,"jmp $+4");
-		Ecriture.ecrireStringln(fich,"push FALSE");
+		Ecriture.ecrireStringln(fich,"	;iegal");
+		Ecriture.ecrireStringln(fich,"	pop bx");
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	cmp ax,bx");
+		Ecriture.ecrireStringln(fich,"	jne $+6");
+		Ecriture.ecrireStringln(fich,"	push TRUE");
+		Ecriture.ecrireStringln(fich,"	jmp $+4");
+		Ecriture.ecrireStringln(fich,"	push FALSE");
 	}
 
 	/**
@@ -172,13 +185,14 @@ public class YVMasm extends YVM {
 	 * Met TRUE en haut de pile si le deuxième élément de la pile est inférieur au premier
 	 */
 	public void idiff(){
-		Ecriture.ecrireStringln(fich,"pop bx");
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"cmp ax,bx");
-		Ecriture.ecrireStringln(fich,"je $+6");
-		Ecriture.ecrireStringln(fich,"push TRUE");
-		Ecriture.ecrireStringln(fich,"jmp $+4");
-		Ecriture.ecrireStringln(fich,"push FALSE");
+		Ecriture.ecrireStringln(fich,"	;idiff");
+		Ecriture.ecrireStringln(fich,"	pop bx");
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	cmp ax,bx");
+		Ecriture.ecrireStringln(fich,"	je $+6");
+		Ecriture.ecrireStringln(fich,"	push TRUE");
+		Ecriture.ecrireStringln(fich,"	jmp $+4");
+		Ecriture.ecrireStringln(fich,"	push FALSE");
 	}
 
 	/**
@@ -186,7 +200,8 @@ public class YVMasm extends YVM {
 	 * @param valeur
 	 */
 	public void iconst(int valeur){
-		Ecriture.ecrireStringln(fich,"push "+valeur);
+		Ecriture.ecrireStringln(fich," ;iconst "+valeur);
+		Ecriture.ecrireStringln(fich,"	push "+valeur);
 	}
 	
 	/**
@@ -195,8 +210,9 @@ public class YVMasm extends YVM {
 	 * @param offset
 	 */
 	public void istore(int offset){
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"mov word ptr[bp-"+offset+"],ax");
+		Ecriture.ecrireStringln(fich,"	;istore "+offset);
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	mov word ptr[bp-"+offset+"],ax");
 	}
 	
 	/**
@@ -205,7 +221,8 @@ public class YVMasm extends YVM {
 	 * @param offset
 	 */
 	public void iload(int offset){
-		Ecriture.ecrireStringln(fich,"push word ptr [bp-"+offset+"]");
+		Ecriture.ecrireStringln(fich,"	;iload "+offset);
+		Ecriture.ecrireStringln(fich,"	push word ptr [bp-"+offset+"]");
 	}
 
 	/**
@@ -214,10 +231,11 @@ public class YVMasm extends YVM {
 	 * @param etiquette
 	 */
 	public void ifeq(String etiquette){
-		Ecriture.ecrireStringln(fich,"pop bx");
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"cmp ax,bx");
-		Ecriture.ecrireStringln(fich,"je "+etiquette);
+		Ecriture.ecrireStringln(fich,"	;ifeq "+etiquette);
+		Ecriture.ecrireStringln(fich,"	pop bx");
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	cmp ax,bx");
+		Ecriture.ecrireStringln(fich,"	je "+etiquette);
 	}
 
 	/**
@@ -226,9 +244,10 @@ public class YVMasm extends YVM {
 	 * @param etiquette
 	 */
 	public void iffaux(String etiquette){
-		Ecriture.ecrireStringln(fich,"pop ax");
-		Ecriture.ecrireStringln(fich,"cmp ax,FALSE");
-		Ecriture.ecrireStringln(fich,"je "+etiquette);
+		Ecriture.ecrireStringln(fich,"	;iffaux "+etiquette);
+		Ecriture.ecrireStringln(fich,"	pop ax");
+		Ecriture.ecrireStringln(fich,"	cmp ax,FALSE");
+		Ecriture.ecrireStringln(fich,"	je "+etiquette);
 	}
 
 	/**
@@ -237,7 +256,8 @@ public class YVMasm extends YVM {
 	 * @param etiquette
 	 */
 	public void jump(String etiquette){
-		Ecriture.ecrireStringln(fich,"jmp "+etiquette);
+		Ecriture.ecrireStringln(fich,"	;jump "+etiquette);
+		Ecriture.ecrireStringln(fich,"	jmp "+etiquette);
 	}
 
 	/**
@@ -245,11 +265,17 @@ public class YVMasm extends YVM {
 	 * Génère l'entete d'un fichier .asm
 	 */
 	public void entete(){
+		Ecriture.ecrireStringln(fich,"	;entete");
+		Ecriture.ecrireStringln(fich,"	extrn lirent:proc");
+		Ecriture.ecrireStringln(fich,"	extrn ecrent:proc");
+		Ecriture.ecrireStringln(fich,"	extrn ecrbool:proc");
+		Ecriture.ecrireStringln(fich,"	extrn ecrch:proc");
+		Ecriture.ecrireStringln(fich,"	extrn ligsuiv:proc");
 		Ecriture.ecrireStringln(fich,".model SMALL");
 		Ecriture.ecrireStringln(fich,".586");
 		Ecriture.ecrireStringln(fich,".DATA");
-		Ecriture.ecrireStringln(fich,"FALSE EQU 0");
-		Ecriture.ecrireStringln(fich,"TRUE EQU -1");
+		Ecriture.ecrireStringln(fich,"	FALSE EQU 0");
+		Ecriture.ecrireStringln(fich,"	TRUE EQU -1");
 		Ecriture.ecrireStringln(fich,".CODE");
 		Ecriture.ecrireStringln(fich,"debut :");
 		Ecriture.ecrireStringln(fich,"	STARTUPCODE");
@@ -260,8 +286,9 @@ public class YVMasm extends YVM {
 	 * @param var
 	 */
 	public void ouvrePrinc(int var){
-		Ecriture.ecrireStringln(fich,"mov bp,sp");
-		Ecriture.ecrireStringln(fich,"sub sp,"+var);
+		Ecriture.ecrireStringln(fich,"	;ouvrePrinc "+var);
+		Ecriture.ecrireStringln(fich,"	mov bp,sp");
+		Ecriture.ecrireStringln(fich,"	sub sp,"+var);
 	}
 
 	/**
@@ -269,8 +296,58 @@ public class YVMasm extends YVM {
 	 * Génère la fin d'un fichier .asm
 	 */
 	public void queue(){
-		Ecriture.ecrireStringln(fich,"nop");
-		Ecriture.ecrireStringln(fich,"exitcode");
-		Ecriture.ecrireStringln(fich,"end debut");
+		Ecriture.ecrireStringln(fich,"	;queue");
+		Ecriture.ecrireStringln(fich,"	nop");
+		Ecriture.ecrireStringln(fich,"	EXITCODE");
+		Ecriture.ecrireStringln(fich,"	end debut");
+	}
+	
+	/**
+	 * Permet d'afficher à l'écran la chaine de caractères placée en paramètre
+	 * @param chaine
+	 */
+	public void ecrireChaine(String chaine){
+		Ecriture.ecrireStringln(fich,"	;ecrireChaine \""+chaine+"\"");
+		Ecriture.ecrireStringln(fich,".DATA");
+		//ajout de "$" comme caractère de fin de chaine
+		Ecriture.ecrireStringln(fich,"	mess0 DB \""+chaine+"$\"");
+		Ecriture.ecrireStringln(fich,".CODE");
+		Ecriture.ecrireStringln(fich,"	lea dx, mess0");
+		Ecriture.ecrireStringln(fich,"	push dx");
+		Ecriture.ecrireStringln(fich,"	call ecrch");
+	}
+	
+	/**
+	 * Permet d'afficher à l'écran l'entier en sommet de pile
+	 */
+	public void ecrireEnt(){
+		Ecriture.ecrireStringln(fich,"	;ecrireEnt");
+		Ecriture.ecrireStringln(fich,"	call ecrent");
+	}
+	
+	/**
+	 * Permet d'afficher à l'écran le booleen en sommet de pile
+	 */
+	public void ecrireBool(){
+		Ecriture.ecrireStringln(fich,"	;ecrireBool");
+		Ecriture.ecrireStringln(fich,"	call ecrbool");
+	}
+	
+	/**
+	 * Lit l'entier tapé au clavier et le place dans la mémoire à l'offset "offset"
+	 */
+	public void lireEnt(int offset){
+		Ecriture.ecrireStringln(fich,"	;lireEnt "+offset);
+		Ecriture.ecrireStringln(fich,"	lea dx,[bp-4]");
+		Ecriture.ecrireStringln(fich,"	push dx");
+		Ecriture.ecrireStringln(fich,"	call lirent");
+	}
+	
+	/**
+	 * Va à la ligne
+	 */
+	public void aLaLigne(){
+		Ecriture.ecrireStringln(fich,"	;aLaLigne");
+		Ecriture.ecrireStringln(fich,"	call ligsuiv");
 	}
 }

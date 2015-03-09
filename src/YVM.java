@@ -200,4 +200,41 @@ public class YVM {
 	public void queue(){
 		Ecriture.ecrireStringln(fich,"queue");
 	};
+	
+	/**
+	 * Permet d'afficher à l'écran la chaine de caractères placée en paramètre
+	 * @param s
+	 */
+	public void ecrireChaine(String chaine){
+		Ecriture.ecrireStringln(fich,"ecrireChaine \""+chaine+"\"");
+	}
+	
+	/**
+	 * Permet d'afficher à l'écran l'entier en sommet de pile
+	 */
+	public void ecrireEnt(){
+		Ecriture.ecrireStringln(fich,"ecrireEnt");
+	}
+	
+	/**
+	 * Permet d'afficher à l'écran le booleen en sommet de pile
+	 */
+	public void ecrireBool(){
+		Ecriture.ecrireStringln(fich,"ecrireBool");
+	}
+	
+	/**
+	 * Lit l'entier tapé au clavier et le place dans la mémoire à l'offset "offset"
+	 */
+	public void lireEnt(int offset){
+		Ecriture.ecrireStringln(fich,"lireEnt "+offset);
+		//todo
+	}
+	
+	/**
+	 * Va à la ligne
+	 */
+	public void aLaLigne(){
+		Ecriture.ecrireStringln(fich,"aLaLigne");
+	}
 }
