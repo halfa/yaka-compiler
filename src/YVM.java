@@ -3,6 +3,7 @@ import java.io.*;
 public class YVM {
 	protected OutputStream flux;
 	protected boolean error = false;
+	protected int indent = 0;
 
 	/**
 	 * Constructeur d'un YVM à partir d'une chaine de caractères
