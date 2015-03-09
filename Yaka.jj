@@ -167,15 +167,15 @@ void declConst() : {}
 void defConst() : {}
 {
 	
-  <ident>  { tabIdent.setCurrentIdent(identLu); }	  	
+  <ident>  { Declaration.setCurrentIdent(identLu); }
    "=" valConst() 
 }
 
 void valConst() : {}{
-  <entier> 	{ tabIdent.rangeIdent(new IdConst(entierLu,Type.INTEGER); }	
- | <ident>	{ tabIdent.rangeIdent(new IdConst(); /* TODO */}	
- | <VRAI> 	{ tabIdent.rangeIdent(); }	
- | <FAUX> 
+  <entier> 	{ Declaration.createConst(new IdConst(entierLu,Type.INTEGER); }	
+ | <ident>	{ Declaration.createCont(new IdConst(); /* FIXME */}	
+ | <VRAI> 	{ Declaration.createConst(new IdConst()); }
+ | <FAUX>   
  
 }
 

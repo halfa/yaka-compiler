@@ -2,36 +2,18 @@ import java.util.HashMap;
 
 public class TabIdent {
 
-	static private HashMap<String, Ident> table=new HashMap<String, Ident>();
-	static private String currentIdent; // TODO move into declaration
-
-	/* Constructeur */
+	static private HashMap<String, Ident> table = new HashMap<String, Ident>();
 	
 	/* Méthodes */
-	static Ident chercheIdent(String clef) {
-
+	
+	static Ident getIdent(String clef) {
 		return table.get(clef);
 	}
-
+	static void addIdent(String clef, Ident id){
+		table.put(clef, id);
+	}
 	static boolean existeIdent(String clef) {
 		return table.containsKey(clef);
-	}
-
-	static void rangeIdent(String key, Ident id) {
-		table.put(key, id);
-	}
-
-	static void rangeIdent(Ident id) {
-
-		table.put(currentIdent, id);
-	}
-
-	static String getCurrentIdent() {
-		return currentIdent;
-	}
-
-	static void setCurrentIdent(String currentIdent) {
-		currentIdent = currentIdent;
 	}
 
 }

@@ -1,14 +1,14 @@
 
 public class IdConst extends Ident{
 
-	final char val;
+	final int val;
 	
-	public IdConst(char v, Type t){
+	public IdConst(int v, Type t){
 		super(t);
 		val=v;
 	}
 
-	public char getVal(){
+	public int getVal(){
 		return val;
 	}
 }
