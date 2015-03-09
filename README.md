@@ -12,3 +12,5 @@ Todo List
 ---------
 
 * Basic compiler
+* Multithread
+* String builder for generation
