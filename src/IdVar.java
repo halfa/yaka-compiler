@@ -1,15 +1,17 @@
 
 public class IdVar extends Ident{
 
-	private char val;
+	char val;
 	
-	public IdVar(char v){
+	public IdVar(char v,Type t){
+		super(t);
 		val=v;
 	}
 	
 	public char getVal(){
 		return val;
 	}
+
 	public void setVal(char v){
 		val=v;
 	}

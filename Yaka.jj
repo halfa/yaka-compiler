@@ -147,9 +147,9 @@ TOKEN  :
 /**************************************/
 void analyse() : {}
 {
-   <PROGRAMME> <ident>	
+   <PROGRAMME>{ yvm.entete(); }<ident>	
    bloc()
-   <FPROGRAMME> 
+   <FPROGRAMME> { yvm.queue(); }
 }
 
 
@@ -167,16 +167,16 @@ void declConst() : {}
 void defConst() : {}
 {
 	
-  <ident>  	  	
-   "=" valConst()
-    
+  <ident>  { tabIdent.setCurrentIdent(identLu); }	  	
+   "=" valConst() 
 }
 
 void valConst() : {}{
-  <entier> 		
- | <ident>		
- | <VRAI> 		
- | <FAUX> 		
+  <entier> 	{ tabIdent.rangeIdent(new IdConst(entierLu,Type.INTEGER); }	
+ | <ident>	{ tabIdent.rangeIdent(); /* TODO */}	
+ | <VRAI> 	{ tabIdent.rangeIdent(); }	
+ | <FAUX> 
+ 
 }
 
 
