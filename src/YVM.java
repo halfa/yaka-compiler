@@ -1,14 +1,22 @@
 import java.io.OutputStream;
 
 public class YVM {
-	private OutputStream fichYvm;
+	protected OutputStream fich;
+	
+	/**
+	 * Constructeur d'un YVM à partir d'un OutputStream
+	 * @param out
+	 */
+	public YVM (OutputStream out){
+		fich = out;
+	}
 	
 	/**
 	 * Haut de pile : int / int
 	 * Aditionne les deux éléments en sommet de pile 
 	 */
 	public void iadd(){
-		Ecriture.ecrireStringln(fichYvm,"iadd");
+		Ecriture.ecrireStringln(fich,"iadd");
 	};
 	
 	/**
@@ -16,7 +24,7 @@ public class YVM {
 	 * Soustrait le deuxième élément de la pile par le premier
 	 */
 	public void isub(){
-		Ecriture.ecrireStringln(fichYvm,"isub");
+		Ecriture.ecrireStringln(fich,"isub");
 	};
 	
 	/**
@@ -24,7 +32,7 @@ public class YVM {
 	 * Multiplie les deux éléments en haut de pile
 	 */
 	public void imul(){
-		Ecriture.ecrireStringln(fichYvm,"imul");
+		Ecriture.ecrireStringln(fich,"imul");
 	};
 
 	/**
@@ -32,7 +40,7 @@ public class YVM {
 	 * Soustrait le deuxième élément de la pile par le premier
 	 */
 	public void idiv(){
-		Ecriture.ecrireStringln(fichYvm,"idiv");
+		Ecriture.ecrireStringln(fich,"idiv");
 	};
 	
 	/**
@@ -40,7 +48,7 @@ public class YVM {
 	 * Transforme l'élément en haut de pile en son opposé
 	 */
 	public void inot(){
-		Ecriture.ecrireStringln(fichYvm,"inot");
+		Ecriture.ecrireStringln(fich,"inot");
 	};
 	
 	/**
@@ -48,7 +56,7 @@ public class YVM {
 	 * Transforme l'élément en haut de pile en son opposé
 	 */
 	public void ineg(){
-		Ecriture.ecrireStringln(fichYvm,"ineg");
+		Ecriture.ecrireStringln(fich,"ineg");
 	};
 	
 	/**
@@ -56,7 +64,7 @@ public class YVM {
 	 * Fait un test "ET" sur les deux éléments en haut de la pile
 	 */
 	public void iand(){
-		Ecriture.ecrireStringln(fichYvm,"iand");
+		Ecriture.ecrireStringln(fich,"iand");
 	};
 	
 	/**
@@ -64,7 +72,7 @@ public class YVM {
 	 * Fait un test "OU" sur les deux éléments en haut de la pile
 	 */
 	public void ior(){
-		Ecriture.ecrireStringln(fichYvm,"ior");
+		Ecriture.ecrireStringln(fich,"ior");
 	};
 
 	/**
@@ -72,7 +80,7 @@ public class YVM {
 	 * Met "VRAI" en haut de pile si le deuxième élément de la pile est inférieur au premier
 	 */
 	public void iinf(){
-		Ecriture.ecrireStringln(fichYvm,"iinf");
+		Ecriture.ecrireStringln(fich,"iinf");
 	};
 
 	/**
@@ -80,7 +88,7 @@ public class YVM {
 	 * Met "VRAI" en haut de pile si le deuxième élément de la pile est supérieur au premier 
 	 */
 	public void isup(){
-		Ecriture.ecrireStringln(fichYvm,"isup");
+		Ecriture.ecrireStringln(fich,"isup");
 	};
 
 	/**
@@ -88,7 +96,7 @@ public class YVM {
 	 * Met "VRAI" en haut de pile si le deuxième élément de la pile est inférieur ou égal au premier
 	 */
 	public void iinfegal(){
-		Ecriture.ecrireStringln(fichYvm,"iinfegal");
+		Ecriture.ecrireStringln(fich,"iinfegal");
 	};
 
 	/**
@@ -96,7 +104,7 @@ public class YVM {
 	 * Met "VRAI" en haut de pile si le deuxième élément de la pile est supérieur ou égal au premier
 	 */
 	public void isupegal(){
-		Ecriture.ecrireStringln(fichYvm,"isupegal");
+		Ecriture.ecrireStringln(fich,"isupegal");
 	};
 
 	/**
@@ -104,7 +112,7 @@ public class YVM {
 	 * Met "VRAI" en haut de pile si le deuxième élément de la pile est égal au premier
 	 */
 	public void iegal(){
-		Ecriture.ecrireStringln(fichYvm,"iegal");
+		Ecriture.ecrireStringln(fich,"iegal");
 	};
 	
 	/**
@@ -112,7 +120,7 @@ public class YVM {
 	 * Met "VRAI" en haut de pile si le deuxième élément de la pile est inférieur au premier
 	 */
 	public void idiff(){
-		Ecriture.ecrireStringln(fichYvm,"idiff");
+		Ecriture.ecrireStringln(fich,"idiff");
 	};
 
 	/**
@@ -120,7 +128,7 @@ public class YVM {
 	 * @param valeur
 	 */
 	public void iconst(int valeur){
-		Ecriture.ecrireStringln(fichYvm,"iconst "+valeur);
+		Ecriture.ecrireStringln(fich,"iconst "+valeur);
 	};
 
 	/**
@@ -129,7 +137,7 @@ public class YVM {
 	 * @param offset
 	 */
 	public void istore(int offset){
-		Ecriture.ecrireStringln(fichYvm,"istore "+offset);
+		Ecriture.ecrireStringln(fich,"istore "+offset);
 	};
 
 	/**
@@ -138,7 +146,7 @@ public class YVM {
 	 * @param offset
 	 */
 	public void iload(int offset){
-		Ecriture.ecrireStringln(fichYvm,"iload "+offset);
+		Ecriture.ecrireStringln(fich,"iload "+offset);
 	};
 
 	/**
@@ -147,7 +155,7 @@ public class YVM {
 	 * @param etiquette
 	 */
 	public void ifeq(String etiquette){
-		Ecriture.ecrireStringln(fichYvm,"ifeq "+etiquette);
+		Ecriture.ecrireStringln(fich,"ifeq "+etiquette);
 	};
 
 	/**
@@ -156,7 +164,7 @@ public class YVM {
 	 * @param etiquette
 	 */
 	public void iffaux(String etiquette){
-		Ecriture.ecrireStringln(fichYvm,"iffaux "+etiquette);
+		Ecriture.ecrireStringln(fich,"iffaux "+etiquette);
 	};
 
 	/**
@@ -166,7 +174,7 @@ public class YVM {
 	 * @param etiquette
 	 */
 	public void jump(String etiquette){
-		Ecriture.ecrireStringln(fichYvm,"goto "+etiquette);
+		Ecriture.ecrireStringln(fich,"goto "+etiquette);
 	};
 
 	/**
@@ -174,7 +182,7 @@ public class YVM {
 	 * Génère l'entête d'un fichier .asm
 	 */
 	public void entete(){
-		Ecriture.ecrireStringln(fichYvm,"entete");
+		Ecriture.ecrireStringln(fich,"entete");
 	}; 
 	
 	/**
@@ -182,7 +190,7 @@ public class YVM {
 	 * @param var
 	 */
 	public void ouvrePrinc(int var){
-		Ecriture.ecrireStringln(fichYvm,"ouvrePrinc "+var);
+		Ecriture.ecrireStringln(fich,"ouvrePrinc "+var);
 	}; 
 	
 	/**
@@ -190,6 +198,6 @@ public class YVM {
 	 * Génère la fin d'un fichier .asm
 	 */
 	public void queue(){
-		Ecriture.ecrireStringln(fichYvm,"queue");
+		Ecriture.ecrireStringln(fich,"queue");
 	};
 }
