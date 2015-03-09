@@ -173,7 +173,7 @@ void defConst() : {}
 
 void valConst() : {}{
   <entier> 	{ tabIdent.rangeIdent(new IdConst(entierLu,Type.INTEGER); }	
- | <ident>	{ tabIdent.rangeIdent(); /* TODO */}	
+ | <ident>	{ tabIdent.rangeIdent(new IdConst(); /* TODO */}	
  | <VRAI> 	{ tabIdent.rangeIdent(); }	
  | <FAUX> 
  
