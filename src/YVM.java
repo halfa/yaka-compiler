@@ -4,20 +4,20 @@ public class YVM {
 	protected OutputStream flux;
 	protected boolean error = false;
 	protected int indent = 0;
-
+	
+	/**
+	 * Constructeur par défaut d'un YVM vide
+	 */
+	public YVM(){
+		flux = null;
+	}
+	
 	/**
 	 * Constructeur d'un YVM à partir d'une chaine de caractères
 	 * @param name
 	 */
 	public YVM (String name){
 		flux = Ecriture.ouvrir(name);
-	}
-
-	/**
-	 * Constructeur d'un YVM qui créé un fichier soupe.yvm
-	 */
-	public YVM(){
-		flux = Ecriture.ouvrir("soupe.yvm");
 	}
 
 	/**

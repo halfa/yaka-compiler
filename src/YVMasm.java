@@ -1,20 +1,19 @@
 public class YVMasm extends YVM {
 	
 	/**
+	 * Constructeur par défaut d'un YVMasm vide
+	 */
+	public YVMasm(){
+		super();
+	}
+	
+	/**
 	 * Constructeur d'un YVMasm à partir d'une chaine de caratères
-	 * @param out
+	 * @param name
 	 */
 	public YVMasm (String name){
 		super(name);
 	}
-	
-	/**
-	 * Constructeur d'un YVM qui créé un fichier soupe.asm
-	 */
-	public YVMasm(){
-		super("soupe.asm");
-	}
-	
 	
 	/**
 	 * Haut de pile : int / int
