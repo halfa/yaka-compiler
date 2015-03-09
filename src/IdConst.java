@@ -1,6 +1,9 @@
 
 public class IdConst extends Ident{
-
+	
+	/**
+	 * 
+	 */
 	final int val;
 	
 	public IdConst(int v, Type t){
