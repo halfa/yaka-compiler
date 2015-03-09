@@ -15,4 +15,13 @@ public class IdVar extends Ident{
 	public void setVal(char v){
 		val=v;
 	}
+	
+	
+	/**
+	 * TODO
+	 * @return offset of the ident
+	 */
+	public int getOffset(){
+		return 0;
+	}
 }

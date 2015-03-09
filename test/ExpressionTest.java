@@ -17,7 +17,7 @@ public class ExpressionTest {
 		e.pushOp(Operator.MINUS);
 		e.pushValue(Type.INTEGER);
 		e.pushValue(Type.INTEGER);
-		assertEquals(Type.INTEGER, e.evaluate());
+		assertEquals(Type.INTEGER, e.syntaxeEvaluation());
 	}
 
 	@Test
@@ -26,7 +26,7 @@ public class ExpressionTest {
 		e.pushOp(Operator.MINUS);
 		e.pushValue(Type.BOOLEAN);
 		e.pushValue(Type.INTEGER);
-		assertEquals(Type.ERROR, e.evaluate());
+		assertEquals(Type.ERROR, e.syntaxeEvaluation());
 	}
 
 	@Test
@@ -35,7 +35,7 @@ public class ExpressionTest {
 		e.pushOp(Operator.MINUS);
 		e.pushValue(Type.BOOLEAN);
 		e.pushValue(Type.BOOLEAN);
-		assertEquals(Type.ERROR, e.evaluate());
+		assertEquals(Type.ERROR, e.syntaxeEvaluation());
 
 	}
 
@@ -45,7 +45,7 @@ public class ExpressionTest {
 		e.pushOp(Operator.AND);
 		e.pushValue(Type.INTEGER);
 		e.pushValue(Type.INTEGER);
-		assertEquals(Type.ERROR, e.evaluate());
+		assertEquals(Type.ERROR, e.syntaxeEvaluation());
 	}
 
 	@Test
@@ -54,7 +54,7 @@ public class ExpressionTest {
 		e.pushOp(Operator.AND);
 		e.pushValue(Type.BOOLEAN);
 		e.pushValue(Type.BOOLEAN);
-		assertEquals(Type.BOOLEAN, e.evaluate());
+		assertEquals(Type.BOOLEAN, e.syntaxeEvaluation());
 	}
 
 	@Test
@@ -63,7 +63,7 @@ public class ExpressionTest {
 		e.pushOp(Operator.AND);
 		e.pushValue(Type.INTEGER);
 		e.pushValue(Type.BOOLEAN);
-		assertEquals(Type.ERROR, e.evaluate());
+		assertEquals(Type.ERROR, e.syntaxeEvaluation());
 
 	}
 
@@ -73,7 +73,7 @@ public class ExpressionTest {
 		e.pushOp(Operator.DIFF);
 		e.pushValue(Type.BOOLEAN);
 		e.pushValue(Type.INTEGER);
-		assertEquals(Type.ERROR, e.evaluate());
+		assertEquals(Type.ERROR, e.syntaxeEvaluation());
 	}
 
 	@Test
@@ -82,7 +82,7 @@ public class ExpressionTest {
 		e.pushOp(Operator.DIFF);
 		e.pushValue(Type.BOOLEAN);
 		e.pushValue(Type.BOOLEAN);
-		assertEquals(Type.BOOLEAN, e.evaluate());
+		assertEquals(Type.BOOLEAN, e.syntaxeEvaluation());
 
 	}
 
@@ -92,7 +92,7 @@ public class ExpressionTest {
 		e.pushOp(Operator.DIFF);
 		e.pushValue(Type.INTEGER);
 		e.pushValue(Type.INTEGER);
-		assertEquals(Type.BOOLEAN, e.evaluate());
+		assertEquals(Type.BOOLEAN, e.syntaxeEvaluation());
 
 	}
 
