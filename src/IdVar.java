@@ -9,14 +9,27 @@ public class IdVar extends Ident {
 	int val;
 	int offset;
 	
-	public IdVar(int v,Type t){
+	/* Constructeurs */
+	private IdVar(int v, Type t, int o){
 		super(t);
-		val=v;
-		offset = (activeOffset -= 2);
+		val = v;
+		offset = o;
 	}
 	
+	public IdVar(int v, Type t){
+		this(v, t, activeOffset -= 2);
+	}
+
+	/* Get & Set */
 	public int getVal(){ return val; }
 	public void setVal(int v){ val=v; }
+	
+	/**
+	 * @see Ident#copy()
+	 */
+	public IdVar copy(){
+		return new IdVar(val, super.type);
+	}
 	
 	/**
 	 * Retourne la position de la variable dans la pile
@@ -25,4 +38,5 @@ public class IdVar extends Ident {
 	public int getOffset(){
 		return offset;
 	}
+	
 }

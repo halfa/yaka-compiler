@@ -44,7 +44,7 @@ public class Yaka {
       return;
     }
     try {
-   
+   	  /* Build objet */
       YVM yvm=new YVM();
       tabIdent=new TabIdent();
       expression=new Expression();
@@ -143,7 +143,7 @@ TOKEN  :
 
 
 /**************************************/
-/********debut de la grammaire ********/
+/******** début de la grammaire ********/
 /**************************************/
 void analyse() : {}
 {
@@ -172,11 +172,10 @@ void defConst() : {}
 }
 
 void valConst() : {}{
-  <entier> 	{ declaration.createConst(identLu, entierLu, Type.INTEGER); }	
- | <ident>	{ declaration.createCont(new IdConst(identLu, Type.)); 
-              /* FIXME besoin de stocker l'ident const avant d'évaluer la variable */}	
- | <VRAI> 	{ declaration.createConst(identLu, -1, Type.BOOLEAN); }
- | <FAUX>   { declaration.createConst(identLu, 0, Type.BOOLEAN); }
+  <entier> 	{ declaration.createConst(entierLu, Type.INTEGER); }	
+ | <ident>	{ declaration.createCont(identLu); }	
+ | <VRAI> 	{ declaration.createConst(-1, Type.BOOLEAN); }
+ | <FAUX>   { declaration.createConst(0, Type.BOOLEAN); }
 }
 
 
@@ -184,16 +183,15 @@ void declVar() : {}
 {
   <VAR> type()	
   <ident> { declaration.createVar(identLu);}
-  ("," 
-      <ident>  
+  (","
+      <ident> { declaration.createVar(identLu); }
   )* ";"
-	
 }
 
 void type() :{}
 {
-   <ENTIER> 			
- | <BOOLEEN>	
+   <ENTIER> { declaration.setCurrentType(Type.INTEGER); }
+ | <BOOLEEN> { declaration.setCurrentType(Type.BOOLEAN); }
 }
 /*
  * Syntaxe des instructions.
@@ -201,41 +199,28 @@ void type() :{}
 void suiteExpr() : {}
 { (expression() (";" (expression())? )*)? }
 
-// ajouté
+// FIXME ajout >>>>>>
 
 void suiteInstr() : {}
-{
-instruction() (
-	";"(instruction())?
-	)*
-}
+{ (instruction() (";" (instruction())? )*)? }
 
-void instuction() : {}
-{
-affectation() | lecture() | ecriture()	
-}
+void instruction() : {}
+{ affectation() | lecture() | ecriture() }
 
 void affectation() : {}
-{
-<ident> "=" expression() 	
-	
-}
+{ <ident> "=" expression() }
 
 void lecture() : {}
-{
-<LIRE> "(" <ident> ")"	
-}
+{ <LIRE> "(" <ident> ")" }
 
 void ecriture() :{}
-{
-<ECRIRE>("(" expression() | chaine() ")") | <ALALIGNE> {yvm.aLaLigne();}	
-}
+{ <ECRIRE>("(" expression() /*| chaine() */")") | <ALALIGNE> {yvm.aLaLigne();} }
 
-// fin ajout
+//<<<<<< fin ajout */
 
 
 /*
- * Expression .
+ * Expression
  */
 void expression() : {}
 {
@@ -307,4 +292,3 @@ void opNeg() : {}
 { "-" 		
  | <NON>	
 }
-

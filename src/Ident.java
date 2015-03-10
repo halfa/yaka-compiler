@@ -1,6 +1,6 @@
 /**
  * Décrit un identifiant typé générique.
- * Les identifiants font tous 2 octets en mémoire
+ * Les identifiants font tous 2 octets en mémoire.
  */
 public abstract class Ident {
 	
@@ -10,8 +10,15 @@ public abstract class Ident {
 		type = t;
 	}
 	
-	public Type getType(){
-		return type;
+	public Type getType(){ return type; }
+	
+	/**
+	 * Duplique un identifiant.
+	 * TODO implémenter <clonable> ?
+	 * @return une copie de l'identifiant
+	 */
+	public Ident copy() {
+		return null; 
 	}
 
 }
