@@ -10,7 +10,7 @@
 
 
 options{
-	JDK_VERSION="1.5";	
+	JDK_VERSION="1.7";	
 }
 
 PARSER_BEGIN(Yaka)
@@ -172,11 +172,11 @@ void defConst() : {}
 }
 
 void valConst() : {}{
-  <entier> 	{ declaration.createConst(new IdConst(entierLu,Type.INTEGER); }	
- | <ident>	{ declaration.createCont(new IdConst(identLu,)); /* FIXME */}	
- | <VRAI> 	{ declaration.createConst(new IdConst()); }
- | <FAUX>   
- 
+  <entier> 	{ declaration.createConst(identLu, entierLu, Type.INTEGER); }	
+ | <ident>	{ declaration.createCont(new IdConst(identLu, Type.)); 
+              /* FIXME besoin de stocker l'ident const avant d'évaluer la variable */}	
+ | <VRAI> 	{ declaration.createConst(identLu, -1, Type.BOOLEAN); }
+ | <FAUX>   { declaration.createConst(identLu, 0, Type.BOOLEAN); }
 }
 
 

@@ -7,6 +7,11 @@ public class Declaration {
 	static private String currentIdent;
 	static private int nbVariables;
 	
+	// Définition pour le type booléen
+	static public int FAUX = 0;
+	static public int VRAI = -1;
+	
+	
 	public static int getNbVariables() {return nbVariables;}
 	public static void setNbVariables(int nbVariables) {Declaration.nbVariables = nbVariables;}
 	/* GetSet */
@@ -28,8 +33,11 @@ public class Declaration {
 	 * La variable est initialisé à 0
 	 * TODO gérer la mémoire (compteur ?)
 	 * @param name identifiant de la déclaration
+	 * @param t type de la valeur
 	 */
-	public static void createVar(String name){
+	public static void createVar(String name, Type t){
+		// Initialisation par défaut à 0/false
+		TabIdent.addIdent(name, new IdVar(0, t));
 		nbVariables++;
 	}
 }
