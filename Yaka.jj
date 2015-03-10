@@ -16,17 +16,14 @@ options{
 PARSER_BEGIN(Yaka)
 
 public class Yaka {
-
-  
+  	static YVM yvm;
+    static TabIdent tabIdent;
+    static Expression expression;
+    static Declaration declaration;
   
   public static void main(String args[]) { 
     Yaka analyseur;
     java.io.InputStream input;
-  
-    YVM yvm;
-    TabIdent tabident;
-    Expression expression;
-    Declaration declaration;
     
     if (args.length==1) {
       System.out.print(args[args.length-1] + ": ");
@@ -45,10 +42,10 @@ public class Yaka {
     }
     try {
    	  /* Build objet */
-      YVM yvm=new YVM();
-      tabIdent=new TabIdent();
-      expression=new Expression();
-      declaration=new Declaration();
+      yvm = new YVM();
+      tabIdent = new TabIdent();
+      expression = new Expression();
+      declaration = new Declaration();
       
       analyseur = new Yaka(input);
       analyseur.analyse();
@@ -62,12 +59,13 @@ public class Yaka {
 }
 
 PARSER_END(Yaka)
+
 /***************************************/
 /********** TOKEN DEFINITIONS **********/
 /***************************************/
 
 TOKEN_MGR_DECLS :
-{public static String identLu,chaineLue;
+{public static String identLu ,chaineLue;
  public static int entierLu;}
 
 /*** Skip whitespace and comments ***/
@@ -130,11 +128,11 @@ TOKEN  :
 {
   < #chiffre : ["0"-"9"] >
 | < entier : (<chiffre>)+ > 
-	{ entierLu = Integer.parseInt(image.toString());
+	{ YakaTokenManager.entierLu = Integer.parseInt(image.toString());
         }
 | < #lettre: ["A"-"Z","a"-"z"] >
 | < ident : <lettre> (<lettre> | <chiffre>)* >
-	{identLu =image.toString();	
+	{YakaTokenManager.identLu =image.toString();	
 	}
 | < chaine : "\"" (~["\""])* "\"" | "'" (~["'"])* "'" >
 	{ chaineLue = image.toString();
@@ -147,7 +145,7 @@ TOKEN  :
 /**************************************/
 void analyse() : {}
 {
-   <PROGRAMME><ident> {yvm = new YVM(identLu); yvm.entete();}	
+   <PROGRAMME><ident> {yvm = new YVM(YakaTokenManager.identLu); yvm.entete();}	
    bloc()
    <FPROGRAMME> { yvm.queue(); }
 }
@@ -167,13 +165,13 @@ void declConst() : {}
 void defConst() : {}
 {
 	
-  <ident>  { declaration.setCurrentIdent(identLu); }
+  <ident>  { declaration.setCurrentIdent(YakaTokenManager.identLu); }
    "=" valConst() 
 }
 
 void valConst() : {}{
-  <entier> 	{ declaration.createConst(entierLu, Type.INTEGER); }	
- | <ident>	{ declaration.createCont(identLu); }	
+  <entier> 	{ declaration.createConst(YakaTokenManager.entierLu, Type.INTEGER); }	
+ | <ident>	{ declaration.createConst(YakaTokenManager.identLu); }	
  | <VRAI> 	{ declaration.createConst(-1, Type.BOOLEAN); }
  | <FAUX>   { declaration.createConst(0, Type.BOOLEAN); }
 }
@@ -182,9 +180,9 @@ void valConst() : {}{
 void declVar() : {}
 {
   <VAR> type()	
-  <ident> { declaration.createVar(identLu);}
+  <ident> { declaration.createVar(YakaTokenManager.identLu);}
   (","
-      <ident> { declaration.createVar(identLu); }
+      <ident> { declaration.createVar(YakaTokenManager.identLu); }
   )* ";"
 }
 

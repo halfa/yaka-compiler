@@ -3,7 +3,7 @@
 /** Token Manager. */
 public class YakaTokenManager implements YakaConstants
 {
- public static String identLu,chaineLue;
+ public static String identLu ,chaineLue;
  public static int entierLu;
 
   /** Debug output. */
@@ -938,11 +938,11 @@ static void TokenLexicalActions(Token matchedToken)
    {
       case 36 :
         image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
-          entierLu = Integer.parseInt(image.toString());
+          YakaTokenManager.entierLu = Integer.parseInt(image.toString());
          break;
       case 38 :
         image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
-         identLu =image.toString();
+         YakaTokenManager.identLu =image.toString();
          break;
       case 39 :
         image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
