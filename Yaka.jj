@@ -167,14 +167,14 @@ void declConst() : {}
 void defConst() : {}
 {
 	
-  <ident>  { Declaration.setCurrentIdent(identLu); }
+  <ident>  { declaration.setCurrentIdent(identLu); }
    "=" valConst() 
 }
 
 void valConst() : {}{
-  <entier> 	{ Declaration.createConst(new IdConst(entierLu,Type.INTEGER); }	
- | <ident>	{ Declaration.createCont(new IdConst(); /* FIXME */}	
- | <VRAI> 	{ Declaration.createConst(new IdConst()); }
+  <entier> 	{ declaration.createConst(new IdConst(entierLu,Type.INTEGER); }	
+ | <ident>	{ declaration.createCont(new IdConst(identLu,)); /* FIXME */}	
+ | <VRAI> 	{ declaration.createConst(new IdConst()); }
  | <FAUX>   
  
 }
@@ -183,7 +183,7 @@ void valConst() : {}{
 void declVar() : {}
 {
   <VAR> type()	
-  <ident>		
+  <ident> { declaration.createVar(identLu);}
   ("," 
       <ident>  
   )* ";"
