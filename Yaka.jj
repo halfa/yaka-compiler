@@ -155,7 +155,7 @@ void analyse() : {}
 
 void bloc() : {}{
  (declConst())*
- (declVar())*		
+ (declVar())*	{ yvm.ouvrePrinc(declaration.getNbVariables());}	
    suiteInstr()  // modifié
 }
 
@@ -186,7 +186,7 @@ void declVar() : {}
   <ident>		
   ("," 
       <ident>  
-  )* ";" { yvm.ouvrePrinc(declaration.getNbVariables());}
+  )* ";"
 	
 }
 
