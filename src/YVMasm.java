@@ -289,12 +289,13 @@ public class YVMasm extends YVM {
 
 	/**
 	 * Permet de réserver directement un ensemble de variable dans la pile
-	 * @param var
+	 * @param nbVar
 	 */
-	public void ouvrePrinc(int var){
-		Ecriture.ecrireStringln(flux,";ouvrePrinc "+var,1);
+	public void ouvrePrinc(int nbVar){
+		nbVar*=2;
+		Ecriture.ecrireStringln(flux,";ouvrePrinc "+nbVar,1);
 		Ecriture.ecrireStringln(flux,"mov bp,sp",1);
-		Ecriture.ecrireStringln(flux,"sub sp,"+var,1);
+		Ecriture.ecrireStringln(flux,"sub sp,"+nbVar,1);
 	}
 
 	/**

@@ -195,11 +195,11 @@ public class YVM {
 	}; 
 
 	/**
-	 * Permet de réserver directement un ensemble de variable dans la pile
-	 * @param var
+	 * Permet de réserver directement un ensemble de variables dans la pile
+	 * @param nbVar
 	 */
-	public void ouvrePrinc(int var){
-		Ecriture.ecrireStringln(flux,"ouvrePrinc "+var);
+	public void ouvrePrinc(int nbVar){
+		Ecriture.ecrireStringln(flux,"ouvrePrinc "+nbVar*2);
 	}; 
 
 	/**

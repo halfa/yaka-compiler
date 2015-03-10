@@ -45,7 +45,7 @@ public class Yaka {
     }
     try {
    
-      yvm=new YVM();
+      YVM yvm=new YVM();
       tabIdent=new TabIdent();
       expression=new Expression();
       declaration=new Declaration();
@@ -147,7 +147,7 @@ TOKEN  :
 /**************************************/
 void analyse() : {}
 {
-   <PROGRAMME>{ yvm.entete(); }<ident>	
+   <PROGRAMME><ident> {yvm = new YVM(identLu); yvm.entete();}	
    bloc()
    <FPROGRAMME> { yvm.queue(); }
 }
@@ -186,7 +186,7 @@ void declVar() : {}
   <ident>		
   ("," 
       <ident>  
-  )* ";"
+  )* ";" { yvm.ouvrePrinc(declaration.getNbVariables());}
 	
 }
 
@@ -228,7 +228,7 @@ void lecture() : {}
 
 void ecriture() :{}
 {
-<ECRIRE>("(" expression() | chaine() ")") | <ALALIGNE>	
+<ECRIRE>("(" expression() | chaine() ")") | <ALALIGNE> {yvm.aLaLigne();}	
 }
 
 // fin ajout
