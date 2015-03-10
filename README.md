@@ -5,6 +5,7 @@ Goal
 ----
 
 Build a compiler for the Yaka language using javacc.
+*This is an highschool project at INSA Rennes, that's why comments are in french.*
 
 Features
 --------
@@ -12,12 +13,19 @@ Features
 The compiler can build yaka code into either
 
 * Yaka ASM, run on YVM
-* x386 Pentium ASM, run on DosBOX
+* x86 Pentium ASM, run on DosBOX
 
-This is an highschool project at INSA Rennes.
+Build
+-----
 
-Yaka langyage
--------------
+```BASH
+cd src/
+javacc ../Yaka.jj
+javac -d ../bin *
+```
+
+Yaka language sample
+--------------------
 
 ```YAKA
 PROGRAMME max
@@ -29,7 +37,7 @@ PROGRAMME max
   VAR BOOLEEN b1, b2;
     c1=(aa+cc/2)/5;
     c2=c1+3*c1-aa;
-    b2=(c1 <= (c2+4));
+    b2=(c1<=(c2+4));
 FPROGRAMME
 ```
 
