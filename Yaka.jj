@@ -244,7 +244,7 @@ void terme() : {}
 }
 void facteur() : {}
 {   primaire() 
-  |  opNeg() primaire() {yvm.ineg();}
+  |  opNeg() primaire()
 }
 
 void primaire (): {}
@@ -264,29 +264,29 @@ void valeur () : {}
 
 void opRel() : {}
 {
-   "=" 		
- | "<>" 	
- | "<" 		
- | "<=" 	
- | ">" 		
- | ">=" 	
+   "=" 		{expression.pushOp(Operator.EGAL);}
+ | "<>" 	{expression.pushOp(Operator.DIFF);}
+ | "<" 		{expression.pushOp(Operator.LOW_STRICT);}
+ | "<=" 	{expression.pushOp(Operator.LOW_EGAL);}
+ | ">" 		{expression.pushOp(Operator.UP_STRICT);}
+ | ">=" 	{expression.pushOp(Operator.LOW_EGAL);}
 } 
 
 void opAdd() : {}
 {
-    "+"		
-  |  "-"  
-  | <OU> 	
+    "+"		{expression.pushOp(Operator.PLUS);}
+  |  "-"  	{expression.pushOp(Operator.MINUS);}
+  | <OU> 	{expression.pushOp(Operator.OR);}
 }
 
 void opMul() : {}
 {
-  "*"		
-  | "/"		
-  | <ET>	
+  "*"		{expression.pushOp(Operator.MULT);}
+  | "/"		{expression.pushOp(Operator.DIV);}
+  | <ET>	{expression.pushOp(Operator.AND);}
 } 
 
 void opNeg() : {}
-{ "-" 		
- | <NON>	
+{ "-" 		{expression.pushOp(Operator.OPP);}
+ | <NON>	{expression.pushOp(Operator.NOT);}
 }
