@@ -256,7 +256,7 @@ void primaire (): {}
 
 void valeur () : {}
 { <entier> 	{yvm.iconst(YakaTokenManager.entierLu);}
- | <ident> 	{yvm.iconst(YakaTokenManager.identLu);}
+ | <ident> 	{yvm.iconst(tabIdent.getIdent(YakaTokenManager.identLu));}
  | <VRAI> 	{yvm.iconst(-1);}
  | <FAUX> 	{yvm.iconst(0);}
 }
