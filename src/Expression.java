@@ -2,12 +2,12 @@ import java.util.Stack;
 
 public class Expression {
 
-	private static YVM yvm;
-
+	private YVM yvm;
 	private Stack<Operator> ops;
 	private Stack<Type> types;
 
-	public Expression() {
+	public Expression(YVM y) {
+		yvm = y;
 		ops = new Stack<Operator>();
 		types = new Stack<Type>();
 
@@ -60,6 +60,22 @@ public class Expression {
 	 */
 	public void pushValue(Type t) {
 		types.push(t);
+	}
+	
+	/**
+	 * Retourne l'opérateur en haut de la pile des opérateurs
+	 * @return opérateur en haut de pile
+	 */
+	public Operator popOp(){
+		return ops.pop();
+	}
+	
+	/**
+	 * Retourne la valeur en haut de la pile des types
+	 * @return valeur en haut de pile
+	 */
+	public Type popValue(){
+		return types.pop();
 	}
 
 	/**
