@@ -224,7 +224,7 @@ void expression() : {}
 {
   simpleExpr() 
   (opRel() 
-  simpleExpr() 
+  simpleExpr() {expression.whatRel();}
   )?
 }
 
@@ -232,19 +232,19 @@ void simpleExpr() : {}
 {
    terme() 
    (opAdd() 
-   terme()	
+   terme() {expression.whatAdd();}
    )*
 } 
 void terme() : {}
 {
   facteur() 
   (opMul() 
-  facteur()	
+  facteur()	{expression.whatMul();}
   )*
 }
 void facteur() : {}
 {   primaire() 
-  |  opNeg() primaire()
+  |  opNeg() primaire() {expression.whatNeg();}
 }
 
 void primaire (): {}

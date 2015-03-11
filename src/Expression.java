@@ -77,6 +77,100 @@ public class Expression {
 	public Type popValue(){
 		return types.pop();
 	}
+	
+	/**
+	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM
+	 * pour un opAdd.
+	 */
+	public void whatAdd(){
+		Operator op = popOp();
+		switch (op) {
+		case PLUS :
+			yvm.iadd();
+			break;
+		case MINUS : 
+			yvm.isub();
+			break;
+		case OR :
+			yvm.ior();
+			break;
+		default:
+			System.err.println("Wrong Operator at the top of the stack, and opAdd is expected");
+			break;
+		}				
+	}
+	
+	/**
+	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM
+	 * pour un opMul.
+	 */
+	public void whatMul(){
+		Operator op = popOp();
+		switch (op) {
+		case MULT :
+			yvm.imul();
+			break;
+		case DIV : 
+			yvm.idiv();
+			break;
+		case AND :
+			yvm.iand();
+			break;
+		default:
+			System.err.println("Wrong Operator at the top of the stack, and opMul is expected");
+			break;
+		}			
+	}
+	
+	/**
+	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM
+	 * pour un opNeg.
+	 */
+	public void whatNeg(){
+		Operator op = popOp();
+		switch (op) {
+		case OPP :
+			yvm.ineg();
+			break;
+		case NOT : 
+			yvm.inot();
+			break;
+		default:
+			System.err.println("Wrong Operator at the top of the stack, and opNeg is expected");
+			break;
+		}
+	}
+	
+	/**
+	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM
+	 * pour un opRel.
+	 */
+	public void whatRel(){
+		Operator op = popOp();
+		switch (op) {
+		case EGAL :
+			yvm.iegal();
+			break;
+		case DIFF : 
+			yvm.idiff();
+			break;
+		case LOW_STRICT : 
+			yvm.iinf();
+			break;
+		case LOW_EGAL : 
+			yvm.iinfegal();
+			break;
+		case UP_STRICT : 
+			yvm.isup();
+			break;
+		case UP_EGAL : 
+			yvm.isupegal();
+			break;
+		default:
+			System.err.println("Wrong Operator at the top of the stack, and opRel is expected");
+			break;
+		}
+	}
 
 	/**
 	 * syntax test
