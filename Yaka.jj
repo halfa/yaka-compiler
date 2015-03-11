@@ -44,7 +44,7 @@ public class Yaka {
    	  /* Build objet */
       yvm = new YVM();
       tabIdent = new TabIdent();
-      expression = new Expression();
+      expression = new Expression(yvm);
       declaration = new Declaration();
       
       analyseur = new Yaka(input);
