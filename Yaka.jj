@@ -255,10 +255,10 @@ void primaire (): {}
 }
 
 void valeur () : {}
-{ <entier> 		
- | <ident> 		
- | <VRAI> 		
- | <FAUX> 		
+{ <entier> 	{yvm.iconst(YakaTokenManager.entierLu);}
+ | <ident> 	{yvm.iconst(YakaTokenManager.identLu);}
+ | <VRAI> 	{yvm.iconst(-1);}
+ | <FAUX> 	{yvm.iconst(0);}
 }
 
 
