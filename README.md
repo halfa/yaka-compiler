@@ -5,15 +5,18 @@ Goal
 ----
 
 Build a compiler for the Yaka language using javacc.
+
 *This is an highschool project at INSA Rennes, that's why comments are in french.*
 
 Features
 --------
 
-The compiler can build yaka code into either
+The compiler can build yaka code into either:
 
 * Yaka ASM, run on YVM
 * x86 Pentium ASM, run on DosBOX
+
+The compiler is designed for new language files to be easy to write.
 
 Build
 -----
@@ -21,7 +24,10 @@ Build
 ```BASH
 cd src/
 javacc ../Yaka.jj
-javac -d ../bin *
+javac -d ../bin *.java
+
+cd bin/
+java Yaka.java < source.yaka # Run
 ```
 
 Yaka language sample
