@@ -24,18 +24,18 @@ public class YVM {
 	}
 	
 	/**
-	 * création de l'étiquette pour la boucle tant que
+	 * Création de l'étiquette pour la boucle TANTQUE
 	 * 
 	 */
 	public void startLoop(){
 		loopCounterName++;
-		Ecriture.ecrireStringln(flux,"FAIRE"+loopCounterName+":");
+		Ecriture.ecrireStringln(flux,"FAIRE"+loopCounterName+":",indent);
 		loopDepthStack.push(new Integer(loopCounterName));	
 		indent++;
 	}
 	
 	/**
-	 * création du " public void iffaux(String etiquette) " dédié
+	 * Gestion de la boucle TANTQUE
 	 * 
 	 */
 	public void condLoop(){
@@ -44,13 +44,13 @@ public class YVM {
 	}
 	
 	/**
-	 * création du " void jump(String etiquette) " dédié et de l'étiquette de fin de boucle
+	 * Fermeture de la boucle TANTQUE courante
 	 * 
 	 */
 	public void endLoop(){
 		int id = (int)loopDepthStack.pop(); 
-		jump("FAIRE"+id+":");
-		Ecriture.ecrireStringln("FAIT"+id+":");
+		jump("FAIRE"+id+" :");
+		Ecriture.ecrireStringln(flux,"FAIT"+id+":",indent);
 		indent--;	
 	}
 	
