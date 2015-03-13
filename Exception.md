@@ -3,16 +3,11 @@
 Liste des exceptions pouvant être levée lors de la compilations dans un programme yaka :   
 
 * SyntaxeErrorException   
-	* UnknownTypeExcpetion
-	* FalseTypeException
+	* UnknownTypeException
+	* BadTypeException
 	* IterationException
-		* MissingFaireExcpetion
-		* MissingFaitException
 	* FunctionException
-		* MissingReturnException
-		* FalseReturnTypeException
-		* WrongCallException
+	  * WrongCallException
 * DeclarationError
-	*UnknownIdent
-* InvalideTypeExpression (?)
+	* UnknownIdent
 
