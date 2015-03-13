@@ -10,7 +10,8 @@
 
 
 options{
-	JDK_VERSION="1.7";	
+	JDK_VERSION="1.7";
+	OUTPUT_DIRECTORY="src";
 }
 
 PARSER_BEGIN(Yaka)
@@ -256,7 +257,7 @@ void primaire (): {}
 
 void valeur () : {}
 { <entier> 	{yvm.iconst(YakaTokenManager.entierLu);}
- | <ident> 	{yvm.iconst(tabIdent.getIdent(YakaTokenManager.identLu));}
+ | <ident> 	{/* FIXME check cast */ yvm.iconst(((IdConst) TabIdent.getIdent(YakaTokenManager.identLu)).getVal());}
  | <VRAI> 	{yvm.iconst(-1);}
  | <FAUX> 	{yvm.iconst(0);}
 }
