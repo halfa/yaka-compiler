@@ -223,7 +223,7 @@ void expression() : {}
 {
   simpleExpr() 
   (opRel() 
-  simpleExpr() {expression.whatRel();}
+  simpleExpr() {Make.whatRel();}
   )?
 }
 
@@ -231,19 +231,19 @@ void simpleExpr() : {}
 {
    terme() 
    (opAdd() 
-   terme() {expression.whatAdd();}
+   terme() {Make.whatAdd();}
    )*
 } 
 void terme() : {}
 {
   facteur() 
   (opMul() 
-  facteur()	{expression.whatMul();}
+  facteur()	{Make.whatMul();}
   )*
 }
 void facteur() : {}
 {   primaire() 
-  |  opNeg() primaire() {expression.whatNeg();}
+  |  opNeg() primaire() {Make.whatNeg();}
 }
 
 void primaire (): {}
@@ -254,18 +254,10 @@ void primaire (): {}
 }
 
 void valeur () : {}
-{ <entier> 	{yvm.iconst(YakaTokenManager.entierLu);}
- | <ident> 	
-{
-    Ident id = TabIdent.getIdent(YakaTokenManager.identLu);
-    if (id instanceof IdVar){
- 	  yvm.iload(((IdVar) TabIdent.getIdent(YakaTokenManager.identLu)).getOffset());
- 	  } else {
- 	  yvm.iconst(((IdConst)TabIdent.getIdent(YakaTokenManager.identLu)).getVal());
- 	  }
-}
- | <VRAI> 	{yvm.iconst(-1);}
- | <FAUX> 	{yvm.iconst(0);}
+{ <entier> 	{ Make.value_int();}
+ | <ident> 	{ Make.value_ident();}
+ | <VRAI> 	{ Make.value_true();}
+ | <FAUX> 	{ Make.value_false();}
 }
 
 
