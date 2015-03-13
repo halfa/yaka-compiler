@@ -136,7 +136,7 @@ TOKEN  :
 	{YakaTokenManager.identLu =image.toString();	
 	}
 | < chaine : "\"" (~["\""])* "\"" | "'" (~["'"])* "'" >
-	{ chaineLue = image.toString();
+	{ YakaTokenManager.chaineLue = image.toString();
 	 }
 }
 
@@ -146,17 +146,15 @@ TOKEN  :
 /**************************************/
 void analyse() : {}
 {
-   <PROGRAMME><ident> { yvm = new YVM(YakaTokenManager.identLu); 
-                        expression = new Expression(yvm); 
-                        yvm.entete();}	
+   <PROGRAMME><ident> { Make.begin_program();}	
    bloc()
-   <FPROGRAMME> { yvm.queue(); }
+   <FPROGRAMME> { Make.end_program(); }
 }
 
 
 void bloc() : {}{
  (declConst())*
- (declVar())*	{ yvm.ouvrePrinc(declaration.getNbVariables());}	
+ (declVar())*	{ Make.how_fat_are_you();}	
    suiteInstr()  // modifié
 }
 
@@ -168,31 +166,31 @@ void declConst() : {}
 void defConst() : {}
 {
 	
-  <ident>  { declaration.setCurrentIdent(YakaTokenManager.identLu); }
+  <ident>  { Make.define_constant(); }
    "=" valConst() 
 }
 
 void valConst() : {}{
-  <entier> 	{ declaration.createConst(YakaTokenManager.entierLu, Type.INTEGER); }	
- | <ident>	{ declaration.createConst(YakaTokenManager.identLu); }	
- | <VRAI> 	{ declaration.createConst(-1, Type.BOOLEAN); }
- | <FAUX>   { declaration.createConst(0, Type.BOOLEAN); }
+  <entier> 	{ Make.define_int(); }	
+ | <ident>	{ Make.define_ident(); }	
+ | <VRAI> 	{ Make.define_true(); }
+ | <FAUX>   { Make.define_false; }
 }
 
 
 void declVar() : {}
 {
   <VAR> type()	
-  <ident> { declaration.createVar(YakaTokenManager.identLu);}
+  <ident> { Make.create_var();}
   (","
-      <ident> { declaration.createVar(YakaTokenManager.identLu); }
+      <ident> { Make.create_var(); }
   )* ";"
 }
 
 void type() :{}
 {
-   <ENTIER> { declaration.setCurrentType(Type.INTEGER); }
- | <BOOLEEN> { declaration.setCurrentType(Type.BOOLEAN); }
+   <ENTIER> { Make.declare_var_int(); }
+ | <BOOLEEN> { Make.declaire_var_bool(); }
 }
 /*
  * Syntaxe des instructions.
@@ -210,10 +208,13 @@ void affectation() : {}
 { <ident> "=" expression() }
 
 void lecture() : {}
-{ <LIRE> "(" <ident> ")" {yvm.lireEnt(((IdVar) (tableIdent.getIdent(YakaTokenManager.indentLu))).getOffset);}}
+{ <LIRE> "(" <ident> ")" {Make.reading();}
+}
 
 void ecriture() :{}
-{ <ECRIRE>( "(" expression() {yvm.ecrireEnt();} | chaine() {yvm.ecrireChaine(chaineLue);}")" ) | <ALALIGNE> {yvm.aLaLigne();} }
+{ <ECRIRE>( "(" expression() {Make.write_expression();} 
+| chaine() {}")" ) 
+| <ALALIGNE> {Make.aLaLigne();} }
 
 /*
  * Expression
