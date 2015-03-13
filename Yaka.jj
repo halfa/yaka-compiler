@@ -129,15 +129,12 @@ TOKEN  :
 {
   < #chiffre : ["0"-"9"] >
 | < entier : (<chiffre>)+ > 
-	{ YakaTokenManager.entierLu = Integer.parseInt(image.toString());
-        }
+	{ YakaTokenManager.entierLu = Integer.parseInt(image.toString()); }
 | < #lettre: ["A"-"Z","a"-"z"] >
 | < ident : <lettre> (<lettre> | <chiffre>)* >
-	{YakaTokenManager.identLu =image.toString();	
-	}
+	{ YakaTokenManager.identLu =image.toString(); }
 | < chaine : "\"" (~["\""])* "\"" | "'" (~["'"])* "'" >
-	{ YakaTokenManager.chaineLue = image.toString();
-	 }
+	{ YakaTokenManager.chaineLue = image.toString(); }
 }
 
 
@@ -146,7 +143,7 @@ TOKEN  :
 /**************************************/
 void analyse() : {}
 {
-   <PROGRAMME><ident> { Make.begin_program();}	
+   <PROGRAMME><ident> { Make.begin_program(); }	
    bloc()
    <FPROGRAMME> { Make.end_program(); }
 }
@@ -154,7 +151,7 @@ void analyse() : {}
 
 void bloc() : {}{
  (declConst())*
- (declVar())*	{ Make.how_fat_are_you();}	
+ (declVar())*	{ Make.how_fat_are_you(); }	
    suiteInstr()  // modifié
 }
 
@@ -171,17 +168,17 @@ void defConst() : {}
 }
 
 void valConst() : {}{
-  <entier> 	{ Make.define_int(); }	
- | <ident>	{ Make.define_ident(); }	
+  <entier> 	{ Make.define_int(); }
+ | <ident>	{ Make.define_ident(); }
  | <VRAI> 	{ Make.define_true(); }
- | <FAUX>   { Make.define_false; }
+ | <FAUX>   { Make.define_false(); }
 }
 
 
 void declVar() : {}
 {
   <VAR> type()	
-  <ident> { Make.create_var();}
+  <ident> { Make.create_var(); }
   (","
       <ident> { Make.create_var(); }
   )* ";"
@@ -190,7 +187,7 @@ void declVar() : {}
 void type() :{}
 {
    <ENTIER> { Make.declare_var_int(); }
- | <BOOLEEN> { Make.declaire_var_bool(); }
+ | <BOOLEEN> { Make.declare_var_bool(); }
 }
 /*
  * Syntaxe des instructions.
@@ -205,7 +202,7 @@ void instruction() : {}
 { affectation() | lecture() | ecriture() }
 
 void affectation() : {}
-{ <ident> "=" expression() }
+{ <ident> {Declaration.setCurrentIdent(YakaTokenManager.identLu);} "=" expression() {Make.assignment();} }
 
 void lecture() : {}
 { <LIRE> "(" <ident> ")" {Make.reading();}
@@ -213,7 +210,7 @@ void lecture() : {}
 
 void ecriture() :{}
 { <ECRIRE>( "(" expression() {Make.write_expression();} 
-| chaine() {}")" ) 
+| <chaine> {}")" ) 
 | <ALALIGNE> {Make.aLaLigne();} }
 
 /*

@@ -18,6 +18,7 @@ public class Declaration {
 	public static int getNbVariables() {return nbVariables;}
 	public static void setNbVariables(int nbVariables) {Declaration.nbVariables = nbVariables;}
 	public static void setCurrentIdent(String s) { currentIdent = s; }
+	public static String getCurrentIdent(){ return currentIdent; };
 	public static void setCurrentType(Type currentType) { Declaration.currentType = currentType; }
 	
 	/**
