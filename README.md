@@ -22,8 +22,7 @@ Build
 -----
 
 ```BASH
-cd src/
-javacc ../Yaka.jj
+javacc Yaka.jj
 javac -d ../bin *.java
 
 cd bin/
