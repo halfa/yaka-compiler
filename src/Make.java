@@ -66,4 +66,41 @@ public class Make {
 	public static void aLaLigne(){
 		Yaka.yvm.aLaLigne();
 	}
+	
+	public static void whatRel(){
+		Yaka.expression.whatRel();
+	}
+	
+	public static void whatAdd(){
+		Yaka.expression.whatAdd();
+	}
+	
+	public static void whatMul(){
+		Yaka.expression.whatMul();
+	}
+	
+	public static void whatNeg(){
+		Yaka.expression.whatNeg();
+	}
+	
+	public static void value_int(){
+		Yaka.yvm.iconst(YakaTokenManager.entierLu);
+	}
+	
+	public static void value_ident(){
+		Ident id = TabIdent.getIdent(YakaTokenManager.identLu);
+	    if (id instanceof IdVar){
+	 	  Yaka.yvm.iload(((IdVar) TabIdent.getIdent(YakaTokenManager.identLu)).getOffset());
+	 	  } else {
+	 	  Yaka.yvm.iconst(((IdConst)TabIdent.getIdent(YakaTokenManager.identLu)).getVal());
+	 	  }
+	}
+	
+	public static void value_true(){
+		Yaka.yvm.iconst(-1);
+	}
+	
+	public static void value_false(){
+		Yaka.yvm.iconst(0);
+	}
 }
