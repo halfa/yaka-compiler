@@ -12,5 +12,7 @@ Liste des exceptions pouvant être levée lors de la compilations dans un progra
 		* MissingReturnException
 		* FalseReturnTypeException
 		* WrongCallException
+* DeclarationError
+	*UnknownIdent
 * InvalideTypeExpression (?)
 
