@@ -3,7 +3,7 @@ CONST
   aa=10,
   ba=VRAI,
   cc=aa;
- VAR ENTIER c1, c2, c3, c3, c4, c5;
+ VAR ENTIER c1, c2, c3, c4, c5;
  VAR BOOLEEN b1, b2;
   c1=(aa+cc/2)/5;
   c2=c1+3*c1-aa;
