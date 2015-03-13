@@ -9,7 +9,7 @@ public class ExpressionTest {
 
 	@Before
 	public void intitialize() {
-		e = new Expression();
+		e = new Expression(new YVM());
 	}
 
 	@Test
