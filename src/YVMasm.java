@@ -315,47 +315,47 @@ public class YVMasm extends YVM {
 	 * @param chaine
 	 */
 	public void ecrireChaine(String chaine){
-		Ecriture.ecrireStringln(flux,"	;ecrireChaine \""+chaine+"\"");
-		Ecriture.ecrireStringln(flux,".DATA");
+		Ecriture.ecrireStringln(flux,";ecrireChaine \""+chaine+"\"",1);
+		Ecriture.ecrireStringln(flux,".DATA",0);
 		//ajout de "$" comme caractère de fin de chaine
-		Ecriture.ecrireStringln(flux,"	mess0 DB \""+chaine+"$\"");
-		Ecriture.ecrireStringln(flux,".CODE");
-		Ecriture.ecrireStringln(flux,"	lea dx, mess0");
-		Ecriture.ecrireStringln(flux,"	push dx");
-		Ecriture.ecrireStringln(flux,"	call ecrch");
+		Ecriture.ecrireStringln(flux,"mess0 DB \""+chaine+"$\"",1);
+		Ecriture.ecrireStringln(flux,".CODE",0);
+		Ecriture.ecrireStringln(flux,"lea dx, mess0",1);
+		Ecriture.ecrireStringln(flux,"push dx",0);
+		Ecriture.ecrireStringln(flux,"call ecrch",1);
 	}
 	
 	/**
 	 * Permet d'afficher à l'écran l'entier en sommet de pile
 	 */
 	public void ecrireEnt(){
-		Ecriture.ecrireStringln(flux,"	;ecrireEnt");
-		Ecriture.ecrireStringln(flux,"	call ecrent");
+		Ecriture.ecrireStringln(flux,";ecrireEnt",1);
+		Ecriture.ecrireStringln(flux,"call ecrent",1);
 	}
 	
 	/**
 	 * Permet d'afficher à l'écran le booleen en sommet de pile
 	 */
 	public void ecrireBool(){
-		Ecriture.ecrireStringln(flux,"	;ecrireBool");
-		Ecriture.ecrireStringln(flux,"	call ecrbool");
+		Ecriture.ecrireStringln(flux,";ecrireBool",1);
+		Ecriture.ecrireStringln(flux,"call ecrbool",1);
 	}
 	
 	/**
 	 * Lit l'entier tapé au clavier et le place dans la mémoire à l'offset "offset"
 	 */
 	public void lireEnt(int offset){
-		Ecriture.ecrireStringln(flux,"	;lireEnt "+offset);
-		Ecriture.ecrireStringln(flux,"	lea dx,[bp-4]");
-		Ecriture.ecrireStringln(flux,"	push dx");
-		Ecriture.ecrireStringln(flux,"	call lirent");
+		Ecriture.ecrireStringln(flux,";lireEnt "+offset,1);
+		Ecriture.ecrireStringln(flux,"lea dx,[bp-4]",1);
+		Ecriture.ecrireStringln(flux,"push dx",1);
+		Ecriture.ecrireStringln(flux,"call lirent",1);
 	}
 	
 	/**
 	 * Va à la ligne
 	 */
 	public void aLaLigne(){
-		Ecriture.ecrireStringln(flux,"	;aLaLigne");
-		Ecriture.ecrireStringln(flux,"	call ligsuiv");
+		Ecriture.ecrireStringln(flux,";aLaLigne",1);
+		Ecriture.ecrireStringln(flux,"call ligsuiv",1);
 	}
 }
