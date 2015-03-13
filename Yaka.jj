@@ -200,8 +200,6 @@ void type() :{}
 void suiteExpr() : {}
 { (expression() (";" (expression())? )*)? }
 
-// FIXME ajout >>>>>>
-
 void suiteInstr() : {}
 { (instruction() (";" (instruction())? )*)? }
 
@@ -212,13 +210,10 @@ void affectation() : {}
 { <ident> "=" expression() }
 
 void lecture() : {}
-{ <LIRE> "(" <ident> ")" }
+{ <LIRE> "(" <ident> ")" {yvm.lireEnt(((IdVar) (tableIdent.getIdent(YakaTokenManager.indentLu))).getOffset);}}
 
 void ecriture() :{}
-{ <ECRIRE>("(" expression() /*| chaine() */")") | <ALALIGNE> {yvm.aLaLigne();} }
-
-//<<<<<< fin ajout */
-
+{ <ECRIRE>( "(" expression() {yvm.ecrireEnt();} | chaine() {yvm.ecrireChaine(chaineLue);}")" ) | <ALALIGNE> {yvm.aLaLigne();} }
 
 /*
  * Expression
