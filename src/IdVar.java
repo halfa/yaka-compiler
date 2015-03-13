@@ -33,7 +33,7 @@ public class IdVar extends Ident {
 	
 	/**
 	 * Retourne la position de la variable dans la pile
-	 * @return offset of the ident
+	 * @return offset
 	 */
 	public int getOffset(){
 		return offset;
