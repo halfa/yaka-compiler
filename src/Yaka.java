@@ -26,14 +26,14 @@ public class Yaka implements YakaConstants {
     }
     try {
           /* Build objet */
-      yvm = new YVM();
+      yvm = null; /* will be init later */
       tabIdent = new TabIdent();
-      expression = new Expression(yvm);
+      expression = null; /* will be init later */
       declaration = new Declaration();
 
       analyseur = new Yaka(input);
       analyseur.analyse();
-      System.out.println("analyse syntaxique reussie!");
+      System.out.println("Analyse syntaxique r\u00e9ussie!");
     } catch (ParseException e) {
       String msg = e.getMessage();
       msg = msg.substring(0,msg.indexOf("\u005cn"));
@@ -47,7 +47,9 @@ public class Yaka implements YakaConstants {
   static final public void analyse() throws ParseException {
     jj_consume_token(PROGRAMME);
     jj_consume_token(ident);
-                       yvm = new YVM(YakaTokenManager.identLu); yvm.entete();
+                        yvm = new YVM(YakaTokenManager.identLu);
+                        expression = new Expression(yvm);
+                        yvm.entete();
     bloc();
     jj_consume_token(FPROGRAMME);
                   yvm.queue();
@@ -422,7 +424,12 @@ public class Yaka implements YakaConstants {
       break;
     case ident:
       jj_consume_token(ident);
-                 /* FIXME check cast */ yvm.iconst(((IdConst) TabIdent.getIdent(YakaTokenManager.identLu)).getVal());
+    Ident id = TabIdent.getIdent(YakaTokenManager.identLu);
+    if (id instanceof IdVar){
+          yvm.iload(((IdVar) TabIdent.getIdent(YakaTokenManager.identLu)).getOffset());
+          } else {
+          yvm.iconst(((IdConst)TabIdent.getIdent(YakaTokenManager.identLu)).getVal());
+          }
       break;
     case VRAI:
       jj_consume_token(VRAI);

@@ -43,14 +43,14 @@ public class Yaka {
     }
     try {
    	  /* Build objet */
-      yvm = new YVM();
+      yvm = null; /* will be init later */
       tabIdent = new TabIdent();
-      expression = new Expression(yvm);
+      expression = null; /* will be init later */
       declaration = new Declaration();
       
       analyseur = new Yaka(input);
       analyseur.analyse();
-      System.out.println("analyse syntaxique reussie!");
+      System.out.println("Analyse syntaxique réussie!");
     } catch (ParseException e) {
       String msg = e.getMessage();
       msg = msg.substring(0,msg.indexOf("\n"));
@@ -146,7 +146,9 @@ TOKEN  :
 /**************************************/
 void analyse() : {}
 {
-   <PROGRAMME><ident> {yvm = new YVM(YakaTokenManager.identLu); yvm.entete();}	
+   <PROGRAMME><ident> { yvm = new YVM(YakaTokenManager.identLu); 
+                        expression = new Expression(yvm); 
+                        yvm.entete();}	
    bloc()
    <FPROGRAMME> { yvm.queue(); }
 }
@@ -257,12 +259,15 @@ void primaire (): {}
 
 void valeur () : {}
 { <entier> 	{yvm.iconst(YakaTokenManager.entierLu);}
- | <ident> 	{
- Ident id = TabIdent.getIdent(YakaTokenManager.identLu);
- if (id instanceof IdVar){
- 	yvm.iload((IdVar)TabIdent.getIdent(YakaTokenManager.identLu)).getOffset());
- 	}else{
- 	yvm.iconst(((IdConst)TabIdent.getIdent(YakaTokenManager.identLu)).getVal());}}
+ | <ident> 	
+{
+    Ident id = TabIdent.getIdent(YakaTokenManager.identLu);
+    if (id instanceof IdVar){
+ 	  yvm.iload(((IdVar) TabIdent.getIdent(YakaTokenManager.identLu)).getOffset());
+ 	  } else {
+ 	  yvm.iconst(((IdConst)TabIdent.getIdent(YakaTokenManager.identLu)).getVal());
+ 	  }
+}
  | <VRAI> 	{yvm.iconst(-1);}
  | <FAUX> 	{yvm.iconst(0);}
 }
