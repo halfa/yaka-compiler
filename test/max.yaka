@@ -7,6 +7,6 @@ CONST
  VAR BOOLEEN b1, b2;
   c1=(aa+cc/2)/5;
   c2=c1+3*c1-aa;
-  b1=ba OU VRAI
+  b1=ba OU VRAI;
   b2=(c1 <= (c2+4));
 FPROGRAMME
