@@ -199,7 +199,10 @@ void suiteInstr() : {}
 { (instruction() (";" (instruction())? )*)? }
 
 void instruction() : {}
-{ affectation() | lecture() | ecriture() }
+{ affectation() | lecture() | ecriture() | iteration() }
+
+void iteration() : {}
+{ "TANTQUE" expression() "FAIRE" (instruction())* "FAIT" }
 
 void affectation() : {}
 { <ident> {Declaration.setCurrentIdent(YakaTokenManager.identLu);} "=" expression() {Make.assignment();} }
