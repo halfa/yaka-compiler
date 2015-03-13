@@ -1,9 +1,12 @@
 import java.io.*;
+import java.util.Stack;
 
 public class YVM {
 	protected OutputStream flux;
 	protected boolean error = false;
 	protected int indent = 0;
+	protected int loopCounterName=-1;
+	protected Stack<Integer> loopDepthStack=new Stack<Integer>();
 	
 	/**
 	 * Constructeur par défaut d'un YVM vide
@@ -19,14 +22,45 @@ public class YVM {
 	public YVM (String name){
 		flux = Ecriture.ouvrir(name);
 	}
-
+	
+	/**
+	 * création de l'étiquette pour la boucle tant que
+	 * 
+	 */
+	public void startLoop(){
+		loopCounterName++;
+		Ecriture.ecrireStringln(flux,"FAIRE"+loopCounterName+":");
+		loopDepthStack.push(new Integer(loopCounterName));	
+		indent++;
+	}
+	
+	/**
+	 * création du " public void iffaux(String etiquette) " dédié
+	 * 
+	 */
+	public void condLoop(){
+		String etiquette= "FAIT"+loopCounterName+":";
+		iffaux(etiquette);
+	}
+	
+	/**
+	 * création du " void jump(String etiquette) " dédié et de l'étiquette de fin de boucle
+	 * 
+	 */
+	public void endLoop(){
+		int id = (int)loopDepthStack.pop(); 
+		jump("FAIRE"+id+":");
+		Ecriture.ecrireStringln("FAIT"+id+":");
+		indent--;	
+	}
+	
 	/**
 	 * Haut de pile : int / int
 	 * Aditionne les deux éléments en sommet de pile 
 	 */
 	public void iadd(){
 		Ecriture.ecrireStringln(flux,"iadd");
-	};
+	}
 
 	/**
 	 * Haut de pile : int / int
@@ -34,7 +68,7 @@ public class YVM {
 	 */
 	public void isub(){
 		Ecriture.ecrireStringln(flux,"isub");
-	};
+	}
 
 	/**
 	 * Haut de pile : int / int
@@ -42,7 +76,7 @@ public class YVM {
 	 */
 	public void imul(){
 		Ecriture.ecrireStringln(flux,"imul");
-	};
+	}
 
 	/**
 	 * Haut de pile : int / int
@@ -137,6 +171,7 @@ public class YVM {
 	 * @param valeur
 	 */
 	public void iconst(int valeur){
+		
 		Ecriture.ecrireStringln(flux,"iconst "+valeur);
 	};
 
