@@ -172,7 +172,7 @@ void defConst() : {}
 
 void valConst() : {}{
   <entier> 	{ declaration.createConst(YakaTokenManager.entierLu, Type.INTEGER); }	
- | <ident>	{ declaration.createConst(YakaTokenManager.identLu); }	
+ | <ident>	{ /* FIXME Unsafe */ yvm.iconst(((IdConst) TabIdent.getIdent(YakaTokenManager.identLu)).getVal()); }	
  | <VRAI> 	{ declaration.createConst(-1, Type.BOOLEAN); }
  | <FAUX>   { declaration.createConst(0, Type.BOOLEAN); }
 }
