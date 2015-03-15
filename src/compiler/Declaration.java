@@ -1,3 +1,4 @@
+package compiler;
 /**
  * Gère les déclarations des variables et constantes.
  * 

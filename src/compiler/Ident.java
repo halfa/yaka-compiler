@@ -1,3 +1,4 @@
+package compiler;
 /**
  * Décrit un identifiant typé générique.
  * Les identifiants font tous 2 octets en mémoire.

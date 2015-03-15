@@ -1,7 +1,13 @@
+package compiler;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import compiler.Expression;
+import compiler.Operator;
+import compiler.Type;
+import compiler.YVM;
 
 public class ExpressionTest {
 

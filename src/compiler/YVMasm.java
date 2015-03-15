@@ -1,3 +1,4 @@
+package compiler;
 public class YVMasm extends YVM {
 	
 	/**

@@ -1,3 +1,4 @@
+package compiler;
 import java.io.*;
 
 //quelques primitives d'écriture à l'ecran ou dans un fichier

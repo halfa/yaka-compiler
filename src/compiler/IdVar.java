@@ -1,3 +1,4 @@
+package compiler;
 /**
  * Décrit un identifiant déclaré variable.
  * Chaque type possède une valeur par défaut.

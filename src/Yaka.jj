@@ -11,10 +11,12 @@
 
 options{
 	JDK_VERSION="1.7";
-	OUTPUT_DIRECTORY="src";
+	OUTPUT_DIRECTORY="compiler";
 }
 
 PARSER_BEGIN(Yaka)
+
+package compiler;
 
 public class Yaka {
   	static YVM yvm;

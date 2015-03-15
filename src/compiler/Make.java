@@ -1,3 +1,4 @@
+package compiler;
 /**
  * Générateur et librairie pour le compilateur.
  * @see Yaka.jj
@@ -8,7 +9,7 @@ public class Make {
 	 * Analyse syntaxique et déclarations.
 	 ************************************/
 	public static void begin_program(){
-		Yaka.yvm = new YVM(YakaTokenManager.identLu);
+		Yaka.yvm = new YVMasm(YakaTokenManager.identLu);
 		Yaka.expression = new Expression(Yaka.yvm);
 		Yaka.yvm.entete();
 	}

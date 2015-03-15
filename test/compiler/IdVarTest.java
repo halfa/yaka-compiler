@@ -1,6 +1,10 @@
+package compiler;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import compiler.IdVar;
+import compiler.Type;
 
 
 public class IdVarTest {

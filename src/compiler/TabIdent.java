@@ -1,3 +1,4 @@
+package compiler;
 import java.util.HashMap;
 /**
  * Tableau des identifiants pour la correspondance nom/valeur.

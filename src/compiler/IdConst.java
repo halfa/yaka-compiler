@@ -1,3 +1,4 @@
+package compiler;
 /**
  * Décrit un identifiant déclaré comme constant.
  */
