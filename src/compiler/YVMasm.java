@@ -17,6 +17,14 @@ public class YVMasm extends YVM {
 	}
 	
 	/**
+	 * Retourne la chaine extention du fichier associé au language ASM.
+	 * @return l'extension, point compris
+	 */
+	public String getFileExtension(){
+		return ".asm";
+	}
+	
+	/**
 	 * Haut de pile : int / int
 	 * Aditionne les deux éléments en sommet de pile 
 	 */

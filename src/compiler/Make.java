@@ -9,7 +9,9 @@ public class Make {
 	 * Analyse syntaxique et déclarations.
 	 ************************************/
 	public static void begin_program(){
-		Yaka.yvm = new YVMasm(YakaTokenManager.identLu);
+		// Crée le fichier en utilisant * le nom fourni en début de programme
+		//                              * l'extension du language utilisé
+		Yaka.yvm = new YVMasm(YakaTokenManager.identLu+Yaka.yvm.getFileExtension());
 		Yaka.expression = new Expression(Yaka.yvm);
 		Yaka.yvm.entete();
 	}

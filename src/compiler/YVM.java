@@ -7,7 +7,7 @@ public class YVM {
 	protected boolean error = false;
 	protected int indent = 0;
 	protected int loopCounterName=-1;
-	protected Stack<Integer> loopDepthStack=new Stack<Integer>();
+	protected Stack<Integer> loopDepthStack = new Stack<Integer>();
 	
 	/**
 	 * Constructeur par défaut d'un YVM vide
@@ -22,6 +22,14 @@ public class YVM {
 	 */
 	public YVM (String name){
 		flux = Ecriture.ouvrir(name);
+	}
+	
+	/**
+	 * Retourne la chaine extention du fichier associé au language YVM.
+	 * @return l'extension, point compris
+	 */
+	public String getFileExtension(){
+		return ".yvm";
 	}
 	
 	/**
