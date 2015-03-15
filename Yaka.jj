@@ -212,8 +212,8 @@ void lecture() : {}
 }
 
 void ecriture() :{}
-{ <ECRIRE>( "(" expression() {Make.write_expression();} 
-| <chaine> {}")" ) 
+{ <ECRIRE>( "(" ( expression() {Make.write_expression();} 
+| <chaine> { Make.write_string(); } ) ")" ) 
 | <ALALIGNE> {Make.aLaLigne();} }
 
 /*

@@ -247,11 +247,13 @@ public class YVM {
 	};
 
 	/**
-	 * Permet d'afficher à l'écran la chaine de caractères placée en paramètre
+	 * Permet d'afficher à l'écran la chaine de caractères placée en paramètre.
+	 * Les quotes <",'> sont issue du yaka lui-même. #programationParContrat.
+	 * TODO on vérifie le premier et le dernier caractère ?
 	 * @param s
 	 */
 	public void ecrireChaine(String chaine){
-		Ecriture.ecrireStringln(flux,"ecrireChaine \""+chaine+"\"");
+		Ecriture.ecrireStringln(flux,"ecrireChaine "+chaine);
 	}
 
 	/**
