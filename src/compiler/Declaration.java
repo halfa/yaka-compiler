@@ -70,7 +70,7 @@ public class Declaration {
 	 *            type de la valeur
 	 */
 	public static void createVar(String name) {
-		TabIdent.addIdent(name, new IdVar(0, currentType));
+		TabIdent.addIdent(name, new IdVar(currentType));
 		nbVariables++;
 	}
 	// Créer une variable à partir d'un autre identifiant est impossible
