@@ -1,6 +1,8 @@
 package compiler;
 
 public class YVMasm extends YVM {
+	
+	private int compteurChaine = 0;
 
 	/**
 	 * Constructeur par défaut d'un YVMasm vide
@@ -335,9 +337,10 @@ public class YVMasm extends YVM {
 		Ecriture.ecrireStringln(flux, ";ecrireChaine \"" + chaine + "\"");
 		Ecriture.ecrireStringln(flux, ".DATA");
 		// ajout de "$" comme caractère de fin de chaine
-		Ecriture.ecrireStringln(flux, "mess0 DB \"" + chaine + "$\"");
+		Ecriture.ecrireStringln(flux, "mess"+this.compteurChaine+" DB \"" + chaine + "$\"");
 		Ecriture.ecrireStringln(flux, ".CODE");
-		Ecriture.ecrireStringln(flux, "lea dx, mess0");
+		Ecriture.ecrireStringln(flux, "lea dx, mess"+compteurChaine);
+		compteurChaine++;
 		Ecriture.ecrireStringln(flux, "push dx");
 		Ecriture.ecrireStringln(flux, "call ecrch");
 	}
