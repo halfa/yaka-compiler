@@ -28,8 +28,7 @@ public class Expression {
 			if (i instanceof IdVar)
 				yvm.iload(((IdVar) i).getOffset());
 			else
-				yvm.iconst(((IdConst) i).getVal());// FIXME depends on the way
-													// to manage constants
+				yvm.iconst(((IdConst) i).getVal());
 	}
 
 	/**
@@ -230,7 +229,7 @@ public class Expression {
 		return Type.ERROR;
 	}
 
-	// TODO
+
 	/**
 	 * evaluate the expression on the top of the stack
 	 * 
