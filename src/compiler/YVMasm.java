@@ -367,7 +367,7 @@ public class YVMasm extends YVM {
 	 */
 	public void lireEnt(int offset) {
 		Ecriture.ecrireStringln(flux, ";lireEnt " + offset);
-		Ecriture.ecrireStringln(flux, "lea dx,[bp-4]");
+		Ecriture.ecrireStringln(flux, "lea dx,[bp"+offset+"]");
 		Ecriture.ecrireStringln(flux, "push dx");
 		Ecriture.ecrireStringln(flux, "call lirent");
 	}
