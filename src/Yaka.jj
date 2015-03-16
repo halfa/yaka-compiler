@@ -12,6 +12,7 @@
 options{
 	JDK_VERSION="1.7";
 	OUTPUT_DIRECTORY="compiler";
+	LOOKAHEAD=2;
 }
 
 PARSER_BEGIN(Yaka)
@@ -155,17 +156,17 @@ void analyse() : {}
 
 void declFonction() : {}
 {
-	type() <FONCTION> <ident> paraForms()
+	type() <FONCTION> <ident> paramForms()
 	bloc()
 	<FFONCTION>
 }
 
-void paraForms() : {}
+void paramForms() : {}
 {
 	( paramForm() ("," paramForm() )* )?
 }
 
-void paraForm() : {}
+void paramForm() : {}
 {
 	type() <ident>
 }
@@ -291,7 +292,7 @@ void primaire (): {}
 
 void valeur () : {}
 { <entier> 	{ Make.value_int();}
- | <ident> 	(argumentsFonction())? { Make.value_ident();}
+ | <ident> 	argumentsFonction() { Make.value_ident();}
  | <VRAI> 	{ Make.value_true();}
  | <FAUX> 	{ Make.value_false();}
 }
