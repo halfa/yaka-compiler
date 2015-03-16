@@ -33,26 +33,22 @@ public class Declaration {
 
 	public static String getCurrentIdent() {
 		return currentIdent;
-	};
+	}
 
 	public static void setCurrentType(Type currentType) {
 		Declaration.currentType = currentType;
 	}
 
 	/**
-	 * Initialise le couple constant (déclaration, valeur) dans la table
-	 * interne.
-	 * 
-	 * @param value
-	 *            valeur associé
-	 * @param t
-	 *            type de la valeur
+	 * Initialise le couple constant (déclaration, valeur) dans la table interne.
+	 * @param value valeur associé
+	 * @param t type de la valeur
 	 */
 	public static void createConst(int value, Type t) {
 		TabIdent.addIdent(currentIdent, new IdConst(value, t));
 	}
 
-	// Créer une constante à partir d'un autre identifiantit
+	// Créer une constante à partir d'un autre identifiant
 	public static void createConst(String ident) throws DeclarationException {
 		Ident i = TabIdent.getIdent(ident);
 		if (i == null)
@@ -61,13 +57,10 @@ public class Declaration {
 	}
 
 	/**
-	 * Initialise la variable dans la table interne et réserve l'espace mémoire
-	 * associée. La variable est initialisé à 0 (ou false si c'est un booléen)
-	 * 
-	 * @param name
-	 *            identifiant de la déclaration
-	 * @param t
-	 *            type de la valeur
+	 * Initialise la variable dans la table interne et réserve l'espace mémoire associée.
+	 * La variable est initialisé à 0 (ou false si c'est un booléen)
+	 * @param name identifiant de la déclaration
+	 * @param t type de la valeur
 	 */
 	public static void createVar(String name) {
 		TabIdent.addIdent(name, new IdVar(currentType));
