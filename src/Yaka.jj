@@ -204,7 +204,10 @@ void instruction() : {}
 { affectation() | lecture() | ecriture() | iteration() }
 
 void iteration() : {}
-{ <TANTQUE> expression() <FAIRE> (instruction())* <FAIT> }
+{ <TANTQUE> 			{startLoop();} 
+expression()  			{condLoop();} 
+<FAIRE> (instruction())* 
+<FAIT> 					{endLoop();} }
 
 void affectation() : {}
 { <ident> {Declaration.setCurrentIdent(YakaTokenManager.identLu);} "=" expression() {Make.assignment();} }
