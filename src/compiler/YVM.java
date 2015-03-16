@@ -21,7 +21,7 @@ public class YVM {
 	 * @param name
 	 */
 	public YVM (String name){
-		flux = Ecriture.ouvrir(name);
+		flux = Ecriture.ouvrir(name+this.getFileExtension());
 	}
 	
 	/**
