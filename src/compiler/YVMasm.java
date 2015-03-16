@@ -33,11 +33,11 @@ public class YVMasm extends YVM {
 	 * Haut de pile : int / int Aditionne les deux éléments en sommet de pile
 	 */
 	public void iadd() {
-		Ecriture.ecrireStringln(flux, ";iadd");
-		Ecriture.ecrireStringln(flux, "pop bx");
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "add ax,bx");
-		Ecriture.ecrireStringln(flux, "push ax");
+		Ecriture.ecrireStringln(flux, ";iadd",indent);
+		Ecriture.ecrireStringln(flux, "pop bx",indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "add ax,bx",indent);
+		Ecriture.ecrireStringln(flux, "push ax",indent);
 	}
 
 	/**
@@ -45,22 +45,22 @@ public class YVMasm extends YVM {
 	 * premier
 	 */
 	public void isub() {
-		Ecriture.ecrireStringln(flux, ";isub");
-		Ecriture.ecrireStringln(flux, "pop bx");
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "sub ax,bx");
-		Ecriture.ecrireStringln(flux, "push ax");
+		Ecriture.ecrireStringln(flux, ";isub",indent);
+		Ecriture.ecrireStringln(flux, "pop bx",indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "sub ax,bx",indent);
+		Ecriture.ecrireStringln(flux, "push ax",indent);
 	}
 
 	/**
 	 * Haut de pile : int / int Multiplie les deux éléments en haut de pile
 	 */
 	public void imul() {
-		Ecriture.ecrireStringln(flux, ";imul");
-		Ecriture.ecrireStringln(flux, "pop bx");
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "imul bx");
-		Ecriture.ecrireStringln(flux, "push ax");
+		Ecriture.ecrireStringln(flux, ";imul",indent);
+		Ecriture.ecrireStringln(flux, "pop bx",indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "imul bx",indent);
+		Ecriture.ecrireStringln(flux, "push ax",indent);
 	}
 
 	/**
@@ -68,12 +68,12 @@ public class YVMasm extends YVM {
 	 * premier
 	 */
 	public void idiv() {
-		Ecriture.ecrireStringln(flux, ";idiv");
-		Ecriture.ecrireStringln(flux, "pop bx");
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "cwd");
-		Ecriture.ecrireStringln(flux, "idiv bx");
-		Ecriture.ecrireStringln(flux, "push ax");
+		Ecriture.ecrireStringln(flux, ";idiv",indent);
+		Ecriture.ecrireStringln(flux, "pop bx",indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "cwd",indent);
+		Ecriture.ecrireStringln(flux, "idiv bx",indent);
+		Ecriture.ecrireStringln(flux, "push ax",indent);
 	}
 
 	/**
@@ -81,21 +81,21 @@ public class YVMasm extends YVM {
 	 * son opposé
 	 */
 	public void inot() {
-		Ecriture.ecrireStringln(flux, ";inot");
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "and ax,FALSE");
-		Ecriture.ecrireStringln(flux, "push ax");
+		Ecriture.ecrireStringln(flux, ";inot",indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "and ax,FALSE",indent);
+		Ecriture.ecrireStringln(flux, "push ax",indent);
 	}
 
 	/**
 	 * Haut de pile : int Transforme l'élément en haut de pile par son opposé
 	 */
 	public void ineg() {
-		Ecriture.ecrireStringln(flux, ";ineg");
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "mov bx,-1");
-		Ecriture.ecrireStringln(flux, "imul bx");
-		Ecriture.ecrireStringln(flux, "push ax");
+		Ecriture.ecrireStringln(flux, ";ineg",indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "mov bx,-1",indent);
+		Ecriture.ecrireStringln(flux, "imul bx",indent);
+		Ecriture.ecrireStringln(flux, "push ax",indent);
 	}
 
 	/**
@@ -103,11 +103,11 @@ public class YVMasm extends YVM {
 	 * de la pile
 	 */
 	public void iand() {
-		Ecriture.ecrireStringln(flux, ";iand");
-		Ecriture.ecrireStringln(flux, "pop bx");
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "and ax,bx");
-		Ecriture.ecrireStringln(flux, "push ax");
+		Ecriture.ecrireStringln(flux, ";iand",indent);
+		Ecriture.ecrireStringln(flux, "pop bx",indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "and ax,bx",indent);
+		Ecriture.ecrireStringln(flux, "push ax",indent);
 	}
 
 	/**
@@ -115,11 +115,11 @@ public class YVMasm extends YVM {
 	 * de la pile
 	 */
 	public void ior() {
-		Ecriture.ecrireStringln(flux, ";ior");
-		Ecriture.ecrireStringln(flux, "pop bx");
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "or ax,bx");
-		Ecriture.ecrireStringln(flux, "push ax");
+		Ecriture.ecrireStringln(flux, ";ior",indent);
+		Ecriture.ecrireStringln(flux, "pop bx",indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "or ax,bx",indent);
+		Ecriture.ecrireStringln(flux, "push ax",indent);
 	}
 
 	/**
@@ -127,14 +127,14 @@ public class YVMasm extends YVM {
 	 * de la pile est inférieur au premier
 	 */
 	public void iinf() {
-		Ecriture.ecrireStringln(flux, ";iinf");
-		Ecriture.ecrireStringln(flux, "pop bx");
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "cmp ax,bx");
-		Ecriture.ecrireStringln(flux, "jge $+6");
-		Ecriture.ecrireStringln(flux, "push TRUE");
-		Ecriture.ecrireStringln(flux, "jmp $+4");
-		Ecriture.ecrireStringln(flux, "push FALSE");
+		Ecriture.ecrireStringln(flux, ";iinf",indent);
+		Ecriture.ecrireStringln(flux, "pop bx",indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "cmp ax,bx",indent);
+		Ecriture.ecrireStringln(flux, "jge $+6",indent);
+		Ecriture.ecrireStringln(flux, "push TRUE",indent);
+		Ecriture.ecrireStringln(flux, "jmp $+4",indent);
+		Ecriture.ecrireStringln(flux, "push FALSE",indent);
 	}
 
 	/**
@@ -142,14 +142,14 @@ public class YVMasm extends YVM {
 	 * de la pile est supérieur au premier
 	 */
 	public void isup() {
-		Ecriture.ecrireStringln(flux, ";iinf");
-		Ecriture.ecrireStringln(flux, "pop bx");
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "cmp bx,ax");
-		Ecriture.ecrireStringln(flux, "jge $+6");
-		Ecriture.ecrireStringln(flux, "push TRUE");
-		Ecriture.ecrireStringln(flux, "jmp $+4");
-		Ecriture.ecrireStringln(flux, "push FALSE");
+		Ecriture.ecrireStringln(flux, ";iinf",indent);
+		Ecriture.ecrireStringln(flux, "pop bx",indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "cmp bx,ax",indent);
+		Ecriture.ecrireStringln(flux, "jge $+6",indent);
+		Ecriture.ecrireStringln(flux, "push TRUE",indent);
+		Ecriture.ecrireStringln(flux, "jmp $+4",indent);
+		Ecriture.ecrireStringln(flux, "push FALSE",indent);
 	}
 
 	/**
@@ -157,14 +157,14 @@ public class YVMasm extends YVM {
 	 * de la pile est inférieur ou égal au premier
 	 */
 	public void iinfegal() {
-		Ecriture.ecrireStringln(flux, ";iinfegal");
-		Ecriture.ecrireStringln(flux, "pop bx");
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "cmp ax,bx");
-		Ecriture.ecrireStringln(flux, "jg $+6");
-		Ecriture.ecrireStringln(flux, "push TRUE");
-		Ecriture.ecrireStringln(flux, "jmp $+4");
-		Ecriture.ecrireStringln(flux, "push FALSE");
+		Ecriture.ecrireStringln(flux, ";iinfegal",indent);
+		Ecriture.ecrireStringln(flux, "pop bx",indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "cmp ax,bx",indent);
+		Ecriture.ecrireStringln(flux, "jg $+6",indent);
+		Ecriture.ecrireStringln(flux, "push TRUE",indent);
+		Ecriture.ecrireStringln(flux, "jmp $+4",indent);
+		Ecriture.ecrireStringln(flux, "push FALSE",indent);
 	}
 
 	/**
@@ -172,14 +172,14 @@ public class YVMasm extends YVM {
 	 * de la pile est supérieur ou égal au premier
 	 */
 	public void isupegal() {
-		Ecriture.ecrireStringln(flux, ";isupegal");
-		Ecriture.ecrireStringln(flux, "pop bx");
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "cmp bx,ax");
-		Ecriture.ecrireStringln(flux, "jg $+6");
-		Ecriture.ecrireStringln(flux, "push TRUE");
-		Ecriture.ecrireStringln(flux, "jmp $+4");
-		Ecriture.ecrireStringln(flux, "push FALSE");
+		Ecriture.ecrireStringln(flux, ";isupegal",indent);
+		Ecriture.ecrireStringln(flux, "pop bx",indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "cmp bx,ax",indent);
+		Ecriture.ecrireStringln(flux, "jg $+6",indent);
+		Ecriture.ecrireStringln(flux, "push TRUE",indent);
+		Ecriture.ecrireStringln(flux, "jmp $+4",indent);
+		Ecriture.ecrireStringln(flux, "push FALSE",indent);
 	}
 
 	/**
@@ -187,14 +187,14 @@ public class YVMasm extends YVM {
 	 * élément de la pile est égal au premier
 	 */
 	public void iegal() {
-		Ecriture.ecrireStringln(flux, ";iegal");
-		Ecriture.ecrireStringln(flux, "pop bx");
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "cmp ax,bx");
-		Ecriture.ecrireStringln(flux, "jne $+6");
-		Ecriture.ecrireStringln(flux, "push TRUE");
-		Ecriture.ecrireStringln(flux, "jmp $+4");
-		Ecriture.ecrireStringln(flux, "push FALSE");
+		Ecriture.ecrireStringln(flux, ";iegal",indent);
+		Ecriture.ecrireStringln(flux, "pop bx",indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "cmp ax,bx",indent);
+		Ecriture.ecrireStringln(flux, "jne $+6",indent);
+		Ecriture.ecrireStringln(flux, "push TRUE",indent);
+		Ecriture.ecrireStringln(flux, "jmp $+4",indent);
+		Ecriture.ecrireStringln(flux, "push FALSE",indent);
 	}
 
 	/**
@@ -202,14 +202,14 @@ public class YVMasm extends YVM {
 	 * élément de la pile est inférieur au premier
 	 */
 	public void idiff() {
-		Ecriture.ecrireStringln(flux, ";idiff");
-		Ecriture.ecrireStringln(flux, "pop bx");
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "cmp ax,bx");
-		Ecriture.ecrireStringln(flux, "je $+6");
-		Ecriture.ecrireStringln(flux, "push TRUE");
-		Ecriture.ecrireStringln(flux, "jmp $+4");
-		Ecriture.ecrireStringln(flux, "push FALSE");
+		Ecriture.ecrireStringln(flux, ";idiff",indent);
+		Ecriture.ecrireStringln(flux, "pop bx",indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "cmp ax,bx",indent);
+		Ecriture.ecrireStringln(flux, "je $+6",indent);
+		Ecriture.ecrireStringln(flux, "push TRUE",indent);
+		Ecriture.ecrireStringln(flux, "jmp $+4",indent);
+		Ecriture.ecrireStringln(flux, "push FALSE",indent);
 	}
 
 	/**
@@ -218,8 +218,8 @@ public class YVMasm extends YVM {
 	 * @param valeur
 	 */
 	public void iconst(int valeur) {
-		Ecriture.ecrireStringln(flux, ";iconst " + valeur);
-		Ecriture.ecrireStringln(flux, "push " + valeur);
+		Ecriture.ecrireStringln(flux, ";iconst " + valeur,indent);
+		Ecriture.ecrireStringln(flux, "push " + valeur,indent);
 	}
 
 	/**
@@ -229,9 +229,9 @@ public class YVMasm extends YVM {
 	 * @param offset
 	 */
 	public void istore(int offset) {
-		Ecriture.ecrireStringln(flux, ";istore " + offset);
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "mov word ptr[bp" + offset + "],ax");
+		Ecriture.ecrireStringln(flux, ";istore " + offset,indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "mov word ptr[bp" + offset + "],ax",indent);
 	}
 
 	/**
@@ -241,8 +241,8 @@ public class YVMasm extends YVM {
 	 * @param offset
 	 */
 	public void iload(int offset) {
-		Ecriture.ecrireStringln(flux, ";iload " + offset);
-		Ecriture.ecrireStringln(flux, "push word ptr [bp" + offset + "]");
+		Ecriture.ecrireStringln(flux, ";iload " + offset,indent);
+		Ecriture.ecrireStringln(flux, "push word ptr [bp" + offset + "]",indent);
 	}
 
 	/**
@@ -252,11 +252,11 @@ public class YVMasm extends YVM {
 	 * @param etiquette
 	 */
 	public void ifeq(String etiquette) {
-		Ecriture.ecrireStringln(flux, ";ifeq " + etiquette);
-		Ecriture.ecrireStringln(flux, "pop bx");
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "cmp ax,bx");
-		Ecriture.ecrireStringln(flux, "je " + etiquette);
+		Ecriture.ecrireStringln(flux, ";ifeq " + etiquette,indent);
+		Ecriture.ecrireStringln(flux, "pop bx",indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "cmp ax,bx",indent);
+		Ecriture.ecrireStringln(flux, "je " + etiquette,indent);
 	}
 
 	/**
@@ -267,10 +267,10 @@ public class YVMasm extends YVM {
 	 * @param etiquette
 	 */
 	public void iffaux(String etiquette) {
-		Ecriture.ecrireStringln(flux, ";iffaux " + etiquette);
-		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "cmp ax,FALSE");
-		Ecriture.ecrireStringln(flux, "je " + etiquette);
+		Ecriture.ecrireStringln(flux, ";iffaux " + etiquette,indent);
+		Ecriture.ecrireStringln(flux, "pop ax",indent);
+		Ecriture.ecrireStringln(flux, "cmp ax,FALSE",indent);
+		Ecriture.ecrireStringln(flux, "je " + etiquette,indent);
 	}
 
 	/**
@@ -280,8 +280,8 @@ public class YVMasm extends YVM {
 	 * @param etiquette
 	 */
 	public void jump(String etiquette) {
-		Ecriture.ecrireStringln(flux, ";jump " + etiquette);
-		Ecriture.ecrireStringln(flux, "jmp " + etiquette);
+		Ecriture.ecrireStringln(flux, ";jump " + etiquette,indent);
+		Ecriture.ecrireStringln(flux, "jmp " + etiquette,indent);
 	}
 
 	/**
@@ -289,20 +289,20 @@ public class YVMasm extends YVM {
 	 * .asm
 	 */
 	public void entete() {
-		Ecriture.ecrireStringln(flux, ";entete");
-		Ecriture.ecrireStringln(flux, "extrn lirent:proc");
-		Ecriture.ecrireStringln(flux, "extrn ecrent:proc");
-		Ecriture.ecrireStringln(flux, "extrn ecrbool:proc");
-		Ecriture.ecrireStringln(flux, "extrn ecrch:proc");
-		Ecriture.ecrireStringln(flux, "extrn ligsuiv:proc");
-		Ecriture.ecrireStringln(flux, ".model SMALL");
-		Ecriture.ecrireStringln(flux, ".586");
-		Ecriture.ecrireStringln(flux, ".DATA");
-		Ecriture.ecrireStringln(flux, "FALSE EQU 0");
-		Ecriture.ecrireStringln(flux, "TRUE EQU -1");
-		Ecriture.ecrireStringln(flux, ".CODE");
-		Ecriture.ecrireStringln(flux, "debut :");
-		Ecriture.ecrireStringln(flux, "STARTUPCODE");
+		Ecriture.ecrireStringln(flux, ";entete",indent);
+		Ecriture.ecrireStringln(flux, "extrn lirent:proc",indent);
+		Ecriture.ecrireStringln(flux, "extrn ecrent:proc",indent);
+		Ecriture.ecrireStringln(flux, "extrn ecrbool:proc",indent);
+		Ecriture.ecrireStringln(flux, "extrn ecrch:proc",indent);
+		Ecriture.ecrireStringln(flux, "extrn ligsuiv:proc",indent);
+		Ecriture.ecrireStringln(flux, ".model SMALL",0);
+		Ecriture.ecrireStringln(flux, ".586",0);
+		Ecriture.ecrireStringln(flux, ".DATA",0);
+		Ecriture.ecrireStringln(flux, "FALSE EQU 0",indent);
+		Ecriture.ecrireStringln(flux, "TRUE EQU -1",indent);
+		Ecriture.ecrireStringln(flux, ".CODE",0);
+		Ecriture.ecrireStringln(flux, "debut :",indent);
+		Ecriture.ecrireStringln(flux, "STARTUPCODE",indent);
 	}
 
 	/**
@@ -312,19 +312,19 @@ public class YVMasm extends YVM {
 	 */
 	public void ouvrePrinc(int nbVar) {
 		nbVar *= 2;
-		Ecriture.ecrireStringln(flux, ";ouvrePrinc " + nbVar);
-		Ecriture.ecrireStringln(flux, "mov bp,sp");
-		Ecriture.ecrireStringln(flux, "sub sp," + nbVar);
+		Ecriture.ecrireStringln(flux, ";ouvrePrinc " + nbVar,indent);
+		Ecriture.ecrireStringln(flux, "mov bp,sp",indent);
+		Ecriture.ecrireStringln(flux, "sub sp," + nbVar,indent);
 	}
 
 	/**
 	 * APPELER A LA FERMETURE D'UN FICHIER .asm Génère la fin d'un fichier .asm
 	 */
 	public void queue() {
-		Ecriture.ecrireStringln(flux, ";queue");
-		Ecriture.ecrireStringln(flux, "nop");
-		Ecriture.ecrireStringln(flux, "EXITCODE");
-		Ecriture.ecrireStringln(flux, "end debut");
+		Ecriture.ecrireStringln(flux, ";queue",indent);
+		Ecriture.ecrireStringln(flux, "nop",indent);
+		Ecriture.ecrireStringln(flux, "EXITCODE",indent);
+		Ecriture.ecrireStringln(flux, "end debut",indent);
 		Ecriture.fermer(flux);
 	}
 
@@ -334,31 +334,31 @@ public class YVMasm extends YVM {
 	 * @param chaine
 	 */
 	public void ecrireChaine(String chaine) {
-		Ecriture.ecrireStringln(flux, ";ecrireChaine \"" + chaine + "\"");
-		Ecriture.ecrireStringln(flux, ".DATA");
+		Ecriture.ecrireStringln(flux, ";ecrireChaine \"" + chaine + "\"",indent);
+		Ecriture.ecrireStringln(flux, ".DATA",indent);
 		// ajout de "$" comme caractère de fin de chaine
-		Ecriture.ecrireStringln(flux, "mess"+this.compteurChaine+" DB \"" + chaine + "$\"");
-		Ecriture.ecrireStringln(flux, ".CODE");
-		Ecriture.ecrireStringln(flux, "lea dx, mess"+compteurChaine);
+		Ecriture.ecrireStringln(flux, "mess"+this.compteurChaine+" DB \"" + chaine + "$\"",indent);
+		Ecriture.ecrireStringln(flux, ".CODE",indent);
+		Ecriture.ecrireStringln(flux, "lea dx, mess"+compteurChaine,indent);
 		compteurChaine++;
-		Ecriture.ecrireStringln(flux, "push dx");
-		Ecriture.ecrireStringln(flux, "call ecrch");
+		Ecriture.ecrireStringln(flux, "push dx",indent);
+		Ecriture.ecrireStringln(flux, "call ecrch",indent);
 	}
 
 	/**
 	 * Permet d'afficher à l'écran l'entier en sommet de pile
 	 */
 	public void ecrireEnt() {
-		Ecriture.ecrireStringln(flux, ";ecrireEnt");
-		Ecriture.ecrireStringln(flux, "call ecrent");
+		Ecriture.ecrireStringln(flux, ";ecrireEnt",indent);
+		Ecriture.ecrireStringln(flux, "call ecrent",indent);
 	}
 
 	/**
 	 * Permet d'afficher à l'écran le booleen en sommet de pile
 	 */
 	public void ecrireBool() {
-		Ecriture.ecrireStringln(flux, ";ecrireBool");
-		Ecriture.ecrireStringln(flux, "call ecrbool");
+		Ecriture.ecrireStringln(flux, ";ecrireBool",indent);
+		Ecriture.ecrireStringln(flux, "call ecrbool",indent);
 	}
 
 	/**
@@ -366,17 +366,17 @@ public class YVMasm extends YVM {
 	 * "offset"
 	 */
 	public void lireEnt(int offset) {
-		Ecriture.ecrireStringln(flux, ";lireEnt " + offset);
-		Ecriture.ecrireStringln(flux, "lea dx,[bp"+offset+"]");
-		Ecriture.ecrireStringln(flux, "push dx");
-		Ecriture.ecrireStringln(flux, "call lirent");
+		Ecriture.ecrireStringln(flux, ";lireEnt " + offset,indent);
+		Ecriture.ecrireStringln(flux, "lea dx,[bp"+offset+"]",indent);
+		Ecriture.ecrireStringln(flux, "push dx",indent);
+		Ecriture.ecrireStringln(flux, "call lirent",indent);
 	}
 
 	/**
 	 * Va à la ligne
 	 */
 	public void aLaLigne() {
-		Ecriture.ecrireStringln(flux, ";aLaLigne");
-		Ecriture.ecrireStringln(flux, "call ligsuiv");
+		Ecriture.ecrireStringln(flux, ";aLaLigne",indent);
+		Ecriture.ecrireStringln(flux, "call ligsuiv",indent);
 	}
 }

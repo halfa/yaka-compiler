@@ -5,7 +5,7 @@ import java.util.Stack;
 public class YVM {
 	protected OutputStream flux;
 	protected boolean error = false;
-	protected int indent = 0;
+	protected int indent = 1;
 	protected int loopCounterName=0;
 	protected int condCounterName=0;
 	protected Stack<Integer> labelNameStack = new Stack<Integer>();
@@ -39,7 +39,7 @@ public class YVM {
 	 */
 	public void startIf(){
 		condCounterName++;
-		Ecriture.ecrireStringln(flux,"SI"+condCounterName+":");
+		Ecriture.ecrireStringln(flux,"SI"+condCounterName+":",indent-1);
 		labelNameStack.push(new Integer(condCounterName));	
 		indent++;
 	}
@@ -63,7 +63,7 @@ public class YVM {
 		int id = (int)labelNameStack.pop();
 		String etiquette= "FSI"+id;
 		jump(etiquette);
-		Ecriture.ecrireStringln(flux,"SINON"+id+":");
+		Ecriture.ecrireStringln(flux,"SINON"+id+":",indent-2);
 		labelNameStack.push(new Integer(id));	
 	}
 		
@@ -73,7 +73,7 @@ public class YVM {
 	 */
 	public void endIf(){
 		int id = (int)labelNameStack.pop(); 
-		Ecriture.ecrireStringln(flux,"FSI"+id+":");
+		Ecriture.ecrireStringln(flux,"FSI"+id+":",indent-2);
 		indent--;	
 	}	
 	
@@ -83,7 +83,7 @@ public class YVM {
 	 */
 	public void startLoop(){
 		loopCounterName++;
-		Ecriture.ecrireStringln(flux,"FAIRE"+loopCounterName+":");
+		Ecriture.ecrireStringln(flux,"FAIRE"+loopCounterName+":",indent-1);
 		labelNameStack.push(new Integer(loopCounterName));	
 		indent++;
 	}
@@ -106,7 +106,7 @@ public class YVM {
 	public void endLoop(){
 		int id = (int)labelNameStack.pop(); 
 		jump("FAIRE"+id);
-		Ecriture.ecrireStringln(flux,"FAIT"+id+":");
+		Ecriture.ecrireStringln(flux,"FAIT"+id+":",indent-2);
 		indent--;	
 	}
 	
@@ -115,7 +115,7 @@ public class YVM {
 	 * Aditionne les deux éléments en sommet de pile 
 	 */
 	public void iadd(){
-		Ecriture.ecrireStringln(flux,"iadd");
+		Ecriture.ecrireStringln(flux,"iadd",indent);
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class YVM {
 	 * Soustrait le deuxième élément de la pile par le premier
 	 */
 	public void isub(){
-		Ecriture.ecrireStringln(flux,"isub");
+		Ecriture.ecrireStringln(flux,"isub",indent);
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class YVM {
 	 * Multiplie les deux éléments en haut de pile
 	 */
 	public void imul(){
-		Ecriture.ecrireStringln(flux,"imul");
+		Ecriture.ecrireStringln(flux,"imul",indent);
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class YVM {
 	 * Soustrait le deuxième élément de la pile par le premier
 	 */
 	public void idiv(){
-		Ecriture.ecrireStringln(flux,"idiv");
+		Ecriture.ecrireStringln(flux,"idiv",indent);
 	};
 
 	/**
@@ -147,7 +147,7 @@ public class YVM {
 	 * Transforme l'élément en haut de pile en son opposé
 	 */
 	public void inot(){
-		Ecriture.ecrireStringln(flux,"inot");
+		Ecriture.ecrireStringln(flux,"inot",indent);
 	};
 
 	/**
@@ -155,7 +155,7 @@ public class YVM {
 	 * Transforme l'élément en haut de pile en son opposé
 	 */
 	public void ineg(){
-		Ecriture.ecrireStringln(flux,"ineg");
+		Ecriture.ecrireStringln(flux,"ineg",indent);
 	};
 
 	/**
@@ -163,7 +163,7 @@ public class YVM {
 	 * Fait un test "ET" sur les deux éléments en haut de la pile
 	 */
 	public void iand(){
-		Ecriture.ecrireStringln(flux,"iand");
+		Ecriture.ecrireStringln(flux,"iand",indent);
 	};
 
 	/**
@@ -171,7 +171,7 @@ public class YVM {
 	 * Fait un test "OU" sur les deux éléments en haut de la pile
 	 */
 	public void ior(){
-		Ecriture.ecrireStringln(flux,"ior");
+		Ecriture.ecrireStringln(flux,"ior",indent);
 	};
 
 	/**
@@ -179,7 +179,7 @@ public class YVM {
 	 * Met "VRAI" en haut de pile si le deuxième élément de la pile est inférieur au premier
 	 */
 	public void iinf(){
-		Ecriture.ecrireStringln(flux,"iinf");
+		Ecriture.ecrireStringln(flux,"iinf",indent);
 	};
 
 	/**
@@ -187,7 +187,7 @@ public class YVM {
 	 * Met "VRAI" en haut de pile si le deuxième élément de la pile est supérieur au premier 
 	 */
 	public void isup(){
-		Ecriture.ecrireStringln(flux,"isup");
+		Ecriture.ecrireStringln(flux,"isup",indent);
 	};
 
 	/**
@@ -195,7 +195,7 @@ public class YVM {
 	 * Met "VRAI" en haut de pile si le deuxième élément de la pile est inférieur ou égal au premier
 	 */
 	public void iinfegal(){
-		Ecriture.ecrireStringln(flux,"iinfegal");
+		Ecriture.ecrireStringln(flux,"iinfegal",indent);
 	};
 
 	/**
@@ -203,7 +203,7 @@ public class YVM {
 	 * Met "VRAI" en haut de pile si le deuxième élément de la pile est supérieur ou égal au premier
 	 */
 	public void isupegal(){
-		Ecriture.ecrireStringln(flux,"isupegal");
+		Ecriture.ecrireStringln(flux,"isupegal",indent);
 	};
 
 	/**
@@ -211,7 +211,7 @@ public class YVM {
 	 * Met "VRAI" en haut de pile si le deuxième élément de la pile est égal au premier
 	 */
 	public void iegal(){
-		Ecriture.ecrireStringln(flux,"iegal");
+		Ecriture.ecrireStringln(flux,"iegal",indent);
 	};
 
 	/**
@@ -219,7 +219,7 @@ public class YVM {
 	 * Met "VRAI" en haut de pile si le deuxième élément de la pile est inférieur au premier
 	 */
 	public void idiff(){
-		Ecriture.ecrireStringln(flux,"idiff");
+		Ecriture.ecrireStringln(flux,"idiff",indent);
 	};
 
 	/**
@@ -228,7 +228,7 @@ public class YVM {
 	 */
 	public void iconst(int valeur){
 		
-		Ecriture.ecrireStringln(flux,"iconst "+valeur);
+		Ecriture.ecrireStringln(flux,"iconst "+valeur,indent);
 	};
 
 	/**
@@ -237,7 +237,7 @@ public class YVM {
 	 * @param offset
 	 */
 	public void istore(int offset){
-		Ecriture.ecrireStringln(flux,"istore "+offset);
+		Ecriture.ecrireStringln(flux,"istore "+offset,indent);
 	};
 
 	/**
@@ -246,7 +246,7 @@ public class YVM {
 	 * @param offset
 	 */
 	public void iload(int offset){
-		Ecriture.ecrireStringln(flux,"iload "+offset);
+		Ecriture.ecrireStringln(flux,"iload "+offset,indent);
 	};
 
 	/**
@@ -255,7 +255,7 @@ public class YVM {
 	 * @param etiquette
 	 */
 	public void ifeq(String etiquette){
-		Ecriture.ecrireStringln(flux,"ifeq "+etiquette);
+		Ecriture.ecrireStringln(flux,"ifeq "+etiquette,indent);
 	};
 
 	/**
@@ -264,7 +264,7 @@ public class YVM {
 	 * @param etiquette
 	 */
 	public void iffaux(String etiquette){
-		Ecriture.ecrireStringln(flux,"iffaux "+etiquette);
+		Ecriture.ecrireStringln(flux,"iffaux "+etiquette,indent);
 	};
 
 	/**
@@ -274,7 +274,7 @@ public class YVM {
 	 * @param etiquette
 	 */
 	public void jump(String etiquette){
-		Ecriture.ecrireStringln(flux,"goto "+etiquette);
+		Ecriture.ecrireStringln(flux,"goto "+etiquette,indent);
 	};
 
 	/**
@@ -282,7 +282,7 @@ public class YVM {
 	 * Génère l'entête d'un fichier .yvm
 	 */
 	public void entete(){
-		Ecriture.ecrireStringln(flux,"entete");
+		Ecriture.ecrireStringln(flux,"entete",indent);
 	}; 
 
 	/**
@@ -290,7 +290,7 @@ public class YVM {
 	 * @param nbVar
 	 */
 	public void ouvrePrinc(int nbVar){
-		Ecriture.ecrireStringln(flux,"ouvrePrinc "+nbVar*2);
+		Ecriture.ecrireStringln(flux,"ouvrePrinc "+nbVar*2,indent);
 	}; 
 
 	/**
@@ -298,7 +298,7 @@ public class YVM {
 	 * Génère la fin d'un fichier .yvm
 	 */
 	public void queue(){
-		Ecriture.ecrireStringln(flux,"queue");
+		Ecriture.ecrireStringln(flux,"queue",indent);
 		Ecriture.fermer(flux);
 	};
 
@@ -309,28 +309,28 @@ public class YVM {
 	 * @param s
 	 */
 	public void ecrireChaine(String chaine){
-		Ecriture.ecrireStringln(flux,"ecrireChaine "+"\""+chaine+"\"");
+		Ecriture.ecrireStringln(flux,"ecrireChaine "+"\""+chaine+"\"",indent);
 	}
 
 	/**
 	 * Permet d'afficher à l'écran l'entier en sommet de pile
 	 */
 	public void ecrireEnt(){
-		Ecriture.ecrireStringln(flux,"ecrireEnt");
+		Ecriture.ecrireStringln(flux,"ecrireEnt",indent);
 	}
 
 	/**
 	 * Permet d'afficher à l'écran le booleen en sommet de pile
 	 */
 	public void ecrireBool(){
-		Ecriture.ecrireStringln(flux,"ecrireBool");
+		Ecriture.ecrireStringln(flux,"ecrireBool",indent);
 	}
 
 	/**
 	 * Lit l'entier tapé au clavier et le place dans la mémoire à l'offset "offset"
 	 */
 	public void lireEnt(int offset){
-		Ecriture.ecrireStringln(flux,"lireEnt "+offset);
+		Ecriture.ecrireStringln(flux,"lireEnt "+offset,indent);
 		//todo
 	}
 
@@ -338,6 +338,6 @@ public class YVM {
 	 * Va à la ligne
 	 */
 	public void aLaLigne(){
-		Ecriture.ecrireStringln(flux,"aLaLigne");
+		Ecriture.ecrireStringln(flux,"aLaLigne",indent);
 	}
 }
