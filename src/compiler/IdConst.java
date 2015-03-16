@@ -4,20 +4,20 @@ package compiler;
  */
 public class IdConst extends Ident{
 	
-	final int val;
+	final int value;
 
 	public IdConst(int v, Type t){
 		super(t);
-		val = v;
+		value = v;
 	}
 
 	/* Get & Set */
-	public int getVal(){ return val; }
+	public int getVal(){ return value; }
 	
 	/**
-	 * @see Ident#copy()
+	 * Sortie en string pour débug.
 	 */
-	public IdConst copy(){
-		return new IdConst(val, super.type);
+	public String toString(){
+		return "CONSTANTE : VALEUR : "+value;
 	}
 }

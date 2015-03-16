@@ -26,4 +26,11 @@ public class IdVar extends Ident {
 	public int getOffset(){
 		return offset;
 	}
+	
+	/**
+	 * Sortie en string pour débug.
+	 */
+	public String toString(){
+		return "VARIABLE : OFFSET: "+offset;
+	}
 }
