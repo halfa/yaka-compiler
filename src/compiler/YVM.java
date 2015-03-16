@@ -6,8 +6,9 @@ public class YVM {
 	protected OutputStream flux;
 	protected boolean error = false;
 	protected int indent = 0;
-	protected int loopCounterName=-1;
-	protected Stack<Integer> loopDepthStack = new Stack<Integer>();
+	protected int loopCounterName=0;
+	protected int condCounterName=0;
+	protected Stack<Integer> labelNameStack = new Stack<Integer>();
 	
 	/**
 	 * Constructeur par défaut d'un YVM vide
@@ -21,7 +22,7 @@ public class YVM {
 	 * @param name
 	 */
 	public YVM (String name){
-		flux = Ecriture.ouvrir(name+this.getFileExtension());
+		flux = Ecriture.ouvrir(name);
 	}
 	
 	/**
@@ -32,6 +33,65 @@ public class YVM {
 		return ".yvm";
 	}
 	
+	
+	
+	
+	
+	/**
+	 * Création de l'étiquette SI pour la CONDITIONNELLE
+	 * 
+	 */
+	public void startIf(){
+		condCounterName++;
+		Ecriture.ecrireStringln(flux,"SI"+condCounterName+":",indent);
+		labelNameStack.push(new Integer(condCounterName));	
+		indent++;
+	}
+	
+	/**
+	 * Création de l'étiquette ALORS pour la CONDITIONNELLE
+	 * 
+	 */
+	public void condIf(){
+		int id = (int)labelNameStack.pop();
+		String etiquette= "SINON"+id+":";
+		iffaux(etiquette);
+		labelNameStack.push(new Integer(id));
+	}
+	
+	/**
+	 * Création de l'étiquette SINON pour la CONDITIONNELLE
+	 * 
+	 */
+	public void elseIf(){
+		int id = (int)labelNameStack.pop();
+		String etiquette= "FSI"+id+":";
+		jump(etiquette);
+		Ecriture.ecrireStringln(flux,"SINON"+id+":",indent);
+		labelNameStack.push(new Integer(id));
+		
+	}
+	
+	
+	/**
+	 * Création de l'étiquette FSI pour la CONDITIONNELLE
+	 * 
+	 */
+	public void endIf(){
+		int id = (int)labelNameStack.pop(); 
+		Ecriture.ecrireStringln(flux,"FSI"+id+":",indent);
+		indent--;	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Création de l'étiquette pour la boucle TANTQUE
 	 * 
@@ -39,7 +99,7 @@ public class YVM {
 	public void startLoop(){
 		loopCounterName++;
 		Ecriture.ecrireStringln(flux,"FAIRE"+loopCounterName+":",indent);
-		loopDepthStack.push(new Integer(loopCounterName));	
+		labelNameStack.push(new Integer(loopCounterName));	
 		indent++;
 	}
 	
@@ -48,8 +108,10 @@ public class YVM {
 	 * 
 	 */
 	public void condLoop(){
-		String etiquette= "FAIT"+loopCounterName+":";
+		int id = (int)labelNameStack.pop();
+		String etiquette= "FAIT"+id+":";
 		iffaux(etiquette);
+		labelNameStack.push(new Integer(id));	
 	}
 	
 	/**
@@ -57,10 +119,10 @@ public class YVM {
 	 * 
 	 */
 	public void endLoop(){
-		int id = (int)loopDepthStack.pop(); 
+		int id = (int)labelNameStack.pop(); 
 		jump("FAIRE"+id+" :");
-		indent--;	
 		Ecriture.ecrireStringln(flux,"FAIT"+id+":",indent);
+		indent--;	
 	}
 	
 	/**
