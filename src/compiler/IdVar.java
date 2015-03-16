@@ -7,29 +7,16 @@ public class IdVar extends Ident {
 	
 	static int activeOffset = 0; //offset du dernier élément de la pile
 	
-	int val;
 	int offset;
 	
 	/* Constructeurs */
-	private IdVar(int v, Type t, int o){
+	private IdVar(Type t, int o){
 		super(t);
-		val = v;
 		offset = o;
 	}
 	
-	public IdVar(int v, Type t){
-		this(v, t, activeOffset -= 2);
-	}
-
-	/* Get & Set */
-	public int getVal(){ return val; }
-	public void setVal(int v){ val=v; }
-	
-	/**
-	 * @see Ident#copy()
-	 */
-	public IdVar copy(){
-		return new IdVar(val, super.type);
+	public IdVar(Type t){
+		this(t, activeOffset -= 2);
 	}
 	
 	/**
@@ -39,5 +26,4 @@ public class IdVar extends Ident {
 	public int getOffset(){
 		return offset;
 	}
-	
 }
