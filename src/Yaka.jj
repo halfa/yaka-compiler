@@ -195,16 +195,19 @@ void type() :{}
  * Syntaxe des instructions.
  */
 void suiteExpr() : {}
-{ (expression() (";" (expression())? )*)? }
+{ (expression() ( ";" (expression() )? )*)? }
 
 void suiteInstr() : {}
-{ (instruction() (";" (instruction())? )*)? }
+{ (instruction() (";"(instruction())? )*)? }
 
 void instruction() : {}
 { affectation() | lecture() | ecriture() | iteration() }
 
 void iteration() : {}
-{ "TANTQUE" expression() "FAIRE" (instruction())* "FAIT" }
+{ <TANTQUE> 			{Make.startLoop();} 
+expression()  			{Make.condLoop();} 
+<FAIRE> (instruction()";")* 
+<FAIT> 					{Make.endLoop();} }
 
 void affectation() : {}
 { <ident> {Declaration.setCurrentIdent(YakaTokenManager.identLu);} "=" expression() {Make.assignment();} }
@@ -223,7 +226,7 @@ void ecriture() :{}
  */
 void expression() : {}
 {
-  simpleExpr() 
+  simpleExpr()
   (opRel() 
   simpleExpr() {Make.whatRel();}
   )?

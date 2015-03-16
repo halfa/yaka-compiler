@@ -11,9 +11,21 @@ public class Make {
 	public static void begin_program(){
 		// Crée le fichier en utilisant * le nom fourni en début de programme
 		//                              * l'extension du language utilisé
-		Yaka.yvm = new YVMasm(YakaTokenManager.identLu+Yaka.yvm.getFileExtension());
+		Yaka.yvm = new YVM(YakaTokenManager.identLu);
 		Yaka.expression = new Expression(Yaka.yvm);
 		Yaka.yvm.entete();
+	}
+	
+	public static void startLoop(){
+		Yaka.yvm.startLoop();
+	}
+	
+	public static void condLoop(){
+		Yaka.yvm.condLoop();
+	}
+	
+	public static void endLoop(){
+		Yaka.yvm.endLoop();
 	}
 
 	public static void end_program(){

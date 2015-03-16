@@ -7,7 +7,7 @@ VAR ENTIER s, i, n;
 		s=s+i;
 		i=i+1;
 	FAIT;
-	ALALIGNE
+	ALALIGNE;
 	ECRIRE("s=");
 	ECRIRE(s);
 FPROGRAMME

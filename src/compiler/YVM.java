@@ -21,7 +21,7 @@ public class YVM {
 	 * @param name
 	 */
 	public YVM (String name){
-		flux = Ecriture.ouvrir(name);
+		flux = Ecriture.ouvrir(name+this.getFileExtension());
 	}
 	
 	/**
@@ -59,8 +59,8 @@ public class YVM {
 	public void endLoop(){
 		int id = (int)loopDepthStack.pop(); 
 		jump("FAIRE"+id+" :");
-		Ecriture.ecrireStringln(flux,"FAIT"+id+":",indent);
 		indent--;	
+		Ecriture.ecrireStringln(flux,"FAIT"+id+":",indent);
 	}
 	
 	/**

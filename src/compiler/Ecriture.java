@@ -59,7 +59,7 @@ public class Ecriture {
     
     public static void ecrireStringln(OutputStream f, String s, int indent){
     	while (indent != 0){
-    		ecrireString(f,"   "+s);
+    		ecrireString(f,"   ");
     		indent--;
     	}
     	ecrireString(f,s+"\r\n");
