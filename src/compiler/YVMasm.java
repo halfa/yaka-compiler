@@ -20,26 +20,49 @@ public class YVMasm extends YVM {
 		super(name);
 	}
 	
-	public void ouvreBloc(int taille){
-		Ecriture.ecrireStringln(flux, ";ouvrebloc "+taille*2, indent);
-		Ecriture.ecrireStringln(flux, "enter "+taille*2+",0",indent);
+	/**
+	 * En début de fonction, réserve la place pour le nombre de variables
+	 * placé en paramètre
+	 * @param var le nombre de variables
+	 */
+	public void ouvreBloc(int var){
+		Ecriture.ecrireStringln(flux, ";ouvrebloc "+var*2, indent);
+		Ecriture.ecrireStringln(flux, "enter "+var*2+",0",indent);
 	}
 	
-	public void fermeBloc(int taille){
-		Ecriture.ecrireStringln(flux, ";fermebloc "+taille*2, indent);
+	/**
+	 * En fin de fonction, donne la taille du nombre de paramètres
+	 * placé en paramètre
+	 * @param param le nombre de paramètres
+	 */
+	public void fermeBloc(int param){
+		Ecriture.ecrireStringln(flux, ";fermebloc "+param*2, indent);
 		Ecriture.ecrireStringln(flux, "leave",indent);
-		Ecriture.ecrireStringln(flux, "ret "+taille*2);
+		Ecriture.ecrireStringln(flux, "ret "+param*2);
 	}
 	
+	/**
+	 * Place le résultat de la fonction, qui en sommet de pile,
+	 * à l'offset donné
+	 * @param offset emplacement réservé lors de l'appel
+	 */
 	public void ireturn(int offset){
 		Ecriture.ecrireStringln(flux,"ireturn "+offset,indent);
 	}
 	
+	/**
+	 * Instruction à appeler avant l'appel d'une fonction qui 
+	 * retourne un résultat
+	 */
 	public void reserveRetour(){
 		Ecriture.ecrireStringln(flux, ";reserveRetour", indent);
 		Ecriture.ecrireStringln(flux, "sub sp,2", indent);
 	}
 	
+	/**
+	 * Instruction pour appeler la fonction de nom "nomFun"
+	 * @param nomFun le nom de la fonction
+	 */
 	public void call(String nomFun){
 		Ecriture.ecrireStringln(flux, ";call "+nomFun, indent);
 		Ecriture.ecrireStringln(flux, "call "+nomFun,indent);
