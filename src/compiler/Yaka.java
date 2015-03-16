@@ -283,7 +283,9 @@ public class Yaka implements YakaConstants {
 
   static final public void iteration() throws ParseException {
     jj_consume_token(TANTQUE);
+                                 Make.startLoop();
     expression();
+                                 Make.condLoop();
     jj_consume_token(FAIRE);
     label_7:
     while (true) {
@@ -300,8 +302,10 @@ public class Yaka implements YakaConstants {
         break label_7;
       }
       instruction();
+      jj_consume_token(41);
     }
     jj_consume_token(FAIT);
+                                         Make.endLoop();
   }
 
   static final public void affectation() throws ParseException {

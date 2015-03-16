@@ -1,0 +1,28 @@
+entete
+ouvrePrinc 6
+ecrireChaine "n="
+lireEnt -6
+iconst 1
+istore -4
+iconst 0
+istore -2
+FAIRE0:
+iload -4
+iload -6
+iinfegal
+iffaux FAIT0:
+iload -2
+iload -4
+iadd
+istore -2
+iload -4
+iconst 1
+iadd
+istore -4
+goto FAIRE0 :
+FAIT0:
+aLaLigne
+ecrireChaine "s="
+iload -2
+ecrireEnt
+queue

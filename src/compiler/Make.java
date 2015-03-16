@@ -15,6 +15,18 @@ public class Make {
 		Yaka.expression = new Expression(Yaka.yvm);
 		Yaka.yvm.entete();
 	}
+	
+	public static void startLoop(){
+		Yaka.yvm.startLoop();
+	}
+	
+	public static void condLoop(){
+		Yaka.yvm.condLoop();
+	}
+	
+	public static void endLoop(){
+		Yaka.yvm.endLoop();
+	}
 
 	public static void end_program(){
 		Yaka.yvm.queue();
