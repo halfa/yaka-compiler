@@ -5,10 +5,10 @@ bin/
 .project
 .classpath
 *~
-/ParseException.java
-/SimpleCharStream.java
-/Token.java
-/TokenMgrError.java
-/Yaka.java
-/YakaConstants.java
-/YakaTokenManager.java
+src/compiler/ParseException.java
+src/compiler/SimpleCharStream.java
+src/compiler/Token.java
+src/compiler/TokenMgrError.java
+src/compiler/Yaka.java
+src/compiler/YakaConstants.java
+src/compiler/YakaTokenManager.java
