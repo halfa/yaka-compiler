@@ -50,7 +50,7 @@ public class YVM {
 	 */
 	public void condIf(){
 		int id = (int)labelNameStack.pop();
-		String etiquette= "SINON"+id+":";
+		String etiquette= "SINON"+id;
 		iffaux(etiquette);
 		labelNameStack.push(new Integer(id));
 	}
@@ -61,7 +61,7 @@ public class YVM {
 	 */
 	public void elseIf(){
 		int id = (int)labelNameStack.pop();
-		String etiquette= "FSI"+id+":";
+		String etiquette= "FSI"+id;
 		jump(etiquette);
 		Ecriture.ecrireStringln(flux,"SINON"+id+":");
 		labelNameStack.push(new Integer(id));	
@@ -94,7 +94,7 @@ public class YVM {
 	 */
 	public void condLoop(){
 		int id = (int)labelNameStack.pop();
-		String etiquette= "FAIT"+id+":";
+		String etiquette= "FAIT"+id;
 		iffaux(etiquette);
 		labelNameStack.push(new Integer(id));	
 	}
@@ -105,7 +105,7 @@ public class YVM {
 	 */
 	public void endLoop(){
 		int id = (int)labelNameStack.pop(); 
-		jump("FAIRE"+id+" :");
+		jump("FAIRE"+id);
 		Ecriture.ecrireStringln(flux,"FAIT"+id+":");
 		indent--;	
 	}

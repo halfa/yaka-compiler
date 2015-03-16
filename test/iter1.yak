@@ -6,6 +6,11 @@ VAR ENTIER s, i, n;
 	TANTQUE i<=n FAIRE
 		s=s+i;
 		i=i+1;
+		ECRIRE("i = ");
+		ECRIRE(i);
+		ECRIRE("  s = ");
+		ECRIRE(s);
+		ALALIGNE;
 	FAIT;
 	ALALIGNE;
 	ECRIRE("s=");
