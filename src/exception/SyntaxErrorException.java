@@ -1,29 +1,11 @@
+package exception;
 
 public class SyntaxErrorException extends YakaException {
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	public class UnknownTypeException extends SyntaxErrorException{
-		
-	}
-	public class BadTypeException extends SyntaxErrorException{
-		
-	}
-	public class IterationException extends SyntaxErrorException{
-		
-	}
-	public class FunctionException extends SyntaxErrorException{
-		
 
-		
-	}
 
 	
 
