@@ -13,31 +13,21 @@ public class Declaration {
 	// Utilisé pour le stockage des types par les variables
 	static private Type currentType;
 	static private int nbVariables;
+	// Utilisé pour le stockage de la fonction courante
+	static private IdFun currentFunction;
 
 	// Définition pour le type booléen
 	static public int FAUX = 0;
 	static public int VRAI = -1;
 
 	/* GetSet */
-	public static int getNbVariables() {
-		return nbVariables;
-	}
-
-	public static void setNbVariables(int nbVariables) {
-		Declaration.nbVariables = nbVariables;
-	}
-
-	public static void setCurrentIdent(String s) {
-		currentIdent = s;
-	}
-
-	public static String getCurrentIdent() {
-		return currentIdent;
-	}
-
-	public static void setCurrentType(Type currentType) {
-		Declaration.currentType = currentType;
-	}
+	public static int getNbVariables() { return nbVariables; }
+	public static void setNbVariables(int n){ nbVariables = n; }
+	public static void setCurrentIdent(String s) { currentIdent = s; }
+	public static String getCurrentIdent() { return currentIdent; }
+	public static void setCurrentType(Type t) { currentType = t; }
+	public static IdFun getCurrentFunction() { return currentFunction; }
+	public static void setCurrentFunction(IdFun id) { currentFunction = id; }
 
 	/**
 	 * Initialise le couple constant (déclaration, valeur) dans la table interne.

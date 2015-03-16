@@ -8,8 +8,7 @@ import java.util.List;
  *
  */
 public class IdFun extends Ident {
-	
-	static private IdFun currentFunction;
+
 	private List<Parameter> parameters;
 	
 	/****************************************
@@ -29,7 +28,6 @@ public class IdFun extends Ident {
 		public String getName(){ return name; }
 		public IdVar getIdent(){ return id; }
 
-		
 		public String toString(){
 			return name+" "+id;
 		}
@@ -43,8 +41,6 @@ public class IdFun extends Ident {
 	}
 	
 	/* GetSet */
-	public static IdFun getCurrentFunction() { return currentFunction; }
-	public static void setCurrentFunction(IdFun currentFunction) { IdFun.currentFunction = currentFunction; }
 	public List<Parameter> getParameters(){ return parameters; }
 
 	/**
