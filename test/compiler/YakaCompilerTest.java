@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import javax.security.auth.login.FailedLoginException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,12 +24,26 @@ public class YakaCompilerTest {
  * @param refFile the reference file
  * @throws FileNotFoundException
  */
-	private void testFile(String genFile, String refFile) throws FileNotFoundException{
-		f1 = new File(genFile);
-		scf1 = new Scanner(f1);
+	
+	private void testFile(String genFile, String refFile){
+		try {
+			f1 = new File(genFile);
+			scf1 = new Scanner(f1);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			fail("No generated file found");
+		}
 
-		f2 = new File(refFile);
-		scf2 = new Scanner(f2);
+		
+		try {
+			f2 = new File(refFile);
+			scf2 = new Scanner(f2);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			fail("No generated reference found");
+		}
+		
+		System.out.println("banane");
 
 		
 		while (scf2.hasNext()) {
@@ -37,17 +53,21 @@ public class YakaCompilerTest {
 				String s1 = scf1.nextLine().replaceAll("\\s+$", "");
 				String s2 = scf2.nextLine().replaceAll("\\s+$", "");
 
+
+				
 				assertTrue(s1.equals(s2));
+
 			}
 		}
 	}
 
 	@Test
 	public void maxTest() throws FileNotFoundException {
-		String[] args = { "./max.yak" };
+		String[] args = { "./test/max.yak" };
 		Yaka.main(args);
 
-		testFile("./max.yvm","./test/ref/max.yvm");
+		
+		testFile("./max.asm","./test/ref/max.asm");
 
 
 	}
