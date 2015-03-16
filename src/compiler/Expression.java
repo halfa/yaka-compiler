@@ -15,10 +15,8 @@ public class Expression {
 	}
 
 	/**
-	 * Push the value to the different stacks
-	 * 
-	 * @param i
-	 *            : the ident to push
+	 * Met la valeur et le type sur le sommet de leur piles respectives 
+	 * @param i l'identifiant de la variable
 	 */
 	public void pushValue(Ident i) {
 		Type t = i.getType();
@@ -27,26 +25,14 @@ public class Expression {
 		if (t == Type.INTEGER)
 			if (i instanceof IdVar)
 				yvm.iload(((IdVar) i).getOffset());
-			else
+			else if (i instanceof IdConst)
 				yvm.iconst(((IdConst) i).getVal());
+			else {
+				// FIXME UnknowIdentExeption
+			}
 	}
-
 	/**
-	 * Push the value to the different stacks
-	 * 
-	 * @param i
-	 *            the integer to push
-	 */
-	public void pushValue(int i) {
-		types.push(Type.INTEGER);
-		yvm.iconst(i);
-	}
-
-	/**
-	 * push the operator to the stack
-	 * 
-	 * @param o
-	 *            the operator
+	 * Met l'opérateur sur la pile opérateur
 	 */
 	public void pushOp(Operator o) {
 		ops.push(o);
@@ -54,9 +40,7 @@ public class Expression {
 	}
 
 	/**
-	 * only useful for test
-	 * 
-	 * @param t
+	 * Utilisé pour les tests
 	 */
 	public void pushValue(Type t) {
 		types.push(t);
@@ -79,8 +63,7 @@ public class Expression {
 	}
 	
 	/**
-	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM
-	 * pour un opAdd.
+	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM pour un opAdd.
 	 */
 	public void whatAdd(){
 		Operator op = popOp();
@@ -101,8 +84,7 @@ public class Expression {
 	}
 	
 	/**
-	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM
-	 * pour un opMul.
+	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM pour un opMul.
 	 */
 	public void whatMul(){
 		Operator op = popOp();
@@ -123,8 +105,7 @@ public class Expression {
 	}
 	
 	/**
-	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM
-	 * pour un opNeg.
+	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM pour un opNeg.
 	 */
 	public void whatNeg(){
 		Operator op = popOp();
@@ -142,8 +123,7 @@ public class Expression {
 	}
 	
 	/**
-	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM
-	 * pour un opRel.
+	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM pour un opRel.
 	 */
 	public void whatRel(){
 		Operator op = popOp();
@@ -173,14 +153,14 @@ public class Expression {
 	}
 
 	/**
-	 * syntax test
-	 * 
+	 * Evalue et test la validitée du typage.
 	 * @return the type of expression result
 	 */
 	public Type syntaxeEvaluation() {
 		Type t1 = types.pop();
 		Type t2 = types.pop();
 		Operator op = ops.pop();
+		
 		switch (t1) {
 		case INTEGER:
 			switch (t2) {
@@ -224,16 +204,16 @@ public class Expression {
 		}
 
 		ops.push(op);
-
+		/* aucun cas ne correspond */
 		types.push(Type.ERROR);
 		return Type.ERROR;
 	}
 
 
 	/**
-	 * evaluate the expression on the top of the stack
-	 * 
-	 * @return true if no syntax error
+	 * Evalue l'expression sur le haut de la pile
+	 * @return true si l'opération se déroule sans erreur
+	 * @return false sinon
 	 */
 	public boolean evaluate() {
 		Operator op = ops.peek();
