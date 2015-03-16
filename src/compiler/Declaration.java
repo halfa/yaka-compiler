@@ -1,4 +1,7 @@
 package compiler;
+
+
+
 /**
  * Gère les déclarations des variables et constantes.
  * 
@@ -33,7 +36,9 @@ public class Declaration {
 	// Créer une constante à partir d'un autre identifiant
 	public static void createConst(String ident){
 		// TODO renvoyer une exeption quand l'indent n'est pas dans la table ?
-		TabIdent.addIdent(currentIdent, TabIdent.getIdent(ident));
+		Ident i = TabIdent.getIdent(ident);
+		//if(i==null) throw new DeclarationException.UnknownIdentException();
+		TabIdent.addIdent(currentIdent, i);
 	}
 	
 	/**
