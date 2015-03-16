@@ -22,7 +22,7 @@ public class YVM {
 	 * @param name
 	 */
 	public YVM (String name){
-		flux = Ecriture.ouvrir(name);
+		flux = Ecriture.ouvrir(name+this.getFileExtension());
 	}
 	
 	/**
@@ -32,10 +32,6 @@ public class YVM {
 	public String getFileExtension(){
 		return ".yvm";
 	}
-	
-	
-	
-	
 	
 	/**
 	 * Création de l'étiquette SI pour la CONDITIONNELLE
@@ -68,11 +64,9 @@ public class YVM {
 		String etiquette= "FSI"+id+":";
 		jump(etiquette);
 		Ecriture.ecrireStringln(flux,"SINON"+id+":",indent);
-		labelNameStack.push(new Integer(id));
-		
+		labelNameStack.push(new Integer(id));	
 	}
-	
-	
+		
 	/**
 	 * Création de l'étiquette FSI pour la CONDITIONNELLE
 	 * 
@@ -81,16 +75,7 @@ public class YVM {
 		int id = (int)labelNameStack.pop(); 
 		Ecriture.ecrireStringln(flux,"FSI"+id+":",indent);
 		indent--;	
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 	
 	/**
 	 * Création de l'étiquette pour la boucle TANTQUE

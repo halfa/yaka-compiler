@@ -211,12 +211,11 @@ void conditionnelle() : {}
 <FSI> {Make.endIf();}
 }
 
-
 void iteration() : {}
-{ <TANTQUE> 			{startLoop();} 
-expression()  			{condLoop();} 
-<FAIRE> (instruction())* 
-<FAIT> 					{endLoop();} }
+{ <TANTQUE> 			{Make.startLoop();} 
+expression()  			{Make.condLoop();} 
+<FAIRE> (instruction()";")* 
+<FAIT> 					{Make.endLoop();} }
 
 void affectation() : {}
 { <ident> {Declaration.setCurrentIdent(YakaTokenManager.identLu);} "=" expression() {Make.assignment();} }
