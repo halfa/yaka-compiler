@@ -59,8 +59,8 @@ public class YVM {
 	public void endLoop(){
 		int id = (int)loopDepthStack.pop(); 
 		jump("FAIRE"+id+" :");
-		Ecriture.ecrireStringln(flux,"FAIT"+id+":");
 		indent--;	
+		Ecriture.ecrireStringln(flux,"FAIT"+id+":",indent);
 	}
 	
 	/**
