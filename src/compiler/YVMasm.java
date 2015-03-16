@@ -229,7 +229,7 @@ public class YVMasm extends YVM {
 	public void istore(int offset) {
 		Ecriture.ecrireStringln(flux, ";istore " + offset);
 		Ecriture.ecrireStringln(flux, "pop ax");
-		Ecriture.ecrireStringln(flux, "mov word ptr[bp-" + offset + "],ax");
+		Ecriture.ecrireStringln(flux, "mov word ptr[bp" + offset + "],ax");
 	}
 
 	/**
@@ -240,8 +240,7 @@ public class YVMasm extends YVM {
 	 */
 	public void iload(int offset) {
 		Ecriture.ecrireStringln(flux, ";iload " + offset);
-		Ecriture.ecrireStringln(flux, "push word ptr [bp-" + offset + "]",
-				indent + 1);
+		Ecriture.ecrireStringln(flux, "push word ptr [bp" + offset + "]");
 	}
 
 	/**
