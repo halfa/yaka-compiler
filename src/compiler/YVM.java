@@ -25,6 +25,26 @@ public class YVM {
 		flux = Ecriture.ouvrir(name+this.getFileExtension());
 	}
 	
+	public void ouvreBloc(int taille){
+		Ecriture.ecrireStringln(flux, "ouvrebloc "+taille, indent);
+	}
+	
+	public void fermeBloc(int taille){
+		Ecriture.ecrireStringln(flux, "fermebloc "+taille, indent);
+	}
+	
+	public void ireturn(int offset){
+		Ecriture.ecrireStringln(flux,"ireturn "+offset,indent);
+	}
+	
+	public void reserveRetour(){
+		Ecriture.ecrireStringln(flux, "reserveRetour", indent);
+	}
+	
+	public void call(String nomFun){
+		Ecriture.ecrireStringln(flux, "call "+nomFun, indent);
+	}
+	
 	/**
 	 * Retourne la chaine extention du fichier associé au language YVM.
 	 * @return l'extension, point compris

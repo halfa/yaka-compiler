@@ -19,6 +19,31 @@ public class YVMasm extends YVM {
 	public YVMasm(String name) {
 		super(name);
 	}
+	
+	public void ouvreBloc(int taille){
+		Ecriture.ecrireStringln(flux, ";ouvrebloc "+taille*2, indent);
+		Ecriture.ecrireStringln(flux, "enter "+taille*2+",0",indent);
+	}
+	
+	public void fermeBloc(int taille){
+		Ecriture.ecrireStringln(flux, ";fermebloc "+taille*2, indent);
+		Ecriture.ecrireStringln(flux, "leave",indent);
+		Ecriture.ecrireStringln(flux, "ret "+taille*2);
+	}
+	
+	public void ireturn(int offset){
+		Ecriture.ecrireStringln(flux,"ireturn "+offset,indent);
+	}
+	
+	public void reserveRetour(){
+		Ecriture.ecrireStringln(flux, ";reserveRetour", indent);
+		Ecriture.ecrireStringln(flux, "sub sp,2", indent);
+	}
+	
+	public void call(String nomFun){
+		Ecriture.ecrireStringln(flux, ";call "+nomFun, indent);
+		Ecriture.ecrireStringln(flux, "call "+nomFun,indent);
+	}
 
 	/**
 	 * Retourne la chaine extention du fichier associé au language ASM.
