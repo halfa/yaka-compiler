@@ -309,7 +309,7 @@ public class YVM {
 	 * @param s
 	 */
 	public void ecrireChaine(String chaine){
-		Ecriture.ecrireStringln(flux,"ecrireChaine "+chaine);
+		Ecriture.ecrireStringln(flux,"ecrireChaine "+"\""+chaine+"\"");
 	}
 
 	/**

@@ -120,7 +120,8 @@ public class Make {
 	}
 
 	public static void write_string() {
-		Yaka.yvm.ecrireChaine(YakaTokenManager.chaineLue);
+		// Enlève touts les guillemets dans la chaine
+		Yaka.yvm.ecrireChaine(YakaTokenManager.chaineLue.replaceAll("\"",""));
 	}
 
 	public static void aLaLigne() {
