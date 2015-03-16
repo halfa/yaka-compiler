@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Gestion des fonctions, de leur type et paramètres
+ * Gestion des fonctions, de leur type et paramètres.
  *
  */
 public class IdFun extends Ident {
-
-	private List<Parameter> parameters; 
+	
+	static private IdFun currentFunction;
+	private List<Parameter> parameters;
 	
 	/****************************************
 	 * Sous-classe pour gérer les paramètres.
@@ -41,9 +42,11 @@ public class IdFun extends Ident {
 		parameters =  new ArrayList<Parameter>();
 	}
 	
-	public List<Parameter> getParameters(){
-		return parameters;
-	}
+	/* GetSet */
+	public static IdFun getCurrentFunction() { return currentFunction; }
+	public static void setCurrentFunction(IdFun currentFunction) { IdFun.currentFunction = currentFunction; }
+	public List<Parameter> getParameters(){ return parameters; }
+
 	/**
 	 * Ajoute un paramètre à la fonction
 	 */
