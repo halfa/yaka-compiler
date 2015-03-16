@@ -37,7 +37,7 @@ public class YVMasm extends YVM {
 		Ecriture.ecrireStringln(flux, "pop bx");
 		Ecriture.ecrireStringln(flux, "pop ax");
 		Ecriture.ecrireStringln(flux, "add ax,bx");
-		Ecriture.ecrireStringln(flux, "push bx");
+		Ecriture.ecrireStringln(flux, "push ax");
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class YVMasm extends YVM {
 		Ecriture.ecrireStringln(flux, "pop bx");
 		Ecriture.ecrireStringln(flux, "pop ax");
 		Ecriture.ecrireStringln(flux, "sub ax,bx");
-		Ecriture.ecrireStringln(flux, "push bx");
+		Ecriture.ecrireStringln(flux, "push ax");
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class YVMasm extends YVM {
 		Ecriture.ecrireStringln(flux, "pop bx");
 		Ecriture.ecrireStringln(flux, "pop ax");
 		Ecriture.ecrireStringln(flux, "imul bx");
-		Ecriture.ecrireStringln(flux, "push bx");
+		Ecriture.ecrireStringln(flux, "push ax");
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class YVMasm extends YVM {
 		Ecriture.ecrireStringln(flux, "pop ax");
 		Ecriture.ecrireStringln(flux, "cwd");
 		Ecriture.ecrireStringln(flux, "idiv bx");
-		Ecriture.ecrireStringln(flux, "push bx");
+		Ecriture.ecrireStringln(flux, "push ax");
 	}
 
 	/**
