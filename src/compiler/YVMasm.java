@@ -20,6 +20,12 @@ public class YVMasm extends YVM {
 		super(name);
 	}
 	
+	public void begin_principal(){
+		Ecriture.ecrireStringln(flux, "debut :",indent);
+		Ecriture.ecrireStringln(flux, "STARTUPCODE",indent);
+		Ecriture.ecrireStringln(flux,"main :",0);
+	}
+	
 	/**
 	 * En début de fonction, réserve la place pour le nombre de variables
 	 * placé en paramètre
@@ -349,8 +355,6 @@ public class YVMasm extends YVM {
 		Ecriture.ecrireStringln(flux, "FALSE EQU 0");
 		Ecriture.ecrireStringln(flux, "TRUE EQU -1");
 		Ecriture.ecrireStringln(flux, ".CODE");
-		Ecriture.ecrireStringln(flux, "debut :");
-		Ecriture.ecrireStringln(flux, "STARTUPCODE");
 	}
 
 	/**
@@ -360,7 +364,7 @@ public class YVMasm extends YVM {
 	 */
 	public void ouvrePrinc(int nbVar) {
 		nbVar *= 2;
-		Ecriture.ecrireStringln(flux, ";ouvrePrinc " + nbVar);
+		Ecriture.ecrireStringln(flux, "ouvrePrinc " + nbVar);
 		Ecriture.ecrireStringln(flux, "mov bp,sp");
 		Ecriture.ecrireStringln(flux, "sub sp," + nbVar);
 	}

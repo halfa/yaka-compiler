@@ -148,7 +148,7 @@ void analyse() : {}
 {
    <PROGRAMME><ident> { Make.begin_program(); }	
    ( declFonction() )*
-   <PRINCIPAL>
+   <PRINCIPAL> { Make.begin_principal(); }
    bloc()
    <FPRINCIPAL>
    <FPROGRAMME> { Make.end_program(); }
@@ -292,7 +292,11 @@ void primaire (): {}
 
 void valeur () : {}
 { <entier> 	{ Make.value_int();}
+<<<<<<< HEAD
  | <ident> 	argumentsFonction() { Make.value_ident();}
+=======
+ | <ident> 	( argumentsFonction())? { Make.value_ident();}
+>>>>>>> c3696a2... Write the line for the structure of the main
  | <VRAI> 	{ Make.value_true();}
  | <FAUX> 	{ Make.value_false();}
 }

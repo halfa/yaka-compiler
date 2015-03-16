@@ -25,6 +25,10 @@ public class YVM {
 		flux = Ecriture.ouvrir(name+this.getFileExtension());
 	}
 	
+	public void begin_principal(){
+		Ecriture.ecrireStringln(flux,"main :",0);
+	}
+	
 	/**
 	 * En début de fonction, réserve la place pour le nombre de variables
 	 * placé en paramètre

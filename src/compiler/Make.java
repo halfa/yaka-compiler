@@ -20,6 +20,10 @@ public class Make {
 		Yaka.yvm.entete();
 	}
 	
+	public static void begin_principal(){
+		Yaka.yvm.begin_principal();
+	}
+	
 	public static void startIf(){
 		Yaka.yvm.startIf();
 	}
