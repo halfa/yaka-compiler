@@ -146,10 +146,29 @@ TOKEN  :
 void analyse() : {}
 {
    <PROGRAMME><ident> { Make.begin_program(); }	
+   ( declFonction() )*
+   <PRINCIPAL>
    bloc()
+   <FPRINCIPAL>
    <FPROGRAMME> { Make.end_program(); }
 }
 
+void declFonction() : {}
+{
+	type() <FONCTION> <ident> paraForms()
+	bloc()
+	<FFONCTION>
+}
+
+void paraForms() : {}
+{
+	( paramForm() ("," paramForm() )* )?
+}
+
+void paraForm() : {}
+{
+	type() <ident>
+}
 
 void bloc() : {}{
  (declConst())*
@@ -201,7 +220,12 @@ void suiteInstr() : {}
 { (instruction() (";" (instruction())? )*)? }
 
 void instruction() : {}
-{ affectation() | lecture() | ecriture() | iteration() | conditionnelle()}
+{ affectation() | lecture() | ecriture() | iteration() | conditionnelle() | retourne() }
+
+void retourne() : {}
+{
+	<RETOURNE> expression()
+}
 
 void conditionnelle() : {}
 {
@@ -267,9 +291,14 @@ void primaire (): {}
 
 void valeur () : {}
 { <entier> 	{ Make.value_int();}
- | <ident> 	{ Make.value_ident();}
+ | <ident> 	(argumentsFonction())? { Make.value_ident();}
  | <VRAI> 	{ Make.value_true();}
  | <FAUX> 	{ Make.value_false();}
+}
+
+void argumentsFonction() :{}
+{
+	( expression() ("," expression())*)?
 }
 
 
