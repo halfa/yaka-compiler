@@ -6,7 +6,7 @@ VAR ENTIER i, j, max;
 	ALALIGNE;
 	max = j;
 	SI i>j ALORS
-		max = i
-	FSI ;
-	ECRIRE(max)
+		max = i;
+	FSI;
+	ECRIRE(max);
 FPROGRAMME

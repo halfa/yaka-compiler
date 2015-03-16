@@ -39,7 +39,7 @@ public class YVM {
 	 */
 	public void startIf(){
 		condCounterName++;
-		Ecriture.ecrireStringln(flux,"SI"+condCounterName+":",indent);
+		Ecriture.ecrireStringln(flux,"SI"+condCounterName+":");
 		labelNameStack.push(new Integer(condCounterName));	
 		indent++;
 	}
@@ -63,7 +63,7 @@ public class YVM {
 		int id = (int)labelNameStack.pop();
 		String etiquette= "FSI"+id+":";
 		jump(etiquette);
-		Ecriture.ecrireStringln(flux,"SINON"+id+":",indent);
+		Ecriture.ecrireStringln(flux,"SINON"+id+":");
 		labelNameStack.push(new Integer(id));	
 	}
 		
@@ -73,7 +73,7 @@ public class YVM {
 	 */
 	public void endIf(){
 		int id = (int)labelNameStack.pop(); 
-		Ecriture.ecrireStringln(flux,"FSI"+id+":",indent);
+		Ecriture.ecrireStringln(flux,"FSI"+id+":");
 		indent--;	
 	}	
 	
@@ -83,7 +83,7 @@ public class YVM {
 	 */
 	public void startLoop(){
 		loopCounterName++;
-		Ecriture.ecrireStringln(flux,"FAIRE"+loopCounterName+":",indent);
+		Ecriture.ecrireStringln(flux,"FAIRE"+loopCounterName+":");
 		labelNameStack.push(new Integer(loopCounterName));	
 		indent++;
 	}
@@ -106,7 +106,7 @@ public class YVM {
 	public void endLoop(){
 		int id = (int)labelNameStack.pop(); 
 		jump("FAIRE"+id+" :");
-		Ecriture.ecrireStringln(flux,"FAIT"+id+":",indent);
+		Ecriture.ecrireStringln(flux,"FAIT"+id+":");
 		indent--;	
 	}
 	

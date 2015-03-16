@@ -207,8 +207,7 @@ void conditionnelle() : {}
 {
 <SI> {Make.startIf();} expression()
 <ALORS> {Make.condIf();} (instruction()";")*
-<SINON> {Make.elseIf();} (instruction()";")*
-<FSI> {Make.endIf();}
+( (<SINON> {Make.elseIf();} (instruction()";")*  <FSI> {Make.endIf();}) | (<FSI> {Make.elseIf(); Make.endIf();} ))
 }
 
 void iteration() : {}
