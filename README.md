@@ -18,7 +18,7 @@ The compiler is designed for new language files to be easy to write.
 
 Build
 -----
-*Here are some hint on how to proceed...*
+*Here are some hints on how to proceed...*
 ```BASH
 # Build the compiler, java 1.7+ needed
 cd src
@@ -27,7 +27,7 @@ javac -d ../bin compiler/*.java
 
 # Compile a file
 cd bin/
-java Yaka.java source.yak
+java Yaka source.yak
 ```
 
 Yaka language sample
