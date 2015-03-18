@@ -12,7 +12,9 @@
 options{
 	JDK_VERSION="1.7";
 	OUTPUT_DIRECTORY="compiler";
-	LOOKAHEAD=2;
+	LOOKAHEAD=1;
+	DEBUG_PARSER=true;
+	//FORCE_LA_CHECK=true;
 }
 
 PARSER_BEGIN(Yaka)
@@ -146,7 +148,7 @@ TOKEN  :
 /**************************************/
 void analyse() : {}
 {
-   <PROGRAMME><ident> { Make.begin_program(); }	
+   <PROGRAMME> <ident> { Make.begin_program(); }	
    ( declFonction() )*
    <PRINCIPAL> { Make.begin_principal(); }
    bloc()
@@ -156,14 +158,17 @@ void analyse() : {}
 
 void declFonction() : {}
 {
-	type() <FONCTION> <ident> paramForms()
+	type() <FONCTION> <ident> { /* declarer la fonction */ } 
+	"(" paramForms() ")"
 	bloc()
 	<FFONCTION>
 }
 
 void paramForms() : {}
 {
-	( paramForm() ("," paramForm() )* )?
+	( paramForm() 
+	  ("," paramForm() )* 
+	)?
 }
 
 void paramForm() : {}
@@ -171,7 +176,8 @@ void paramForm() : {}
 	type() <ident>
 }
 
-void bloc() : {}{
+void bloc() : {}
+{
  (declConst())*
  (declVar())*	{ Make.how_fat_are_you(); }	
    suiteInstr()  // modifié
@@ -184,7 +190,6 @@ void declConst() : {}
 
 void defConst() : {}
 {
-	
   <ident>  { Make.define_constant(); }
    "=" valConst() 
 }
@@ -230,9 +235,14 @@ void retourne() : {}
 
 void conditionnelle() : {}
 {
-<SI> {Make.startIf();} expression()
-<ALORS> {Make.condIf();} (instruction()";")*
-( (<SINON> {Make.elseIf();} (instruction()";")*  <FSI> {Make.endIf();}) | (<FSI> {Make.elseIf(); Make.endIf();} ))
+  <SI> {Make.startIf();} expression()
+  <ALORS> {Make.condIf();} (instruction()";")*
+  ( 
+    (<SINON> {Make.elseIf();} 
+      (instruction()";")*  
+    <FSI> {Make.endIf();}) 
+    | (<FSI> {Make.elseIf(); Make.endIf();} )
+  )
 }
 
 void iteration() : {}
@@ -286,24 +296,22 @@ void facteur() : {}
 void primaire (): {}
 {
    valeur()
- | "(" expression() ")" 
+ | "(" expression() ")"
  
 }
 
 void valeur () : {}
 { <entier> 	{ Make.value_int();}
-<<<<<<< HEAD
- | <ident> 	argumentsFonction() { Make.value_ident();}
-=======
- | <ident> 	( argumentsFonction())? { Make.value_ident();}
->>>>>>> c3696a2... Write the line for the structure of the main
+ | <ident> 	( "(" argumentsFonction() { /* Make.function_return */ } ")" 
+            | /* juste une variable */ { Make.value_ident();} )
  | <VRAI> 	{ Make.value_true();}
  | <FAUX> 	{ Make.value_false();}
 }
 
 void argumentsFonction() :{}
 {
-	( expression() ("," expression())*)?
+	(expression() ("," expression())*)?
+
 }
 
 
