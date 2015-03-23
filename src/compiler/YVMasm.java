@@ -53,7 +53,9 @@ public class YVMasm extends YVM {
 	 * @param offset emplacement réservé lors de l'appel
 	 */
 	public void ireturn(int offset){
-		Ecriture.ecrireStringln(flux,"ireturn "+offset,indent);
+		Ecriture.ecrireStringln(flux,";ireturn "+offset,indent);
+		Ecriture.ecrireStringln(flux,"pop ax",indent);
+		Ecriture.ecrireStringln(flux,"mov [bp+"+offset+"], ax");
 	}
 	
 	/**
