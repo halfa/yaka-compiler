@@ -158,7 +158,7 @@ void analyse() : {}
 
 void declFonction() : {}
 {
-	type() <FONCTION> <ident> { /* declarer la fonction */ } 
+	type() <FONCTION> <ident> { Make.create_fun(); } 
 	"(" paramForms() ")"
 	bloc()
 	<FFONCTION>
@@ -173,7 +173,7 @@ void paramForms() : {}
 
 void paramForm() : {}
 {
-	type() <ident>
+	type() <ident> { Make.new_param(); }
 }
 
 void bloc() : {}
@@ -230,7 +230,7 @@ void instruction() : {}
 
 void retourne() : {}
 {
-	<RETOURNE> expression()
+	<RETOURNE> expression() { Make.putReturn(); }
 }
 
 void conditionnelle() : {}
@@ -302,7 +302,7 @@ void primaire (): {}
 
 void valeur () : {}
 { <entier> 	{ Make.value_int();}
- | <ident> 	( "(" argumentsFonction() { /* Make.function_return */ } ")" 
+ | <ident> 	( {Make.begin_function_call();} "(" argumentsFonction() { Make.callFun(); } ")" 
             | /* juste une variable */ { Make.value_ident();} )
  | <VRAI> 	{ Make.value_true();}
  | <FAUX> 	{ Make.value_false();}

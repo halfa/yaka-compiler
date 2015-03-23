@@ -197,4 +197,40 @@ public class Make {
 	public static void value_false() {
 		Yaka.yvm.iconst(0);
 	}
+	
+	//ceci est un commentaire utile qui aide à la compréhension
+	/**
+	 * A appeler après la lecture du token RETOURNE
+	 */
+	public static void putReturn(){
+		//vide
+	}
+	
+	/**
+	 * Appelle la fonction
+	 */
+	public static void callFun(){
+		
+	}
+	
+	/**
+	 * Stocke le nom de la fonction
+	 */
+	public static void begin_function_call(){
+		
+	}
+	
+	/**
+	 * Créé une nouvelle fonction
+	 */
+	public static void create_fun(){
+		Declaration.createFun(YakaTokenManager.identLu);
+	}
+	
+	/**
+	 * Créé un nouveau paramètre à la fonction courante
+	 */
+	public static void new_param(){
+		Declaration.addParamter(YakaTokenManager.identLu);
+	}
 }
