@@ -132,20 +132,40 @@ public class Make {
 		Yaka.yvm.aLaLigne();
 	}
 
-	public static void whatRel() {
-		Yaka.expression.whatRel();
+	public static void whatRel(){
+		try {
+			Yaka.expression.whatRel();
+		} catch (YakaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void whatAdd() {
-		Yaka.expression.whatAdd();
+		try {
+			Yaka.expression.whatAdd();
+		} catch (YakaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void whatMul() {
-		Yaka.expression.whatMul();
+		try {
+			Yaka.expression.whatMul();
+		} catch (YakaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void whatNeg() {
-		Yaka.expression.whatNeg();
+		try {
+			Yaka.expression.whatNeg();
+		} catch (YakaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void value_int() {

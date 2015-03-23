@@ -1,5 +1,6 @@
 PROGRAMME max
-CONST
+PRINCIPAL
+CONST 
   aa=10,
   ba=VRAI,
   cc=aa;
@@ -9,4 +10,5 @@ CONST
   c2=c1+3*c1-aa;
   b1=ba OU VRAI;
   b2=(c1 <= (c2+4));
+ FPRINCIPAL
 FPROGRAMME
