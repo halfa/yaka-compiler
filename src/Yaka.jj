@@ -236,10 +236,10 @@ void retourne() : {}
 void conditionnelle() : {}
 {
   <SI> {Make.startIf();} expression()
-  <ALORS> {Make.condIf();} (instruction()";")*
+  <ALORS> {Make.condIf();} suiteInstr()
   ( 
     (<SINON> {Make.elseIf();} 
-      (instruction()";")*  
+      suiteInstr() 
     <FSI> {Make.endIf();}) 
     | (<FSI> {Make.elseIf(); Make.endIf();} )
   )
@@ -248,7 +248,7 @@ void conditionnelle() : {}
 void iteration() : {}
 { <TANTQUE> 			{Make.startLoop();} 
 expression()  			{Make.condLoop();} 
-<FAIRE> (instruction()";")* 
+<FAIRE> suiteInstr() 
 <FAIT> 					{Make.endLoop();} }
 
 void affectation() : {}
