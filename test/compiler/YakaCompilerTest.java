@@ -51,7 +51,8 @@ public class YakaCompilerTest {
 			} else {
 				String s1 = scf1.nextLine().replaceAll("\\s+$", "");
 				String s2 = scf2.nextLine().replaceAll("\\s+$", "");
-
+				
+				
 
 				
 				assertTrue(s1.equals(s2));
