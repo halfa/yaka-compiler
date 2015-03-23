@@ -30,8 +30,7 @@ public class YakaCompilerTest {
 			f1 = new File(genFile);
 			scf1 = new Scanner(f1);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			fail("No generated file found");
+			assertTrue(false);
 		}
 
 		
@@ -42,8 +41,6 @@ public class YakaCompilerTest {
 			e.printStackTrace();
 			assertTrue(false);
 		}
-		
-
 		
 		while (scf2.hasNext()) {
 			if (!scf1.hasNext()) {
@@ -73,4 +70,14 @@ public class YakaCompilerTest {
 
 	}
 
+//	@Test
+//	public void max2Test()throws FileNotFoundException {
+//		String[] args = { "./test/max2.yak" };
+//		Yaka.main(args);
+//
+//		
+//		testFile("./max.asm","./test/ref/max2.asm");
+//
+//
+//	}
 }
