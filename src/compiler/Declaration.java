@@ -57,5 +57,21 @@ public class Declaration {
 		nbVariables++;
 	}
 	// Créer une variable à partir d'un autre identifiant est impossible
+	
+	/**
+	 * Déclare une fonction, toujours sans paramètres
+	 */
+	public static void createFun(String name){
+		currentFunction = new IdFun(currentType);
+		TabIdent.addIdent(name, currentFunction);
+	}
+	/**
+	 * Ajoute un paramètre à la fonction courante
+	 */
+	public static void addParameter(String name){
+		currentFunction.addParameter(name, new IdVar(currentType));
+	}
+	
+	
 
 }

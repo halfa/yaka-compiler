@@ -51,6 +51,13 @@ public class IdFun extends Ident {
 	}
 	
 	/**
+	 * TODO retourne l'offset de retour de la fonction
+	 * 
+	 */
+	public int getReturnOffset(){
+		return 0;
+	}
+	/**
 	 * String output for debug purpose
 	 */
 	public String toString(){
