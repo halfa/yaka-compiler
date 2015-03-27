@@ -25,25 +25,46 @@ cd src
 javacc Yaka.jj
 javac -d ../bin compiler/*.java
 
-# Compile a file
+# Compile a yaka file into asm
 cd bin/
-java Yaka source.yak
+java compiler.Yaka source.yak
 ```
 
 Yaka language sample
 --------------------
 
 ```YAKA
-PROGRAMME max
-  CONST
-    aa=10,
-    ba=VRAI,
-    cc=aa;
-  VAR ENTIER c1, c2, c3, c4, c5;
-  VAR BOOLEEN b1, b2;
-    c1=(aa+cc/2)/5;
-    c2=c1+3*c1-aa;
-    b2=(c1<=(c2+4));
+PROGRAMME param
+ENTIER FONCTION max (ENTIER i, ENTIER j)
+VAR BOOLEEN b, c;
+VAR ENTIER k;
+	k =i;
+	SI k>j ALORS RETOURNE k
+	SINON RETOURNE j FSI
+FFONCTION
+
+ENTIER FONCTION min (ENTIER i, ENTIER j)
+	SI i<j ALORS RETOURNE i
+		SINON RETOURNE j FSI
+	FFONCTION
+
+ENTIER FONCTION sup (ENTIER i, ENTIER j)
+	RETOURNE i>j
+FFONCTION
+
+PRINCIPAL 
+VAR ENTIER i, j, k;
+VAR BOOLEEN b;
+	i=5;LIRE(j);ALALIGNE;
+	k=max (i,min(j,5))+2;
+	b=sup(1+max(i,j-5),
+			min(i*2,j));
+	  ALALIGNE;
+	ECRIRE(k);
+	ALALIGNE;
+	ECRIRE(b);
+FPRINCIPAL
+
 FPROGRAMME
 ```
 
@@ -53,12 +74,11 @@ Roadmap
 Dealine    | Checkpoint
 -----------|-----------
 16/03/2015 | Test expressions & i/o, code review
-07/03/2015 | Final code review
+07/04/2015 | Final code review
 11/05/2015 | Exam
 
 Todo List
 ---------
-
-* Basic compiler
+* Better error handling
 * Multithread
 * String builder for generation
