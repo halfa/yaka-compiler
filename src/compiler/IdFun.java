@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Gestion des fonctions, de leur type et paramètres.
- *
+ * Gestion des fonctions usuelles, de leur paramètres et valeur de retour.
+ * 
  */
-public class IdFun extends Ident {
-
+public class IdFun extends IdFPrinc {
+	
+	// L'ordre des paramètres est important car c'est 
 	private List<Parameter> parameters;
 	
 	/****************************************
@@ -52,11 +53,11 @@ public class IdFun extends Ident {
 	
 	/**
 	 * TODO retourne l'offset de retour de la fonction
-	 * 
 	 */
 	public int getReturnOffset(){
 		return 0;
 	}
+	
 	/**
 	 * String output for debug purpose
 	 */

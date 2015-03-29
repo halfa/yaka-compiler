@@ -198,25 +198,25 @@ public class Make {
 		Yaka.yvm.iconst(0);
 	}
 	
-	//ceci est un commentaire utile qui aide à la compréhension
-	/**
-	 * A appeler après la lecture du token RETOURNE
-	 */
-	public static void putReturn(){
-		//vide
-	}
+	/*****************************************
+	 * Manipulation de fonctions
+	 *****************************************/
 	
-	/**
-	 * Appelle la fonction
-	 */
-	public static void callFun(){
-		
+	public static void putReturn(){
+		Yaka.yvm.ireturn(TabIdent.countLocalVars()*2);
 	}
 	
 	/**
 	 * Stocke le nom de la fonction
 	 */
 	public static void begin_function_call(){
+		
+	}
+	
+	/**
+	 * Appelle la fonction
+	 */
+	public static void callFun(){
 		
 	}
 	
@@ -231,6 +231,6 @@ public class Make {
 	 * Créé un nouveau paramètre à la fonction courante
 	 */
 	public static void new_param(){
-		Declaration.addParamter(YakaTokenManager.identLu);
+		Declaration.addParameter(YakaTokenManager.identLu);
 	}
 }
