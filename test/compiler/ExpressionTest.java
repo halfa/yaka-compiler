@@ -36,7 +36,7 @@ public class ExpressionTest {
 		assertEquals(Type.ERROR, e.syntaxeEvaluation());
 	}
 
-	@Test
+	@Test(expected=YakaException.class)
 	public void testEvaluateArithBoolBool() throws YakaException {
 
 		e.pushOp(Operator.MINUS);
