@@ -9,6 +9,8 @@ public class Expression {
 	private YVM yvm;
 	private Stack<Operator> ops;
 	private Stack<Type> types;
+	
+	private IdFun currentFunctionCall;
 
 	public Expression(YVM y) {
 		yvm = y;
@@ -257,6 +259,14 @@ public class Expression {
 			return false;
 		}
 		return true;
+	}
+
+	public IdFun getCurrentFunctionCall() {
+		return currentFunctionCall;
+	}
+
+	public void setCurrentFunctionCall(IdFun currentFunctionCall) {
+		this.currentFunctionCall = currentFunctionCall;
 	}
 
 }

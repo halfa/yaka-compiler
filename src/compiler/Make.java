@@ -19,11 +19,11 @@ public class Make {
 		Yaka.expression = new Expression(Yaka.yvm);
 		Yaka.yvm.entete();
 	}
-	
+
 	public static void begin_principal(){
 		Yaka.yvm.begin_principal();
 	}
-	
+
 	public static void startIf(){
 		Yaka.yvm.startIf();
 	}
@@ -37,19 +37,19 @@ public class Make {
 	public static void endIf(){
 		Yaka.yvm.endIf();
 	}
-	
+
 	public static void end_program(){
 		Yaka.yvm.queue();
 	}
-	
+
 	public static void startLoop(){
 		Yaka.yvm.startLoop();
 	}
-	
+
 	public static void endLoop(){
 		Yaka.yvm.endLoop();
 	}
-	
+
 	public static void condLoop(){
 		Yaka.yvm.condLoop();
 	}
@@ -197,36 +197,39 @@ public class Make {
 	public static void value_false() {
 		Yaka.yvm.iconst(0);
 	}
-	
+
 	/*****************************************
 	 * Manipulation de fonctions
 	 *****************************************/
-	
+
 	public static void putReturn(){
 		Yaka.yvm.ireturn(TabIdent.countLocalVars()*2);
 	}
-	
+
 	/**
-	 * Stocke le nom de la fonction
+	 * Stocke le nom de la fonction 
 	 */
 	public static void begin_function_call(){
-		
+		try {
+			// On vérifie que l'identifiant est bien celui d'une fonction
+			Yaka.expression.setCurrentFunctionCall(TabIdent.getFunction(YakaTokenManager.identLu));
+		} catch (Exception e) { System.err.println(e); }
 	}
-	
+
 	/**
 	 * Appelle la fonction
 	 */
 	public static void callFun(){
-		
+
 	}
-	
+
 	/**
 	 * Créé une nouvelle fonction
 	 */
 	public static void create_fun(){
 		Declaration.createFun(YakaTokenManager.identLu);
 	}
-	
+
 	/**
 	 * Créé un nouveau paramètre à la fonction courante
 	 */
