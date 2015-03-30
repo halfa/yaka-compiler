@@ -8,6 +8,7 @@ import compiler.Expression;
 import compiler.Operator;
 import compiler.Type;
 import compiler.YVM;
+import exception.YakaException;
 
 public class ExpressionTest {
 
@@ -19,7 +20,7 @@ public class ExpressionTest {
 	}
 
 	@Test
-	public void testEvaluateArithIntInt() {
+	public void testEvaluateArithIntInt() throws YakaException {
 		e.pushOp(Operator.MINUS);
 		e.pushValue(Type.INTEGER);
 		e.pushValue(Type.INTEGER);
@@ -27,7 +28,7 @@ public class ExpressionTest {
 	}
 
 	@Test
-	public void testEvaluateArithBoolInt() {
+	public void testEvaluateArithBoolInt() throws YakaException {
 
 		e.pushOp(Operator.MINUS);
 		e.pushValue(Type.BOOLEAN);
@@ -36,7 +37,7 @@ public class ExpressionTest {
 	}
 
 	@Test
-	public void testEvaluateArithBoolBool() {
+	public void testEvaluateArithBoolBool() throws YakaException {
 
 		e.pushOp(Operator.MINUS);
 		e.pushValue(Type.BOOLEAN);
@@ -46,7 +47,7 @@ public class ExpressionTest {
 	}
 
 	@Test
-	public void testEvaluateLogicIntInt() {
+	public void testEvaluateLogicIntInt() throws YakaException {
 
 		e.pushOp(Operator.AND);
 		e.pushValue(Type.INTEGER);
@@ -55,7 +56,7 @@ public class ExpressionTest {
 	}
 
 	@Test
-	public void testEvaluateLogicBoolInt() {
+	public void testEvaluateLogicBoolInt() throws YakaException {
 
 		e.pushOp(Operator.AND);
 		e.pushValue(Type.BOOLEAN);
@@ -64,7 +65,7 @@ public class ExpressionTest {
 	}
 
 	@Test
-	public void testEvaluateLogicIntBool() {
+	public void testEvaluateLogicIntBool() throws YakaException {
 
 		e.pushOp(Operator.AND);
 		e.pushValue(Type.INTEGER);
@@ -74,7 +75,7 @@ public class ExpressionTest {
 	}
 
 	@Test
-	public void testEvaluateCompBoolInt() {
+	public void testEvaluateCompBoolInt() throws YakaException {
 
 		e.pushOp(Operator.DIFF);
 		e.pushValue(Type.BOOLEAN);
@@ -83,7 +84,7 @@ public class ExpressionTest {
 	}
 
 	@Test
-	public void testEvaluateCompBoolBool() {
+	public void testEvaluateCompBoolBool() throws YakaException {
 
 		e.pushOp(Operator.DIFF);
 		e.pushValue(Type.BOOLEAN);
@@ -93,7 +94,7 @@ public class ExpressionTest {
 	}
 
 	@Test
-	public void testEvaluateCompIntInt() {
+	public void testEvaluateCompIntInt() throws YakaException {
 
 		e.pushOp(Operator.DIFF);
 		e.pushValue(Type.INTEGER);

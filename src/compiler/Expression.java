@@ -1,6 +1,8 @@
 package compiler;
 import java.util.Stack;
 
+import exception.YakaException;
+
 public class Expression {
 
 	private YVM yvm;
@@ -15,10 +17,8 @@ public class Expression {
 	}
 
 	/**
-	 * Push the value to the different stacks
-	 * 
-	 * @param i
-	 *            : the ident to push
+	 * Met la valeur et le type sur le sommet de leur piles respectives 
+	 * @param i l'identifiant de la variable
 	 */
 	public void pushValue(Ident i) {
 		Type t = i.getType();
@@ -27,26 +27,14 @@ public class Expression {
 		if (t == Type.INTEGER)
 			if (i instanceof IdVar)
 				yvm.iload(((IdVar) i).getOffset());
-			else
+			else if (i instanceof IdConst)
 				yvm.iconst(((IdConst) i).getVal());
+			else {
+				// FIXME UnknowIdentExeption
+			}
 	}
-
 	/**
-	 * Push the value to the different stacks
-	 * 
-	 * @param i
-	 *            the integer to push
-	 */
-	public void pushValue(int i) {
-		types.push(Type.INTEGER);
-		yvm.iconst(i);
-	}
-
-	/**
-	 * push the operator to the stack
-	 * 
-	 * @param o
-	 *            the operator
+	 * Met l'opérateur sur la pile opérateur
 	 */
 	public void pushOp(Operator o) {
 		ops.push(o);
@@ -54,9 +42,7 @@ public class Expression {
 	}
 
 	/**
-	 * only useful for test
-	 * 
-	 * @param t
+	 * Utilisé pour les tests
 	 */
 	public void pushValue(Type t) {
 		types.push(t);
@@ -79,10 +65,10 @@ public class Expression {
 	}
 	
 	/**
-	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM
-	 * pour un opAdd.
+	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM pour un opAdd.
+	 * @throws YakaException 
 	 */
-	public void whatAdd(){
+	public void whatAdd() throws YakaException{
 		Operator op = popOp();
 		switch (op) {
 		case PLUS :
@@ -95,16 +81,15 @@ public class Expression {
 			yvm.ior();
 			break;
 		default:
-			System.err.println("Wrong Operator at the top of the stack, and opAdd is expected");
-			break;
+			throw new YakaException("Wrong Operator at the top of the stack, and opAdd is expected");
 		}				
 	}
 	
 	/**
-	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM
-	 * pour un opMul.
+	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM pour un opMul.
+	 * @throws YakaException 
 	 */
-	public void whatMul(){
+	public void whatMul() throws YakaException{
 		Operator op = popOp();
 		switch (op) {
 		case MULT :
@@ -117,16 +102,15 @@ public class Expression {
 			yvm.iand();
 			break;
 		default:
-			System.err.println("Wrong Operator at the top of the stack, and opMul is expected");
-			break;
+			throw new YakaException("Wrong Operator at the top of the stack, and opMul is expected");
 		}			
 	}
 	
 	/**
-	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM
-	 * pour un opNeg.
+	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM pour un opNeg.
+	 * @throws YakaException 
 	 */
-	public void whatNeg(){
+	public void whatNeg() throws YakaException{
 		Operator op = popOp();
 		switch (op) {
 		case OPP :
@@ -136,16 +120,15 @@ public class Expression {
 			yvm.inot();
 			break;
 		default:
-			System.err.println("Wrong Operator at the top of the stack, and opNeg is expected");
-			break;
+			throw new YakaException("Wrong Operator at the top of the stack, and opNeg is expected");
 		}
 	}
 	
 	/**
-	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM
-	 * pour un opRel.
+	 * Teste l'opérateur en sommet de pile et appelle la fonction associée de YVM pour un opRel.
+	 * @throws YakaException 
 	 */
-	public void whatRel(){
+	public void whatRel() throws YakaException{
 		Operator op = popOp();
 		switch (op) {
 		case EGAL :
@@ -167,20 +150,20 @@ public class Expression {
 			yvm.isupegal();
 			break;
 		default:
-			System.err.println("Wrong Operator at the top of the stack, and opRel is expected");
-			break;
+			throw new YakaException("Wrong Operator at the top of the stack, and opRel is expected");
 		}
 	}
 
 	/**
-	 * syntax test
-	 * 
+	 * Evalue et test la validitée du typage.
 	 * @return the type of expression result
+	 * @throws YakaException 
 	 */
-	public Type syntaxeEvaluation() {
+	public Type syntaxeEvaluation() throws YakaException {
 		Type t1 = types.pop();
 		Type t2 = types.pop();
 		Operator op = ops.pop();
+		
 		switch (t1) {
 		case INTEGER:
 			switch (t2) {
@@ -201,7 +184,7 @@ public class Expression {
 				}
 			default:
 				types.push(Type.ERROR);
-				return Type.ERROR;
+				throw new YakaException("Error in expression: use of boolean operator on an integer");
 			}
 		case BOOLEAN:
 			switch (t2) {
@@ -224,18 +207,20 @@ public class Expression {
 		}
 
 		ops.push(op);
-
+		/* aucun cas ne correspond */
+		
 		types.push(Type.ERROR);
-		return Type.ERROR;
+		throw new YakaException ("Error in expression: use of integer operator on a boolean");
 	}
 
 
 	/**
-	 * evaluate the expression on the top of the stack
-	 * 
-	 * @return true if no syntax error
+	 * Evalue l'expression sur le haut de la pile
+	 * @return true si l'opération se déroule sans erreur
+	 * @return false sinon
+	 * @throws YakaException 
 	 */
-	public boolean evaluate() {
+	public boolean evaluate() throws YakaException {
 		Operator op = ops.peek();
 		if (syntaxeEvaluation() == Type.ERROR)
 			return false;

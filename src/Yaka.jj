@@ -12,6 +12,9 @@
 options{
 	JDK_VERSION="1.7";
 	OUTPUT_DIRECTORY="compiler";
+	LOOKAHEAD=1;
+	DEBUG_PARSER=true;
+	//FORCE_LA_CHECK=true;
 }
 
 PARSER_BEGIN(Yaka)
@@ -145,13 +148,36 @@ TOKEN  :
 /**************************************/
 void analyse() : {}
 {
-   <PROGRAMME><ident> { Make.begin_program(); }	
+   <PROGRAMME> <ident> { Make.begin_program(); }	
+   ( declFonction() )*
+   <PRINCIPAL> { Make.begin_principal(); }
    bloc()
+   <FPRINCIPAL>
    <FPROGRAMME> { Make.end_program(); }
 }
 
+void declFonction() : {}
+{
+	type() <FONCTION> <ident> { Make.create_fun(); } 
+	"(" paramForms() ")"
+	bloc()
+	<FFONCTION>
+}
 
-void bloc() : {}{
+void paramForms() : {}
+{
+	( paramForm() 
+	  ("," paramForm() )* 
+	)?
+}
+
+void paramForm() : {}
+{
+	type() <ident> { Make.new_param(); }
+}
+
+void bloc() : {}
+{
  (declConst())*
  (declVar())*	{ Make.how_fat_are_you(); }	
    suiteInstr()  // modifié
@@ -164,7 +190,6 @@ void declConst() : {}
 
 void defConst() : {}
 {
-	
   <ident>  { Make.define_constant(); }
    "=" valConst() 
 }
@@ -201,19 +226,29 @@ void suiteInstr() : {}
 { (instruction() (";" (instruction())? )*)? }
 
 void instruction() : {}
-{ affectation() | lecture() | ecriture() | iteration() | conditionnelle()}
+{ affectation() | lecture() | ecriture() | iteration() | conditionnelle() | retourne() }
+
+void retourne() : {}
+{
+	<RETOURNE> expression() { Make.putReturn(); }
+}
 
 void conditionnelle() : {}
 {
-<SI> {Make.startIf();} expression()
-<ALORS> {Make.condIf();} (instruction()";")*
-( (<SINON> {Make.elseIf();} (instruction()";")*  <FSI> {Make.endIf();}) | (<FSI> {Make.elseIf(); Make.endIf();} ))
+  <SI> {Make.startIf();} expression()
+  <ALORS> {Make.condIf();} suiteInstr()
+  ( 
+    (<SINON> {Make.elseIf();} 
+      suiteInstr() 
+    <FSI> {Make.endIf();}) 
+    | (<FSI> {Make.elseIf(); Make.endIf();} )
+  )
 }
 
 void iteration() : {}
 { <TANTQUE> 			{Make.startLoop();} 
 expression()  			{Make.condLoop();} 
-<FAIRE> (instruction()";")* 
+<FAIRE> suiteInstr() 
 <FAIT> 					{Make.endLoop();} }
 
 void affectation() : {}
@@ -261,15 +296,22 @@ void facteur() : {}
 void primaire (): {}
 {
    valeur()
- | "(" expression() ")" 
+ | "(" expression() ")"
  
 }
 
 void valeur () : {}
 { <entier> 	{ Make.value_int();}
- | <ident> 	{ Make.value_ident();}
+ | <ident> 	( {Make.begin_function_call();} "(" argumentsFonction() { Make.callFun(); } ")" 
+            | /* juste une variable */ { Make.value_ident();} )
  | <VRAI> 	{ Make.value_true();}
  | <FAUX> 	{ Make.value_false();}
+}
+
+void argumentsFonction() :{}
+{
+	(expression() ("," expression())*)?
+
 }
 
 

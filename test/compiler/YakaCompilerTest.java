@@ -40,25 +40,26 @@ public class YakaCompilerTest {
 			scf2 = new Scanner(f2);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			fail("No generated reference found");
+			assertTrue(false);
 		}
 		
-		System.out.println("banane");
 
 		
 		while (scf2.hasNext()) {
 			if (!scf1.hasNext()) {
-				fail("Not the same number of line");
+				assertTrue(false);
 			} else {
 				String s1 = scf1.nextLine().replaceAll("\\s+$", "");
 				String s2 = scf2.nextLine().replaceAll("\\s+$", "");
-
+				
+				
 
 				
 				assertTrue(s1.equals(s2));
 
 			}
 		}
+
 	}
 
 	@Test

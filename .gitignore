@@ -12,3 +12,5 @@ src/compiler/TokenMgrError.java
 src/compiler/Yaka.java
 src/compiler/YakaConstants.java
 src/compiler/YakaTokenManager.java
+*.asm
+*.yvm

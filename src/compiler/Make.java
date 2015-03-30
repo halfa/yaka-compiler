@@ -20,6 +20,10 @@ public class Make {
 		Yaka.yvm.entete();
 	}
 	
+	public static void begin_principal(){
+		Yaka.yvm.begin_principal();
+	}
+	
 	public static void startIf(){
 		Yaka.yvm.startIf();
 	}
@@ -128,20 +132,40 @@ public class Make {
 		Yaka.yvm.aLaLigne();
 	}
 
-	public static void whatRel() {
-		Yaka.expression.whatRel();
+	public static void whatRel(){
+		try {
+			Yaka.expression.whatRel();
+		} catch (YakaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void whatAdd() {
-		Yaka.expression.whatAdd();
+		try {
+			Yaka.expression.whatAdd();
+		} catch (YakaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void whatMul() {
-		Yaka.expression.whatMul();
+		try {
+			Yaka.expression.whatMul();
+		} catch (YakaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void whatNeg() {
-		Yaka.expression.whatNeg();
+		try {
+			Yaka.expression.whatNeg();
+		} catch (YakaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void value_int() {
@@ -172,5 +196,41 @@ public class Make {
 
 	public static void value_false() {
 		Yaka.yvm.iconst(0);
+	}
+	
+	/*****************************************
+	 * Manipulation de fonctions
+	 *****************************************/
+	
+	public static void putReturn(){
+		Yaka.yvm.ireturn(TabIdent.countLocalVars()*2);
+	}
+	
+	/**
+	 * Stocke le nom de la fonction
+	 */
+	public static void begin_function_call(){
+		
+	}
+	
+	/**
+	 * Appelle la fonction
+	 */
+	public static void callFun(){
+		
+	}
+	
+	/**
+	 * Créé une nouvelle fonction
+	 */
+	public static void create_fun(){
+		Declaration.createFun(YakaTokenManager.identLu);
+	}
+	
+	/**
+	 * Créé un nouveau paramètre à la fonction courante
+	 */
+	public static void new_param(){
+		Declaration.addParameter(YakaTokenManager.identLu);
 	}
 }

@@ -12,6 +12,8 @@ public class Declaration {
 	static private String currentIdent;
 	// Utilisé pour le stockage des types par les variables
 	static private Type currentType;
+	// Utilisé pour le stockage de la fonction courante
+	static private IdFun currentFunction;
 	static private int nbVariables;
 
 	// Définition pour le type booléen
@@ -19,25 +21,13 @@ public class Declaration {
 	static public int VRAI = -1;
 
 	/* GetSet */
-	public static int getNbVariables() {
-		return nbVariables;
-	}
-
-	public static void setNbVariables(int nbVariables) {
-		Declaration.nbVariables = nbVariables;
-	}
-
-	public static void setCurrentIdent(String s) {
-		currentIdent = s;
-	}
-
-	public static String getCurrentIdent() {
-		return currentIdent;
-	}
-
-	public static void setCurrentType(Type currentType) {
-		Declaration.currentType = currentType;
-	}
+	public static int getNbVariables() { return nbVariables; }
+	public static void setNbVariables(int n){ nbVariables = n; }
+	public static void setCurrentIdent(String s) { currentIdent = s; }
+	public static String getCurrentIdent() { return currentIdent; }
+	public static void setCurrentType(Type t) { currentType = t; }
+	public static IdFun getCurrentFunction() { return currentFunction; }
+	public static void setCurrentFunction() { currentFunction = new IdFun(currentType); }
 
 	/**
 	 * Initialise le couple constant (déclaration, valeur) dans la table interne.
@@ -67,5 +57,21 @@ public class Declaration {
 		nbVariables++;
 	}
 	// Créer une variable à partir d'un autre identifiant est impossible
-
+	
+	/**
+	 * Déclare une fonction, toujours sans paramètres
+	 */
+	public static void createFun(String name){
+		setCurrentFunction();
+		TabIdent.addIdent(name, currentFunction);
+	}
+	/**
+	 * Ajoute un paramètre à la fonction courante et à la table des identifiants
+	 */
+	public static void addParameter(String name){
+		IdVar id = new IdVar(currentType);
+		currentFunction.addParameter(name, id);
+		TabIdent.addIdent(name, id);
+	}
+	
 }
