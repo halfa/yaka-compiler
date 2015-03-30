@@ -1,6 +1,7 @@
 package compiler;
 import java.util.Stack;
 
+import exception.UnknownIdentException;
 import exception.YakaException;
 
 public class Expression {
@@ -19,8 +20,9 @@ public class Expression {
 	/**
 	 * Met la valeur et le type sur le sommet de leur piles respectives 
 	 * @param i l'identifiant de la variable
+	 * @throws UnknownIdentException 
 	 */
-	public void pushValue(Ident i) {
+	public void pushValue(Ident i) throws UnknownIdentException {
 		Type t = i.getType();
 		types.push(t);
 
@@ -30,6 +32,7 @@ public class Expression {
 			else if (i instanceof IdConst)
 				yvm.iconst(((IdConst) i).getVal());
 			else {
+				throw new UnknownIdentException(""+t);
 				// FIXME UnknowIdentExeption
 			}
 	}

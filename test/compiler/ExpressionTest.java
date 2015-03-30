@@ -27,7 +27,7 @@ public class ExpressionTest {
 		assertEquals(Type.INTEGER, e.syntaxeEvaluation());
 	}
 
-	@Test
+	@Test(expected=YakaException.class)
 	public void testEvaluateArithBoolInt() throws YakaException {
 
 		e.pushOp(Operator.MINUS);
@@ -46,7 +46,7 @@ public class ExpressionTest {
 
 	}
 
-	@Test
+	@Test(expected=YakaException.class)
 	public void testEvaluateLogicIntInt() throws YakaException {
 
 		e.pushOp(Operator.AND);
@@ -64,7 +64,7 @@ public class ExpressionTest {
 		assertEquals(Type.BOOLEAN, e.syntaxeEvaluation());
 	}
 
-	@Test
+	@Test(expected=YakaException.class)
 	public void testEvaluateLogicIntBool() throws YakaException {
 
 		e.pushOp(Operator.AND);
@@ -74,7 +74,7 @@ public class ExpressionTest {
 
 	}
 
-	@Test
+	@Test(expected=YakaException.class)
 	public void testEvaluateCompBoolInt() throws YakaException {
 
 		e.pushOp(Operator.DIFF);
