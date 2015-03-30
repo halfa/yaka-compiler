@@ -1,4 +1,5 @@
 PROGRAMME iter1
+PRINCIPAL
 VAR ENTIER s, i, n;
 	ECRIRE("n=");
 	LIRE(n);
@@ -15,4 +16,5 @@ VAR ENTIER s, i, n;
 	ALALIGNE;
 	ECRIRE("s=");
 	ECRIRE(s);
+FPRINCIPAL
 FPROGRAMME
