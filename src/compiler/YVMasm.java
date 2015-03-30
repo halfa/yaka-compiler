@@ -26,6 +26,10 @@ public class YVMasm extends YVM {
 		Ecriture.ecrireStringln(flux,"main :",0);
 	}
 	
+	public void begin_function(String name){
+		Ecriture.ecrireStringln(flux, name + " :",0);
+	}
+	
 	/**
 	 * En début de fonction, réserve la place pour le nombre de variables
 	 * placé en paramètre

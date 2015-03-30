@@ -54,8 +54,12 @@ public class Make {
 		Yaka.yvm.condLoop();
 	}
 
-	public static void how_fat_are_you() {
+	public static void how_fat_are_you_main() {
 		Yaka.yvm.ouvrePrinc(Declaration.getNbVariables());
+	}
+	
+	public static void how_fat_are_you() {
+		Yaka.yvm.ouvreBloc(Declaration.getNbVariables());
 	}
 
 	public static void define_constant() {
@@ -199,35 +203,51 @@ public class Make {
 	}
 
 	/*****************************************
-	 * Manipulation de fonctions
+	 * Manipulation de fonctions : Appel
 	 *****************************************/
 
+	/**
+	 * Retourne 
+	 */
 	public static void putReturn(){
 		Yaka.yvm.ireturn(TabIdent.countLocalVars()*2);
 	}
 
 	/**
-	 * Stocke le nom de la fonction 
+	 * Stocke le nom de la fonction (si elle existe) sur le haut de la pile.
 	 */
 	public static void begin_function_call(){
-		try {
-			// On vérifie que l'identifiant est bien celui d'une fonction
-			Yaka.expression.setCurrentFunctionCall(TabIdent.getFunction(YakaTokenManager.identLu));
-		} catch (Exception e) { System.err.println(e); }
+		try { Yaka.expression.pushFunction(YakaTokenManager.identLu);
+		} catch (Exception e) { System.err.println(e); e.printStackTrace(); }
 	}
-
 	/**
-	 * Appelle la fonction
+	 * Ajoute un nouveau paramètre à l'appel courant.
+	 *  - evaluer l'expression
+	 * 	- vérifie le type du paramètre
+	 *  - le push au dessus de la pile 
 	 */
-	public static void callFun(){
-
+	public static void addParameterToCall(){
+		
+	}
+	
+	/**
+	 * Appelle la fonction.
+	 * Les paramètres ont été mis au préalable sur le haut de la pile
+	 */
+	public static void callFunction(){
+		Yaka.yvm.call(Yaka.expression.popFunction());
 	}
 
+	/*****************************************
+	 * Manipulation de fonctions : Déclaration
+	 *****************************************/
+	
 	/**
 	 * Créé une nouvelle fonction
 	 */
 	public static void create_fun(){
 		Declaration.createFun(YakaTokenManager.identLu);
+		Yaka.yvm.begin_function(YakaTokenManager.identLu);
 	}
 
 	/**
@@ -235,5 +255,12 @@ public class Make {
 	 */
 	public static void new_param(){
 		Declaration.addParameter(YakaTokenManager.identLu);
+	}
+	
+	/**
+	 * Ferme le bloc courant (leave) et enregistre la fonction dans la table
+	 */
+	public static void closeBlock(){
+		Yaka.yvm.fermeBloc(Declaration.getCurrentFunction().getNumberOfParameters());
 	}
 }

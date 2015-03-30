@@ -32,19 +32,27 @@ public class TabIdent {
 			throw new UnknownFunctionException(key);
 	}
 	
+	static IdFun getLastFunction() throws UnknownFunctionException{
+		System.out.println(Yaka.expression.popFunction());
+		return getFunction(Yaka.expression.popFunction());
+	}
+	
 	static void addIdent(String key, Ident id) {
 		values.put(key, id);
 	}
 	
-	static void addFunction(String key, IdFun id){
+	static void finalizeFunction(String key, IdFun id){
+		System.out.println("Add "+key+" to table function");
 		functions.put(key, id);
+		
 	}
-
+	
 	static boolean existIdent(String key) {
 		return values.containsKey(key);
 	}
 	
 	static boolean existFunction(String key){
+		System.out.println("Check "+key+"");
 		return functions.containsKey(key);
 	}
 	

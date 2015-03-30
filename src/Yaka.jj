@@ -161,7 +161,7 @@ void declFonction() : {}
 	type() <FONCTION> <ident> { Make.create_fun(); } 
 	"(" paramForms() ")"
 	bloc()
-	<FFONCTION>
+	<FFONCTION> { Make.closeBlock(); }
 }
 
 void paramForms() : {}
@@ -302,7 +302,7 @@ void primaire (): {}
 
 void valeur () : {}
 { <entier> 	{ Make.value_int();}
- | <ident> 	( {Make.begin_function_call();} "(" argumentsFonction() { Make.callFun(); } ")" 
+ | <ident> 	( {Make.begin_function_call();} "(" argumentsFonction() { Make.callFunction(); } ")" 
             | /* juste une variable */ { Make.value_ident();} )
  | <VRAI> 	{ Make.value_true();}
  | <FAUX> 	{ Make.value_false();}

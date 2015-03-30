@@ -29,13 +29,17 @@ public class YVM {
 		Ecriture.ecrireStringln(flux,"main :",0);
 	}
 	
+	public void begin_function(String name){
+		Ecriture.ecrireStringln(flux,name+" :",0);
+	}
+	
 	/**
 	 * En début de fonction, réserve la place pour le nombre de variables
 	 * placé en paramètre
 	 * @param var le nombre de variables
 	 */
 	public void ouvreBloc(int var){
-		Ecriture.ecrireStringln(flux, "ouvrebloc "+var*2, indent);
+		Ecriture.ecrireStringln(flux, "ouvrebloc "+var*2,0);
 	}
 	
 	/**
@@ -44,7 +48,7 @@ public class YVM {
 	 * @param param le nombre de paramètres
 	 */
 	public void fermeBloc(int param){
-		Ecriture.ecrireStringln(flux, "fermebloc "+param*2, indent);
+		Ecriture.ecrireStringln(flux, "fermebloc "+param*2,0);
 	}
 	
 	/**
@@ -337,7 +341,7 @@ public class YVM {
 	 * @param nbVar
 	 */
 	public void ouvrePrinc(int nbVar){
-		Ecriture.ecrireStringln(flux,"ouvrePrinc "+nbVar*2,indent);
+		Ecriture.ecrireStringln(flux,"ouvrePrinc "+nbVar*2,0);
 	}; 
 
 	/**

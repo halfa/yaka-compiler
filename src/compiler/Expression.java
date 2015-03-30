@@ -1,6 +1,9 @@
 package compiler;
 import java.util.Stack;
 
+import javax.swing.TransferHandler;
+
+import exception.UnknownFunctionException;
 import exception.UnknownIdentException;
 import exception.YakaException;
 
@@ -10,13 +13,14 @@ public class Expression {
 	private Stack<Operator> ops;
 	private Stack<Type> types;
 	
-	private IdFun currentFunctionCall;
+	// Pile d'appel
+	private Stack<String> functionCall;
 
 	public Expression(YVM y) {
 		yvm = y;
 		ops = new Stack<Operator>();
 		types = new Stack<Type>();
-
+		functionCall = new Stack<String>();
 	}
 
 	/**
@@ -67,6 +71,27 @@ public class Expression {
 	 */
 	public Type popValue(){
 		return types.pop();
+	}
+	
+	/**
+	 * Ajoute une fonction à la pile d'appel.
+	 * Met également le compteur de paramètres de la fonction à -1
+	 * @throws UnknownFunctionException 
+	 */
+	public void pushFunction(String name) throws UnknownFunctionException{
+		System.out.println("Push "+name+" to stack");
+		if(TabIdent.existFunction(name)){
+			functionCall.push(name);
+		} else {
+			throw new exception.UnknownFunctionException(name);
+		}
+	}
+	
+	/**
+	 * Retourne le nom de la fonction qui se trouve en haut de la pile.
+	 */
+	public String popFunction() {
+		return functionCall.pop();
 	}
 	
 	/**
@@ -218,7 +243,6 @@ public class Expression {
 		throw new YakaException ("Error in expression: use of integer operator on a boolean");
 	}
 
-
 	/**
 	 * Evalue l'expression sur le haut de la pile
 	 * @return true si l'opération se déroule sans erreur
@@ -261,12 +285,6 @@ public class Expression {
 		return true;
 	}
 
-	public IdFun getCurrentFunctionCall() {
-		return currentFunctionCall;
-	}
-
-	public void setCurrentFunctionCall(IdFun currentFunctionCall) {
-		this.currentFunctionCall = currentFunctionCall;
-	}
-
+	
+	
 }

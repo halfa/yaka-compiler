@@ -14,7 +14,7 @@ public class Declaration {
 	static private Type currentType;
 	// Utilisé pour le stockage de la fonction courante
 	static private IdFun currentFunction;
-	static private String NameCurrentFunction; 
+	static private String NameCurrentFunction;
 	static private int nbVariables;
 
 	// Définition pour le type booléen
@@ -24,13 +24,18 @@ public class Declaration {
 	/* GetSet */
 	public static int getNbVariables() { return nbVariables; }
 	public static void setNbVariables(int n){ nbVariables = n; }
+	
 	public static void setCurrentIdent(String s) { currentIdent = s; }
 	public static String getCurrentIdent() { return currentIdent; }
+	
 	public static void setCurrentType(Type t) { currentType = t; }
+	
 	public static IdFun getCurrentFunction() { return currentFunction; }
 	public static void setCurrentFunction() { currentFunction = new IdFun(currentType); }
-	public static String getNameCurrentFunction(){return NameCurrentFunction;} // TODO
-	public static void setNameCurrentFunction(String s){ NameCurrentFunction=s;} // TODO
+	
+	public static String getNameCurrentFunction(){ return NameCurrentFunction; } // TODO
+	public static void setNameCurrentFunction(String s){ NameCurrentFunction = s; } // TODO
+	
 	/**
 	 * Initialise le couple constant (déclaration, valeur) dans la table interne.
 	 * @param value valeur associé
@@ -61,15 +66,17 @@ public class Declaration {
 	// Créer une variable à partir d'un autre identifiant est impossible
 	
 	/**
-	 * Déclare une fonction, toujours sans paramètres
+	 * Déclare une fonction.
+	 * La fonction est du type courant
 	 */
 	public static void createFun(String name){
 		setCurrentFunction();
 		setNameCurrentFunction(name);
-		TabIdent.addIdent(name, currentFunction);
+		TabIdent.finalizeFunction(name, currentFunction);
 	}
 	/**
-	 * Ajoute un paramètre à la fonction courante et à la table des identifiants
+	 * Ajoute un paramètre à la fonction courante et à la table des identifiants.
+	 * Le paramètre est du type courant
 	 */
 	public static void addParameter(String name){
 		IdVar id = new IdVar(currentType);

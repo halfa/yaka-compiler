@@ -11,6 +11,7 @@ public class IdFun extends IdFPrinc {
 	
 	// L'ordre des paramètres est important car c'est 
 	private List<Parameter> parameters;
+	private int currentParameterIndex = -1; // no parameters
 	
 	/****************************************
 	 * Sous-classe pour gérer les paramètres.
@@ -52,10 +53,22 @@ public class IdFun extends IdFPrinc {
 	}
 	
 	/**
-	 * TODO retourne l'offset de retour de la fonction
+	 * Retourne le paramètre correspondant à l'appel courant.
+	 */
+	public void callParameter(String name){
+		parameters.get(currentParameterIndex++);
+	}
+	
+	/**
+	 * TODO retourne l'offset de retour de la fonction.
+	 * = sp - n_param*2 ?
 	 */
 	public int getReturnOffset(){
 		return 0;
+	}
+	
+	public int getNumberOfParameters(){
+		return parameters.size();
 	}
 	
 	/**
