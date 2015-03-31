@@ -152,8 +152,8 @@ void analyse() : {}
    ( declFonction() )*
    <PRINCIPAL> { Make.begin_principal(); }
    bloc()
-   <FPRINCIPAL>
-   <FPROGRAMME> { Make.end_program(); }
+   <FPRINCIPAL>  { Make.end_program(); }
+   <FPROGRAMME>
 }
 
 void declFonction() : {}
