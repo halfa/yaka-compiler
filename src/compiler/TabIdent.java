@@ -26,7 +26,7 @@ public class TabIdent {
 	}
 	
 	static IdFun getFunction(String key) throws UnknownFunctionException {
-		if (existIdent(key))
+		if (existFunction(key))
 			return functions.get(key);
 		else
 			throw new UnknownFunctionException(key);
