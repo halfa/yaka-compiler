@@ -31,6 +31,7 @@ public class Make {
 	public static void condIf(){
 		Yaka.yvm.condIf();
 	}
+
 	public static void elseIf(){
 		Yaka.yvm.elseIf();
 	}
@@ -41,6 +42,15 @@ public class Make {
 
 	public static void end_program(){
 		Yaka.yvm.queue();
+	}
+	
+	public static void evaluate(){
+		try {
+			Yaka.expression.evaluate();
+		} catch (YakaException e) {
+			// TODO Bloc catch généré automatiquement
+			e.printStackTrace();
+		}
 	}
 
 	public static void startLoop(){
@@ -131,42 +141,6 @@ public class Make {
 
 	public static void aLaLigne() {
 		Yaka.yvm.aLaLigne();
-	}
-
-	public static void whatRel(){
-		try {
-			Yaka.expression.whatRel();
-		} catch (YakaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public static void whatAdd() {
-		try {
-			Yaka.expression.whatAdd();
-		} catch (YakaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public static void whatMul() {
-		try {
-			Yaka.expression.whatMul();
-		} catch (YakaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public static void whatNeg() {
-		try {
-			Yaka.expression.whatNeg();
-		} catch (YakaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	public static void value_int() {

@@ -270,7 +270,7 @@ void expression() : {}
 {
   simpleExpr() 
   (opRel() 
-  simpleExpr() {Make.whatRel();}
+  simpleExpr() {Make.evaluate();}
   )?
 }
 
@@ -278,19 +278,19 @@ void simpleExpr() : {}
 {
    terme() 
    (opAdd() 
-   terme() {Make.whatAdd();}
+   terme() {Make.evaluate();}
    )*
 } 
 void terme() : {}
 {
   facteur() 
   (opMul() 
-  facteur()	{Make.whatMul();}
+  facteur()	{Make.evaluate();}
   )*
 }
 void facteur() : {}
 {   primaire() 
-  |  opNeg() primaire() {Make.whatNeg();}
+  |  opNeg() primaire() {Make.evaluate();}
 }
 
 void primaire (): {}
@@ -301,11 +301,11 @@ void primaire (): {}
 }
 
 void valeur () : {}
-{ <entier> 	{ Make.value_int();}
+{ <entier> 	{ Make.value_int();expression.pushValue(Type.INTEGER);}
  | <ident> 	( {Make.begin_function_call();} "(" argumentsFonction() { Make.callFunction(); } ")" 
             | /* juste une variable */ { Make.value_ident();} )
- | <VRAI> 	{ Make.value_true();}
- | <FAUX> 	{ Make.value_false();}
+ | <VRAI> 	{ Make.value_true();expression.pushValue(Type.BOOLEAN);}
+ | <FAUX> 	{ Make.value_false();expression.pushValue(Type.BOOLEAN);}
 }
 
 void argumentsFonction() :{}

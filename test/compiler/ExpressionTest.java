@@ -1,4 +1,5 @@
 package compiler;
+
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -27,7 +28,7 @@ public class ExpressionTest {
 		assertEquals(Type.INTEGER, e.syntaxeEvaluation());
 	}
 
-	@Test(expected=YakaException.class)
+	@Test(expected = YakaException.class)
 	public void testEvaluateArithBoolInt() throws YakaException {
 
 		e.pushOp(Operator.MINUS);
@@ -36,7 +37,39 @@ public class ExpressionTest {
 		assertEquals(Type.ERROR, e.syntaxeEvaluation());
 	}
 
-	@Test(expected=YakaException.class)
+	@Test
+	public void testUnaryOperator() throws YakaException {
+		e.pushOp(Operator.NOT);
+		e.pushValue(Type.BOOLEAN);
+		assertEquals(Type.BOOLEAN, e.syntaxeEvaluation());
+
+		e.pushOp(Operator.OPP);
+		e.pushValue(Type.INTEGER);
+		assertEquals(Type.INTEGER, e.syntaxeEvaluation());
+
+		e.pushOp(Operator.NOT);
+		e.pushValue(Type.INTEGER);
+		try {
+			e.pushOp(Operator.NOT);
+			e.pushValue(Type.INTEGER);
+			assertEquals(Type.ERROR, e.syntaxeEvaluation());
+			assertTrue(false);
+		} catch (YakaException e1) {
+			assertTrue(true);
+		}
+
+		try {
+			e.pushOp(Operator.OPP);
+			e.pushValue(Type.BOOLEAN);
+			assertEquals(Type.ERROR, e.syntaxeEvaluation());
+			assertTrue(false);
+		} catch (YakaException e1) {
+			assertTrue(true);
+		}
+
+	}
+
+	@Test(expected = YakaException.class)
 	public void testEvaluateArithBoolBool() throws YakaException {
 
 		e.pushOp(Operator.MINUS);
@@ -46,7 +79,7 @@ public class ExpressionTest {
 
 	}
 
-	@Test(expected=YakaException.class)
+	@Test(expected = YakaException.class)
 	public void testEvaluateLogicIntInt() throws YakaException {
 
 		e.pushOp(Operator.AND);
@@ -64,7 +97,7 @@ public class ExpressionTest {
 		assertEquals(Type.BOOLEAN, e.syntaxeEvaluation());
 	}
 
-	@Test(expected=YakaException.class)
+	@Test(expected = YakaException.class)
 	public void testEvaluateLogicIntBool() throws YakaException {
 
 		e.pushOp(Operator.AND);
@@ -74,7 +107,7 @@ public class ExpressionTest {
 
 	}
 
-	@Test(expected=YakaException.class)
+	@Test(expected = YakaException.class)
 	public void testEvaluateCompBoolInt() throws YakaException {
 
 		e.pushOp(Operator.DIFF);
