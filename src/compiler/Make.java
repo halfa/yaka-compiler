@@ -54,10 +54,6 @@ public class Make {
 		Yaka.yvm.condLoop();
 	}
 
-	public static void how_fat_are_you_main() {
-		Yaka.yvm.ouvrePrinc(Declaration.getNbVariables());
-	}
-	
 	public static void how_fat_are_you() {
 		Yaka.yvm.ouvreBloc(Declaration.getNbVariables());
 	}

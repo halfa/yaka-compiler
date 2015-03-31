@@ -44,7 +44,6 @@ public class TabIdent {
 	static void finalizeFunction(String key, IdFun id){
 		System.out.println("Add "+key+" to table function");
 		functions.put(key, id);
-		
 	}
 	
 	static boolean existIdent(String key) {

@@ -39,7 +39,7 @@ public class YVM {
 	 * @param var le nombre de variables
 	 */
 	public void ouvreBloc(int var){
-		Ecriture.ecrireStringln(flux, "ouvrebloc "+var*2,0);
+		Ecriture.ecrireStringln(flux, "ouvrebloc "+var*2,indent);
 	}
 	
 	/**
@@ -48,7 +48,7 @@ public class YVM {
 	 * @param param le nombre de paramètres
 	 */
 	public void fermeBloc(int param){
-		Ecriture.ecrireStringln(flux, "fermebloc "+param*2,0);
+		Ecriture.ecrireStringln(flux, "fermebloc "+param*2,indent);
 	}
 	
 	/**
@@ -90,7 +90,7 @@ public class YVM {
 	 */
 	public void startIf(){
 		condCounterName++;
-		Ecriture.ecrireStringln(flux,"SI"+condCounterName+":",indent-1);
+		Ecriture.ecrireStringln(flux,"SI"+condCounterName+":",indent);
 		labelNameStack.push(new Integer(condCounterName));	
 		indent++;
 	}
@@ -114,7 +114,7 @@ public class YVM {
 		int id = (int)labelNameStack.pop();
 		String etiquette= "FSI"+id;
 		jump(etiquette);
-		Ecriture.ecrireStringln(flux,"SINON"+id+":",indent-2);
+		Ecriture.ecrireStringln(flux,"SINON"+id+":",indent-1);
 		labelNameStack.push(new Integer(id));	
 	}
 		
@@ -124,7 +124,7 @@ public class YVM {
 	 */
 	public void endIf(){
 		int id = (int)labelNameStack.pop(); 
-		Ecriture.ecrireStringln(flux,"FSI"+id+":",indent-2);
+		Ecriture.ecrireStringln(flux,"FSI"+id+":",indent-1);
 		indent--;	
 	}	
 	
