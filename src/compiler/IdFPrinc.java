@@ -14,7 +14,7 @@ public class IdFPrinc extends IdFun {
 	}
 	
 	public IdFPrinc() {
-		super(Type.ERROR);
+		super(Type.SUCCESS);
 		// TODO tout doux FIXME type
 	}
 

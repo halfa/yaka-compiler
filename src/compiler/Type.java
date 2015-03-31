@@ -2,5 +2,6 @@ package compiler;
 public enum Type {
 	BOOLEAN, 
 	INTEGER, 
-	ERROR; 
+	ERROR,
+	SUCCESS; 
 }
