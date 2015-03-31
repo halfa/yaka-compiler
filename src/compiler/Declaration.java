@@ -15,16 +15,12 @@ public class Declaration {
 	// Utilisé pour le stockage de la fonction courante
 	static private IdFun currentFunction;
 	static private String NameCurrentFunction;
-	static private int nbVariables;
 
 	// Définition pour le type booléen
 	static public int FAUX = 0;
 	static public int VRAI = -1;
 
-	/* GetSet */
-	public static int getNbVariables() { return nbVariables; }
-	public static void setNbVariables(int n){ nbVariables = n; }
-	
+	/* GetSet */	
 	public static void setCurrentIdent(String s) { currentIdent = s; }
 	public static String getCurrentIdent() { return currentIdent; }
 	
@@ -61,7 +57,6 @@ public class Declaration {
 	 */
 	public static void createVar(String name) {
 		TabIdent.addIdent(name, new IdVar(currentType));
-		nbVariables++;
 	}
 	// Créer une variable à partir d'un autre identifiant est impossible
 	
@@ -82,6 +77,9 @@ public class Declaration {
 		IdVar id = new IdVar(currentType);
 		currentFunction.addParameter(name, id);
 		TabIdent.addIdent(name, id);
+	}
+	public static void setCurrentFunction(IdFPrinc idFPrinc) {
+		currentFunction = idFPrinc;
 	}
 	
 }

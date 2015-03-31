@@ -21,6 +21,7 @@ public class Make {
 	}
 
 	public static void begin_principal(){
+		Declaration.setCurrentFunction(new IdFPrinc());
 		Yaka.yvm.begin_principal();
 	}
 
@@ -55,7 +56,7 @@ public class Make {
 	}
 
 	public static void how_fat_are_you() {
-		Yaka.yvm.ouvreBloc(Declaration.getNbVariables());
+		Yaka.yvm.ouvreBloc(TabIdent.countLocalVars());
 	}
 
 	public static void define_constant() {
@@ -206,7 +207,9 @@ public class Make {
 	 * Retourne 
 	 */
 	public static void putReturn(){
-		Yaka.yvm.ireturn(TabIdent.countLocalVars()*2);
+		Yaka.yvm.ireturn(
+				Declaration.getCurrentFunction().getNumberOfParameters()*2
+				+4);
 	}
 
 	/**
@@ -258,5 +261,6 @@ public class Make {
 	 */
 	public static void closeBlock(){
 		Yaka.yvm.fermeBloc(Declaration.getCurrentFunction().getNumberOfParameters());
+		TabIdent.cleanIdentTable();
 	}
 }

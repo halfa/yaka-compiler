@@ -63,7 +63,7 @@ public class TabIdent {
 	 * Donne le nombre de variables locales pour le bloc courant.
 	 */
 	static int countLocalVars(){
-		return values.size();
+		return values.size() - Declaration.getCurrentFunction().getNumberOfParameters();
 	}
 	
 	/**

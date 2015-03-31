@@ -7,7 +7,7 @@ import java.util.List;
  * Gestion des fonctions usuelles, de leur paramètres et valeur de retour.
  * 
  */
-public class IdFun extends IdFPrinc {
+public class IdFun extends Ident {
 	
 	// L'ordre des paramètres est important car c'est 
 	private List<Parameter> parameters;
