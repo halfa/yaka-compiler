@@ -271,7 +271,7 @@ void expression() : {}
   simpleExpr() 
   (opRel() 
   simpleExpr() {Make.evaluate();}
-  )?
+  )?  {Yaka.expression.clear();}
 }
 
 void simpleExpr() : {}
@@ -301,11 +301,11 @@ void primaire (): {}
 }
 
 void valeur () : {}
-{ <entier> 	{ Make.value_int();expression.pushValue(Type.INTEGER);}
- | <ident> 	( {Make.begin_function_call();} "(" argumentsFonction() { Make.callFunction(); } ")" 
-            | /* juste une variable */ { Make.value_ident();} )
- | <VRAI> 	{ Make.value_true();expression.pushValue(Type.BOOLEAN);}
- | <FAUX> 	{ Make.value_false();expression.pushValue(Type.BOOLEAN);}
+{ <entier> 	{ Make.value_int();Yaka.expression.pushValue(Type.INTEGER);}
+ | <ident> 	( {Make.begin_function_call();Make.pushFunctionType();} "(" argumentsFonction() { Make.callFunction(); } ")" 
+            | /* juste une variable */ { Make.value_ident();Make.pushIdentType();} )
+ | <VRAI> 	{ Make.value_true();Yaka.expression.pushValue(Type.BOOLEAN);}
+ | <FAUX> 	{ Make.value_false();Yaka.expression.pushValue(Type.BOOLEAN);}
 }
 
 void argumentsFonction() :{}
@@ -317,29 +317,29 @@ void argumentsFonction() :{}
 
 void opRel() : {}
 {
-   "=" 		{expression.pushOp(Operator.EGAL);}
- | "<>" 	{expression.pushOp(Operator.DIFF);}
- | "<" 		{expression.pushOp(Operator.LOW_STRICT);}
- | "<=" 	{expression.pushOp(Operator.LOW_EGAL);}
- | ">" 		{expression.pushOp(Operator.UP_STRICT);}
- | ">=" 	{expression.pushOp(Operator.LOW_EGAL);}
+   "=" 		{Yaka.expression.pushOp(Operator.EGAL);}
+ | "<>" 	{Yaka.expression.pushOp(Operator.DIFF);}
+ | "<" 		{Yaka.expression.pushOp(Operator.LOW_STRICT);}
+ | "<=" 	{Yaka.expression.pushOp(Operator.LOW_EGAL);}
+ | ">" 		{Yaka.expression.pushOp(Operator.UP_STRICT);}
+ | ">=" 	{Yaka.expression.pushOp(Operator.LOW_EGAL);}
 } 
 
 void opAdd() : {}
 {
-    "+"		{expression.pushOp(Operator.PLUS);}
-  |  "-"  	{expression.pushOp(Operator.MINUS);}
-  | <OU> 	{expression.pushOp(Operator.OR);}
+    "+"		{Yaka.expression.pushOp(Operator.PLUS);}
+  |  "-"  	{Yaka.expression.pushOp(Operator.MINUS);}
+  | <OU> 	{Yaka.expression.pushOp(Operator.OR);}
 }
 
 void opMul() : {}
 {
-  "*"		{expression.pushOp(Operator.MULT);}
-  | "/"		{expression.pushOp(Operator.DIV);}
-  | <ET>	{expression.pushOp(Operator.AND);}
+  "*"		{Yaka.expression.pushOp(Operator.MULT);}
+  | "/"		{Yaka.expression.pushOp(Operator.DIV);}
+  | <ET>	{Yaka.expression.pushOp(Operator.AND);}
 } 
 
 void opNeg() : {}
-{ "-" 		{expression.pushOp(Operator.OPP);}
- | <NON>	{expression.pushOp(Operator.NOT);}
+{ "-" 		{Yaka.expression.pushOp(Operator.OPP);}
+ | <NON>	{Yaka.expression.pushOp(Operator.NOT);}
 }

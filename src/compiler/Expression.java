@@ -14,7 +14,6 @@ public class Expression {
 	private Stack<Operator> ops;
 	private Stack<Type> types;
 	private boolean unaryOperator;
-
 	// Pile d'appel
 	private Stack<String> functionCall;
 
@@ -37,15 +36,12 @@ public class Expression {
 		Type t = i.getType();
 		types.push(t);
 
-		if (t == Type.INTEGER)
-			if (i instanceof IdVar)
-				yvm.iload(((IdVar) i).getOffset());
-			else if (i instanceof IdConst)
-				yvm.iconst(((IdConst) i).getVal());
-			else {
-				throw new UnknownIdentException("" + t);
-				// FIXME UnknowIdentExeption
-			}
+		/*
+		 * if (t == Type.INTEGER) if (i instanceof IdVar) yvm.iload(((IdVar)
+		 * i).getOffset()); else if (i instanceof IdConst) yvm.iconst(((IdConst)
+		 * i).getVal()); else { throw new UnknownIdentException("" + t); //
+		 * FIXME UnknowIdentExeption }
+		 */
 	}
 
 	/**
@@ -53,7 +49,7 @@ public class Expression {
 	 */
 	public void pushOp(Operator o) {
 		ops.push(o);
-		unaryOperator= (o.equals(Operator.OPP) || o.equals(Operator.NOT));
+		unaryOperator = (o.equals(Operator.OPP) || o.equals(Operator.NOT));
 
 	}
 
@@ -64,7 +60,6 @@ public class Expression {
 		types.push(t);
 	}
 
-	
 	/**
 	 * Retourne l'opérateur en haut de la pile des opérateurs
 	 * 
@@ -105,6 +100,10 @@ public class Expression {
 		return functionCall.pop();
 	}
 
+	public Type getCurrentFunctionType() throws UnknownFunctionException {
+		return TabIdent.getFunction(functionCall.peek()).getType();
+	}
+
 	/**
 	 * Evalue et test la validitée du typage.
 	 * 
@@ -115,6 +114,7 @@ public class Expression {
 		Type t1 = types.pop();
 		Operator op = ops.pop();
 		if (unaryOperator) {
+			unaryOperator = false;
 			switch (t1) {
 			case INTEGER:
 				switch (op) {
@@ -156,6 +156,10 @@ public class Expression {
 						return Type.INTEGER;
 					case EGAL:
 					case DIFF:
+					case LOW_STRICT:
+					case UP_STRICT:
+					case LOW_EGAL:
+					case UP_EGAL:
 						types.push(Type.BOOLEAN);
 						return Type.BOOLEAN;
 					default:
@@ -222,6 +226,18 @@ public class Expression {
 		case MULT:
 			yvm.imul();
 			break;
+		case LOW_STRICT:
+			yvm.iinf();
+			break;
+		case UP_STRICT:
+			yvm.isup();
+			break;
+		case LOW_EGAL:
+			yvm.iinfegal();
+			break;
+		case UP_EGAL:
+			yvm.isupegal();
+			break;
 		case EGAL:
 			yvm.iegal();
 			break;
@@ -244,6 +260,13 @@ public class Expression {
 			return false;
 		}
 		return true;
+	}
+
+	public void clear() {
+		ops = new Stack<Operator>();
+		types = new Stack<Type>();
+		// functionCall = new Stack<String>(); FIXME
+		unaryOperator = false;
 	}
 
 }

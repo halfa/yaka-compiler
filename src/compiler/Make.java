@@ -164,6 +164,17 @@ public class Make {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void pushIdentType(){
+		Ident id;
+		try {
+			id = TabIdent.getIdent(YakaTokenManager.identLu);
+			Yaka.expression.pushValue(id);
+		} catch (UnknownIdentException e) {
+			// TODO Bloc catch généré automatiquement
+			e.printStackTrace();
+		}
+	}
 
 	public static void value_true() {
 		Yaka.yvm.iconst(-1);
@@ -193,6 +204,20 @@ public class Make {
 		try { Yaka.expression.pushFunction(YakaTokenManager.identLu);
 		} catch (Exception e) { System.err.println(e); e.printStackTrace(); }
 	}
+	
+	
+	public static void pushFunctionType(){
+		
+		Type t;
+		try {
+			t=Yaka.expression.getCurrentFunctionType();
+			Yaka.expression.pushValue(t);
+		} catch (UnknownFunctionException e) {
+			// TODO Bloc catch généré automatiquement
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * Ajoute un nouveau paramètre à l'appel courant.
 	 *  - evaluer l'expression
