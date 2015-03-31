@@ -262,4 +262,27 @@ public class Make {
 		Yaka.yvm.fermeBloc(Declaration.getCurrentFunction().getNumberOfParameters());
 		TabIdent.cleanIdentTable();
 	}
+	
+	public static void assertType(Type t){
+		try {
+			Yaka.expression.assertType(t);
+		} catch (BadTypeException e) {
+			// TODO Bloc catch généré automatiquement
+			e.printStackTrace();
+		}
+	}
+
+	public static void assertAssignementType() {
+		
+		try {
+			Yaka.expression.assertAssignementType();
+		} catch (BadTypeException e) {
+			// TODO Bloc catch généré automatiquement
+			e.printStackTrace();
+		} catch (UnknownIdentException e) {
+			// TODO Bloc catch généré automatiquement
+			e.printStackTrace();
+		}
+		
+	}
 }

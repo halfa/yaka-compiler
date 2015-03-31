@@ -101,7 +101,13 @@ public class Expression {
 	}
 
 	public Type getCurrentFunctionType() throws UnknownFunctionException {
-		return TabIdent.getFunction(functionCall.peek()).getType();
+		String name = functionCall.peek();
+		if (TabIdent.existFunction(name)) {
+			functionCall.push(name);
+		} else {
+			throw new exception.UnknownFunctionException(name);
+		}
+		return TabIdent.getFunction(name).getType();
 	}
 
 	/**
@@ -267,6 +273,26 @@ public class Expression {
 		types = new Stack<Type>();
 		// functionCall = new Stack<String>(); FIXME
 		unaryOperator = false;
+	}
+
+	public boolean assertType(Type t) throws BadTypeException {
+		Type expected = types.peek();
+		if(!t.equals(expected))throw new BadTypeException(
+				"Error in expression: Expected type "+expected+" but receive "+t);
+
+		return true;
+	}
+
+	public boolean assertAssignementType() throws BadTypeException, UnknownIdentException {
+		Type expected = types.peek();//TODO Rename in a significative name
+		Type t = TabIdent.getIdent(Declaration.getCurrentIdent()).getType();
+		
+		if(!t.equals(expected) && !expected.equals(Type.ERROR))throw new BadTypeException(
+				"Error in assignement: Expected type "+t+" but receive "+expected);
+		if (expected.equals(Type.ERROR))throw new BadTypeException(
+				"Evaluation error");
+
+		return true;
 	}
 
 }

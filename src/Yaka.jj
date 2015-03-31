@@ -220,10 +220,14 @@ void type() :{}
  * Syntaxe des instructions.
  */
 void suiteExpr() : {}
-{ (expression() (";" (expression())? )*)? }
+{ (expression() (";"
+  	{Yaka.expression.clear();}
+  (expression())? )*)? }
 
 void suiteInstr() : {}
-{ (instruction() (";" (instruction())? )*)? }
+{ (instruction() (";"
+	  {Yaka.expression.clear();}
+  (instruction())? )*)? }
 
 void instruction() : {}
 { affectation() | lecture() | ecriture() | iteration() | conditionnelle() | retourne() }
@@ -235,7 +239,7 @@ void retourne() : {}
 
 void conditionnelle() : {}
 {
-  <SI> {Make.startIf();} expression()
+  <SI> {Make.startIf();} expression() {Make.assertType(Type.BOOLEAN);}
   <ALORS> {Make.condIf();} suiteInstr()
   ( 
     (<SINON> {Make.elseIf();} 
@@ -247,12 +251,12 @@ void conditionnelle() : {}
 
 void iteration() : {}
 { <TANTQUE> 			{Make.startLoop();} 
-expression()  			{Make.condLoop();} 
+expression()  			{Make.condLoop();Make.assertType(Type.BOOLEAN);}
 <FAIRE> suiteInstr() 
 <FAIT> 					{Make.endLoop();} }
 
 void affectation() : {}
-{ <ident> {Declaration.setCurrentIdent(YakaTokenManager.identLu);} "=" expression() {Make.assignment();} }
+{ <ident> {Declaration.setCurrentIdent(YakaTokenManager.identLu);} "=" expression() {Make.assertAssignementType();Make.assignment();} }
 
 void lecture() : {}
 { <LIRE> "(" <ident> ")" {Make.reading();}
@@ -271,7 +275,7 @@ void expression() : {}
   simpleExpr() 
   (opRel() 
   simpleExpr() {Make.evaluate();}
-  )?  {Yaka.expression.clear();}
+  )?
 }
 
 void simpleExpr() : {}
