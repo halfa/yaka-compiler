@@ -140,8 +140,7 @@ public class Expression {
 					return Type.INTEGER;
 				default:
 					types.push(Type.ERROR);
-					throw new BadTypeException(
-							"there is an error in the expression: use of boolean operator on an integer");
+					throw new BadTypeException("boolean","integer");
 				}
 			case BOOLEAN:
 				switch (op) {
@@ -154,8 +153,7 @@ public class Expression {
 
 			default:
 				types.push(Type.ERROR);
-				throw new BadTypeException(
-						"there is an error in the expression: use of integer operator on a boolean");
+				throw new BadTypeException("integer","boolean");
 			}
 		} else {
 			Type t2 = types.pop();
@@ -184,8 +182,7 @@ public class Expression {
 					}
 				default:
 					types.push(Type.ERROR);
-					throw new BadTypeException(
-							"there is an error in the expression: use of boolean operator on an integer");
+					throw new BadTypeException("boolean","integer");
 				}
 			case BOOLEAN:
 				switch (t2) {
@@ -211,7 +208,7 @@ public class Expression {
 			/* aucun cas ne correspond */
 
 			types.push(Type.ERROR);
-			throw new BadTypeException("there is an error in the expression: use of integer operator on a boolean");
+			throw new BadTypeException("integer","boolean");
 
 		}
 
@@ -306,7 +303,7 @@ public class Expression {
 		for(int e =parameters.size()-1;e>=0;e--){
 			Type type = types.pop();
 			Type expected = parameters.get(e).getIdent().getType();
-			if(!type.equals(expected))throw new BadTypeException(e,expected,type);
+			if(!type.equals(expected))throw new BadTypeException(e,type,expected);
 		}
 		
 	}

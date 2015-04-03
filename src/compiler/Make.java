@@ -49,8 +49,6 @@ public class Make {
 		try {
 			Yaka.expression.evaluate();
 		} catch (YakaException e) {
-			// TODO Bloc catch généré automatiquement
-			//Sy
 			System.out.println(e.toString());
 		}
 	}
@@ -172,7 +170,6 @@ public class Make {
 						.getIdent(YakaTokenManager.identLu)).getVal());
 			}
 		} catch (UnknownIdentException e) {
-			// TODO Auto-generated catch block
 			System.out.println(e.toString());
 		}
 	}
@@ -183,7 +180,6 @@ public class Make {
 			id = TabIdent.getIdent(YakaTokenManager.identLu);
 			Yaka.expression.pushValue(id);
 		} catch (UnknownIdentException e) {
-			// TODO Bloc catch généré automatiquement
 			System.out.println(e.toString());
 		}
 	}
@@ -205,8 +201,7 @@ public class Make {
 	 */
 	public static void putReturn(){
 		Yaka.yvm.ireturn(
-				Declaration.getCurrentFunction().getNumberOfParameters()*2
-				+4);
+				Declaration.getCurrentFunction().getNumberOfParameters()*2+4);
 	}
 
 	/**
@@ -225,7 +220,6 @@ public class Make {
 			t=Yaka.expression.getCurrentFunctionType();
 			Yaka.expression.pushValue(t);
 		} catch (UnknownFunctionException e) {
-			// TODO Bloc catch généré automatiquement
 			System.out.println(e.toString());
 		}
 	}
@@ -234,11 +228,9 @@ public class Make {
 		try {
 			Yaka.expression.checkArgumentType();
 		} catch (YakaException e) {
-			// TODO Bloc catch généré automatiquement
-			e.printStackTrace();
+			System.out.println(e.toString());
 		} catch (UnknownFunctionException e) {
-			// TODO Bloc catch généré automatiquement
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 	}
 	/**
@@ -293,7 +285,6 @@ public class Make {
 		try {
 			Yaka.expression.assertType(t);
 		} catch (BadTypeException e) {
-			// TODO Bloc catch généré automatiquement
 			System.out.println(e.toString());
 		}
 	}
@@ -303,10 +294,8 @@ public class Make {
 		try {
 			Yaka.expression.assertAssignementType();
 		} catch (BadTypeException e) {
-			// TODO Bloc catch généré automatiquement
 			System.out.println(e.toString());
 		} catch (UnknownIdentException e) {
-			// TODO Bloc catch généré automatiquement
 			System.out.println(e.toString());
 		}
 		
