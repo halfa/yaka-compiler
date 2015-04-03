@@ -287,9 +287,7 @@ public class Expression {
 
 	public boolean assertType(Type t) throws BadTypeException {
 		Type expected = types.peek();
-		if(!t.equals(expected))throw new BadTypeException(
-				"Error in expression: Expected type "+expected+" but receive "+t);
-
+		if(!t.equals(expected))throw new BadTypeException(expected,t);
 		return true;
 	}
 
@@ -297,10 +295,9 @@ public class Expression {
 		Type received = types.peek();//TODO Rename in a significative name
 		Type t = TabIdent.getIdent(Declaration.getCurrentIdent()).getType();
 		
-		if(!t.equals(received) && !received.equals(Type.ERROR))throw new BadTypeException(
-				"Error in assignement: Expected type "+t+" but receive "+received);
-		if (received.equals(Type.ERROR))throw new BadTypeException(
-				"Evaluation error");
+		if(!t.equals(received) && !received.equals(Type.ERROR))throw new BadTypeException(t,received);
+
+		if (received.equals(Type.ERROR))throw new BadTypeException("Evaluation error");
 
 		return true;
 	}
@@ -311,7 +308,7 @@ public class Expression {
 		for(int e =parameters.size()-1;e>=0;e--){
 			Type type = types.pop();
 			Type expected = parameters.get(e).getIdent().getType();
-			if(!type.equals(expected))throw new BadTypeException("Error in function argument "+e+": Expected type "+expected+" but receive "+type);
+			if(!type.equals(expected))throw new BadTypeException(e,expected,type);
 		}
 		
 	}
