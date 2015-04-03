@@ -24,6 +24,16 @@ public class Expression {
 		functionCall = new Stack<String>();
 		unaryOperator = false;
 	}
+	
+	
+	/**
+	 * Rend le type de la dernière expression évaluée
+	 * @return le type de la dernière expression évaluée
+	 */
+	
+	public Type getCurrentType() {
+		return types.peek();
+	}
 
 	/**
 	 * Met la valeur et le type sur le sommet de leur piles respectives

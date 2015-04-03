@@ -131,8 +131,18 @@ public class Make {
 
 	}
 
-	public static void write_expression() {
-		Yaka.yvm.ecrireEnt();
+	public static void write_expression(Expression e) {
+		switch (e.getCurrentType()){
+		case BOOLEAN :
+			Yaka.yvm.ecrireBool();
+			break;
+		case INTEGER :
+			Yaka.yvm.ecrireEnt();
+			break;
+		default :
+			break;
+		}
+		
 	}
 
 	public static void write_string() {
