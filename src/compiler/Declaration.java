@@ -29,8 +29,8 @@ public class Declaration {
 	public static IdFun getCurrentFunction() { return currentFunction; }
 	public static void setCurrentFunction() { currentFunction = new IdFun(currentType); }
 	
-	public static String getNameCurrentFunction(){ return NameCurrentFunction; } // TODO
-	public static void setNameCurrentFunction(String s){ NameCurrentFunction = s; } // TODO
+	public static String getNameCurrentFunction(){ return NameCurrentFunction; }
+	public static void setNameCurrentFunction(String s){ NameCurrentFunction = s; }
 	
 	/**
 	 * Initialise le couple constant (déclaration, valeur) dans la table interne.

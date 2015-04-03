@@ -5,7 +5,7 @@ package compiler;
  */
 public class IdVar extends Ident {
 	
-	static int activeOffset = 0; //offset du dernier élément de la pile
+	static int activeOffset = 2; //offset du dernier élément de la pile
 	
 	int offset;
 	
@@ -16,8 +16,13 @@ public class IdVar extends Ident {
 	}
 	
 	public IdVar(Type t){
-		this(t, activeOffset -= 2);
+		this(t, activeOffset += 2);
 	}
+	
+	public IdVar IdParameter(Type t){
+		return new IdVar(t, 0);
+	}
+	
 	
 	/**
 	 * Retourne la position de la variable dans la pile
@@ -25,6 +30,14 @@ public class IdVar extends Ident {
 	 */
 	public int getOffset(){
 		return offset;
+	}
+	
+	public void setOffset(int o){
+		offset = o;
+	}
+	
+	public static void resetOffset(){
+		activeOffset = 2;
 	}
 	
 	/**

@@ -1,11 +1,5 @@
 /*
- *
- *       Auteur: Pedrono Marie-Jo
- *
- * 	création : 13 février 2002
- *
- *     nature : projet etudiant
- *
+ * Description de la grammaire de YAKA
  */
 
 
@@ -13,7 +7,7 @@ options{
 	JDK_VERSION="1.7";
 	OUTPUT_DIRECTORY="compiler";
 	LOOKAHEAD=1;
-	DEBUG_PARSER=true;
+	//DEBUG_PARSER=true;
 	//FORCE_LA_CHECK=true;
 }
 
@@ -27,7 +21,7 @@ public class Yaka {
     static Expression expression;
     static Declaration declaration;
   
-  public static void main(String args[]) { 
+  public static void main(String args[]) {
     Yaka analyseur;
     java.io.InputStream input;
     
@@ -144,8 +138,9 @@ TOKEN  :
 
 
 /**************************************/
-/******** début de la grammaire ********/
+/******** début de la grammaire *******/
 /**************************************/
+
 void analyse() : {}
 {
    <PROGRAMME> <ident> { Make.begin_program(); }	

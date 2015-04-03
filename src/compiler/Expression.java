@@ -28,8 +28,7 @@ public class Expression {
 	/**
 	 * Met la valeur et le type sur le sommet de leur piles respectives
 	 * 
-	 * @param i
-	 *            l'identifiant de la variable
+	 * @param i l'identifiant de la variable
 	 * @throws UnknownIdentException
 	 */
 	public void pushValue(Ident i) throws UnknownIdentException {
@@ -85,7 +84,7 @@ public class Expression {
 	 * @throws UnknownFunctionException
 	 */
 	public void pushFunction(String name) throws UnknownFunctionException {
-		System.out.println("Push " + name + " to stack");
+		//System.out.println("Push " + name + " to stack");
 		if (TabIdent.existFunction(name)) {
 			functionCall.push(name);
 		} else {

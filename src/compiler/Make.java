@@ -155,10 +155,10 @@ public class Make {
 
 			if (id instanceof IdVar) {
 				Yaka.yvm.iload(((IdVar) TabIdent
-						.getIdent(YakaTokenManager.identLu)).getOffset());
+						.getIdent(YakaTokenManager.identLu)).getOffset()*2);
 			} else {
 				Yaka.yvm.iconst(((IdConst) TabIdent
-						.getIdent(YakaTokenManager.identLu)).getVal());
+						.getIdent(YakaTokenManager.identLu)).getVal()*2);
 			}
 		} catch (UnknownIdentException e) {
 			// TODO Auto-generated catch block
@@ -263,6 +263,7 @@ public class Make {
 	public static void closeBlock(){
 		Yaka.yvm.fermeBloc(Declaration.getCurrentFunction().getNumberOfParameters());
 		TabIdent.cleanIdentTable();
+		IdVar.resetOffset();
 	}
 	
 	public static void assertType(Type t){

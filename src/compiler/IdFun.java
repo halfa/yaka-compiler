@@ -17,6 +17,7 @@ public class IdFun extends Ident {
 	 * Sous-classe pour gérer les paramètres.
 	 ****************************************/
 	class Parameter {
+		
 		String name;
 		IdVar id;
 		
@@ -24,6 +25,7 @@ public class IdFun extends Ident {
 		public Parameter(String n, IdVar p) {
 			name = n;
 			id = p;
+			p.setOffset(++currentParameterIndex);
 		}
 		
 		/* GetSet */
@@ -36,7 +38,7 @@ public class IdFun extends Ident {
 		
 	}
 	
-	// Contructeur de fonction sans paramètre
+	// Contructeur de fonction (sans paramètre)
 	public IdFun(Type t) {
 		super(t); // type de retour
 		parameters =  new ArrayList<Parameter>();

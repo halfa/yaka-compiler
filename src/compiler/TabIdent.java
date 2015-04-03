@@ -42,7 +42,7 @@ public class TabIdent {
 	}
 	
 	static void finalizeFunction(String key, IdFun id){
-		System.out.println("Add "+key+" to table function");
+		//System.out.println("Add "+key+" to table function");
 		functions.put(key, id);
 	}
 	
@@ -51,7 +51,7 @@ public class TabIdent {
 	}
 	
 	static boolean existFunction(String key){
-		System.out.println("Check "+key+"");
+		//System.out.println("Check "+key+"");
 		return functions.containsKey(key);
 	}
 	

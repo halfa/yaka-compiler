@@ -137,7 +137,7 @@ public class YVMasm extends YVM {
 	}
 
 	/**
-	 * Haut de pile : bool Transforme l'élément (booléen) en haut de pile par
+	 * Haut de pile : bool Transforme l'élément (booléen) en haut de pile en
 	 * son opposé
 	 */
 	public void inot() {
@@ -148,7 +148,7 @@ public class YVMasm extends YVM {
 	}
 
 	/**
-	 * Haut de pile : int Transforme l'élément en haut de pile par son opposé
+	 * Haut de pile : int Transforme l'élément en haut de pile en son opposé
 	 */
 	public void ineg() {
 		Ecriture.ecrireStringln(flux, ";ineg",indent);
