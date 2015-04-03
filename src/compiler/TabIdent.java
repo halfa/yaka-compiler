@@ -86,6 +86,7 @@ public class TabIdent {
 	 */
 	static void cleanIdentTable(){
 		values.clear();
+		IdVar.resetOffset();
 	}
 	
 	/**
@@ -100,7 +101,7 @@ public class TabIdent {
 	 */
 	static public String dump(){
 		String dump = new String("** TabIdent **\n");
-		dump += "Variables globales\n";
+		dump += "Variables\n";
 		for (String name : values.keySet()) {
 			dump += name+values.get(name).toString()+"\n";
 		}

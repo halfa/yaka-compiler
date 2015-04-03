@@ -74,7 +74,7 @@ public class Declaration {
 	 * Le paramètre est du type courant
 	 */
 	public static void addParameter(String name){
-		IdVar id = new IdVar(currentType);
+		IdVar id = IdVar.IdParameter(currentType);
 		currentFunction.addParameter(name, id);
 		TabIdent.addIdent(name, id);
 	}

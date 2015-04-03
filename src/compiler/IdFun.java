@@ -25,7 +25,7 @@ public class IdFun extends Ident {
 		public Parameter(String n, IdVar p) {
 			name = n;
 			id = p;
-			p.setOffset(++currentParameterIndex);
+			p.setOffset(parameters.size()*2+4);
 		}
 		
 		/* GetSet */
@@ -48,9 +48,11 @@ public class IdFun extends Ident {
 	public List<Parameter> getParameters(){ return parameters; }
 
 	/**
-	 * Ajoute un paramètre à la fonction
+	 * Ajoute un paramètre à la fonction.
+	 * L'offset est mis à la construction
 	 */
 	public void addParameter(String name, IdVar p){
+		//System.out.println("Add parameter to "+Declaration.getNameCurrentFunction()+"@"+p.getOffset());
 		parameters.add(new Parameter(name, p));
 	}
 	
