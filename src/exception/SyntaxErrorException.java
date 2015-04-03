@@ -3,7 +3,7 @@ package exception;
 public class SyntaxErrorException extends FunctionException {
 
 	public SyntaxErrorException(String string) {
-		super("Syntax Error: "+string);
+		super("there is a syntaxe error, "+string);
 	}
 
 }

@@ -45,7 +45,7 @@ public class Declaration {
 	public static void createConst(String ident) throws DeclarationException {
 		Ident i = TabIdent.getIdent(ident);
 		if (i == null)
-			throw new UnknownIdentException("Ident not found : "+ident);
+			throw new UnknownIdentException(ident);
 		TabIdent.addIdent(currentIdent, i);
 	}
 
