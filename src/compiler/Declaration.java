@@ -78,6 +78,11 @@ public class Declaration {
 		currentFunction.addParameter(name, id);
 		TabIdent.addIdent(name, id);
 	}
+	
+	/**
+	 * Surcharge  pour la fonction principale
+	 * @param idFPrinc
+	 */
 	public static void setCurrentFunction(IdFPrinc idFPrinc) {
 		currentFunction = idFPrinc;
 	}

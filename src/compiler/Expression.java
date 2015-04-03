@@ -112,11 +112,10 @@ public class Expression {
 	public Type getCurrentFunctionType() throws UnknownFunctionException {
 		String name = functionCall.peek();
 		if (TabIdent.existFunction(name)) {
-			functionCall.push(name);
+			return TabIdent.getFunction(name).getType();
 		} else {
 			throw new exception.UnknownFunctionException(name);
 		}
-		return TabIdent.getFunction(name).getType();
 	}
 
 	/**
