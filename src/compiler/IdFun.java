@@ -8,26 +8,25 @@ import java.util.List;
  * 
  */
 public class IdFun extends Ident {
-	
+
 	// L'ordre des paramètres est important car c'est TODO il manque un truc là ^^ 
 	private List<Parameter> parameters;
 	private int currentParameterIndex = -1; // no parameters
-	
+
 	/****************************************
 	 * Sous-classe pour gérer les paramètres.
 	 ****************************************/
 	class Parameter {
-		
+
 		String name;
 		IdVar id;
-		
+
 		/* Constructeur */
 		public Parameter(String n, IdVar p) {
 			name = n;
 			id = p;
-			p.setOffset(parameters.size()*2+4);
 		}
-		
+
 		/* GetSet */
 		public String getName(){ return name; }
 		public IdVar getIdent(){ return id; }
@@ -35,15 +34,15 @@ public class IdFun extends Ident {
 		public String toString(){
 			return name+" "+id;
 		}
-		
+
 	}
-	
+
 	// Contructeur de fonction (sans paramètre)
 	public IdFun(Type t) {
 		super(t); // type de retour
 		parameters =  new ArrayList<Parameter>();
 	}
-	
+
 	/* GetSet */
 	public List<Parameter> getParameters(){ return parameters; }
 
@@ -54,15 +53,24 @@ public class IdFun extends Ident {
 	public void addParameter(String name, IdVar p){
 		//System.out.println("Add parameter to "+Declaration.getNameCurrentFunction()+"@"+p.getOffset());
 		parameters.add(new Parameter(name, p));
+		computeParametersOffets();
 	}
-	
+
+	public void computeParametersOffets(){
+		int end = parameters.size()*2+2;
+		for (Parameter p : parameters) {
+			p.getIdent().setOffset(end);
+			end -= 2;
+		}
+	}
+
 	/**
 	 * Retourne le paramètre correspondant à l'appel courant.
 	 */
 	public void callParameter(String name){
 		parameters.get(currentParameterIndex++);
 	}
-	
+
 	/**
 	 * TODO retourne l'offset de retour de la fonction.
 	 * = sp - n_param*2 ?
@@ -70,11 +78,11 @@ public class IdFun extends Ident {
 	public int getReturnOffset(){
 		return 0;
 	}
-	
+
 	public int getNumberOfParameters(){
 		return parameters.size();
 	}
-	
+
 	/**
 	 * String output for debug purpose
 	 */

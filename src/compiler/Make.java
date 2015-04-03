@@ -275,7 +275,7 @@ public class Make {
 	 * Ferme le bloc courant (leave) et enregistre la fonction dans la table
 	 */
 	public static void closeBlock(){
-		System.out.println("EndBlock"+TabIdent.dump());
+		//System.out.println("EndBlock"+TabIdent.dump());
 		Yaka.yvm.fermeBloc(Declaration.getCurrentFunction().getNumberOfParameters());
 		TabIdent.cleanIdentTable();
 		IdVar.resetOffset();

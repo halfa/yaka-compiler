@@ -3,8 +3,6 @@ package compiler;
 import java.util.List;
 import java.util.Stack;
 
-import javax.swing.TransferHandler;
-
 import compiler.IdFun.Parameter;
 import exception.UnknownFunctionException;
 import exception.UnknownIdentException;

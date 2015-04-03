@@ -100,10 +100,9 @@ public class TabIdent {
 	 * Dump tables for debug purpose.
 	 */
 	static public String dump(){
-		String dump = new String("** TabIdent **\n");
-		dump += "Variables\n";
+		String dump = new String(" ** TabIdent **\n");
 		for (String name : values.keySet()) {
-			dump += name+values.get(name).toString()+"\n";
+			dump += name+" "+values.get(name).toString()+"\n";
 		}
 		return dump;
 	}
