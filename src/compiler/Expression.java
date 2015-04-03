@@ -141,7 +141,7 @@ public class Expression {
 				default:
 					types.push(Type.ERROR);
 					throw new BadTypeException(
-							"Error in expression: use of boolean operator on an integer");
+							"there is an error in the expression: use of boolean operator on an integer");
 				}
 			case BOOLEAN:
 				switch (op) {
@@ -155,7 +155,7 @@ public class Expression {
 			default:
 				types.push(Type.ERROR);
 				throw new BadTypeException(
-						"Error in expression: use of integer operator on a boolean");
+						"there is an error in the expression: use of integer operator on a boolean");
 			}
 		} else {
 			Type t2 = types.pop();
@@ -185,7 +185,7 @@ public class Expression {
 				default:
 					types.push(Type.ERROR);
 					throw new BadTypeException(
-							"Error in expression: use of boolean operator on an integer");
+							"there is an error in the expression: use of boolean operator on an integer");
 				}
 			case BOOLEAN:
 				switch (t2) {
@@ -211,7 +211,7 @@ public class Expression {
 			/* aucun cas ne correspond */
 
 			types.push(Type.ERROR);
-			throw new BadTypeException("Error in expression: use of integer operator on a boolean");
+			throw new BadTypeException("there is an error in the expression: use of integer operator on a boolean");
 
 		}
 
