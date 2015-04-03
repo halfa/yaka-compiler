@@ -25,6 +25,10 @@ public class TabIdent {
 			throw new UnknownIdentException(key);
 	}
 	
+	/**
+	 * Récupère une focntion depuis la table.
+	 * @throws UnknownFunctionException
+	 */
 	static IdFun getFunction(String key) throws UnknownFunctionException {
 		if (existFunction(key))
 			return functions.get(key);
@@ -32,8 +36,13 @@ public class TabIdent {
 			throw new UnknownFunctionException(key);
 	}
 	
+	/**
+	 * Retourne la dernière fonction de la pile d'appel
+	 * @return
+	 * @throws UnknownFunctionException
+	 */
 	static IdFun getLastFunction() throws UnknownFunctionException{
-		System.out.println(Yaka.expression.popFunction());
+		//System.out.println(Yaka.expression.popFunction());
 		return getFunction(Yaka.expression.popFunction());
 	}
 	
@@ -41,20 +50,40 @@ public class TabIdent {
 		values.put(key, id);
 	}
 	
+	/**
+	 * Ajoute la fonction à la table des identifiants
+	 * @param key nom de la fonction
+	 * @param id la fonction
+	 */
 	static void finalizeFunction(String key, IdFun id){
 		//System.out.println("Add "+key+" to table function");
 		functions.put(key, id);
 	}
 	
+	/**
+	 * Test l'existence d'un identifiant dans la table
+	 * @param key le nom de l'identifiant
+	 * @return vrai si l'identifiant existe
+	 */
 	static boolean existIdent(String key) {
 		return values.containsKey(key);
 	}
 	
+	
+	/**
+	 * Test l'existence d'une fonction dans la table
+	 * @param key le nom de la fonction
+	 * @return vrai si la fonction existe
+	 */
 	static boolean existFunction(String key){
 		//System.out.println("Check "+key+"");
 		return functions.containsKey(key);
 	}
 	
+	/**
+	 * Vide la table des identifiants.
+	 * Utilisé pour changer de contexte entre les fonctions
+	 */
 	static void cleanIdentTable(){
 		values.clear();
 	}
