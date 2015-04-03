@@ -50,7 +50,8 @@ public class Make {
 			Yaka.expression.evaluate();
 		} catch (YakaException e) {
 			// TODO Bloc catch généré automatiquement
-			e.printStackTrace();
+			//Sy
+			System.out.println(e.toString());
 		}
 	}
 
@@ -82,7 +83,7 @@ public class Make {
 		try {
 			Declaration.createConst(YakaTokenManager.identLu);
 		} catch (DeclarationException e) {
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 	}
 
@@ -114,7 +115,7 @@ public class Make {
 			Yaka.yvm.lireEnt(((IdVar) (TabIdent
 					.getIdent(YakaTokenManager.identLu))).getOffset());
 		} catch (UnknownIdentException e) {
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 
 	}
@@ -126,7 +127,7 @@ public class Make {
 
 			Yaka.yvm.istore(((IdVar) i).getOffset());
 		} catch (UnknownIdentException e) {
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 
 	}
@@ -172,7 +173,7 @@ public class Make {
 			}
 		} catch (UnknownIdentException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 	}
 	
@@ -183,7 +184,7 @@ public class Make {
 			Yaka.expression.pushValue(id);
 		} catch (UnknownIdentException e) {
 			// TODO Bloc catch généré automatiquement
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 	}
 
@@ -225,7 +226,7 @@ public class Make {
 			Yaka.expression.pushValue(t);
 		} catch (UnknownFunctionException e) {
 			// TODO Bloc catch généré automatiquement
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 	}
 	
@@ -281,7 +282,7 @@ public class Make {
 			Yaka.expression.assertType(t);
 		} catch (BadTypeException e) {
 			// TODO Bloc catch généré automatiquement
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 	}
 
@@ -291,10 +292,10 @@ public class Make {
 			Yaka.expression.assertAssignementType();
 		} catch (BadTypeException e) {
 			// TODO Bloc catch généré automatiquement
-			e.printStackTrace();
+			System.out.println(e.toString());
 		} catch (UnknownIdentException e) {
 			// TODO Bloc catch généré automatiquement
-			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 		
 	}
