@@ -309,7 +309,7 @@ void valeur () : {}
 
 void argumentsFonction() :{}
 {
-	(expression() ("," expression())*)?
+	(expression() ("," expression())*)? {Make.checkArgumentType();}
 
 }
 

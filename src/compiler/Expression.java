@@ -1,12 +1,15 @@
 package compiler;
 
+import java.util.List;
 import java.util.Stack;
 
 import javax.swing.TransferHandler;
 
+import compiler.IdFun.Parameter;
 import exception.UnknownFunctionException;
 import exception.UnknownIdentException;
 import exception.BadTypeException;
+import exception.YakaException;
 
 public class Expression {
 
@@ -208,8 +211,7 @@ public class Expression {
 			/* aucun cas ne correspond */
 
 			types.push(Type.ERROR);
-			throw new BadTypeException(
-					"Error in expression: use of integer operator on a boolean");
+			throw new BadTypeException("Error in expression: use of integer operator on a boolean");
 
 		}
 
@@ -292,15 +294,26 @@ public class Expression {
 	}
 
 	public boolean assertAssignementType() throws BadTypeException, UnknownIdentException {
-		Type expected = types.peek();//TODO Rename in a significative name
+		Type received = types.peek();//TODO Rename in a significative name
 		Type t = TabIdent.getIdent(Declaration.getCurrentIdent()).getType();
 		
-		if(!t.equals(expected) && !expected.equals(Type.ERROR))throw new BadTypeException(
-				"Error in assignement: Expected type "+t+" but receive "+expected);
-		if (expected.equals(Type.ERROR))throw new BadTypeException(
+		if(!t.equals(received) && !received.equals(Type.ERROR))throw new BadTypeException(
+				"Error in assignement: Expected type "+t+" but receive "+received);
+		if (received.equals(Type.ERROR))throw new BadTypeException(
 				"Evaluation error");
 
 		return true;
+	}
+
+	public void checkArgumentType() throws YakaException, UnknownFunctionException {//TODO UnknownFunctionException to remove
+		IdFun f = TabIdent.getFunction(functionCall.peek());
+		List<Parameter> parameters = f.getParameters();
+		for(int e =parameters.size()-1;e>=0;e--){
+			Type type = types.pop();
+			Type expected = parameters.get(e).getIdent().getType();
+			if(!type.equals(expected))throw new BadTypeException("Error in function argument "+e+": Expected type "+expected+" but receive "+type);
+		}
+		
 	}
 
 }

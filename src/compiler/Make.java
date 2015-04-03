@@ -230,6 +230,17 @@ public class Make {
 		}
 	}
 	
+	public static void checkArgumentType(){
+		try {
+			Yaka.expression.checkArgumentType();
+		} catch (YakaException e) {
+			// TODO Bloc catch généré automatiquement
+			e.printStackTrace();
+		} catch (UnknownFunctionException e) {
+			// TODO Bloc catch généré automatiquement
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * Ajoute un nouveau paramètre à l'appel courant.
 	 *  - evaluer l'expression
