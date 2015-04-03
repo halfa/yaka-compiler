@@ -243,6 +243,7 @@ public class Make {
 	
 	/**
 	 * Créé une nouvelle fonction
+	 * Create_fun fait appel à setNameCurrentFunction(name);
 	 */
 	public static void create_fun(){
 		Declaration.createFun(YakaTokenManager.identLu);
