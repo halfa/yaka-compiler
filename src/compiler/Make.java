@@ -22,6 +22,7 @@ public class Make {
 
 	public static void begin_principal(){
 		Declaration.setCurrentFunction(new IdFPrinc());
+		Declaration.setNameCurrentFunction("main");
 		Yaka.yvm.begin_principal();
 	}
 
