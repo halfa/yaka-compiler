@@ -7,7 +7,7 @@ options{
 	JDK_VERSION="1.7";
 	OUTPUT_DIRECTORY="compiler";
 	LOOKAHEAD=1;
-	//DEBUG_PARSER=true;
+	DEBUG_PARSER=true;
 	//FORCE_LA_CHECK=true;
 }
 
@@ -148,7 +148,7 @@ void analyse() : {}
    <PRINCIPAL> { Make.begin_principal(); }
    bloc()
    <FPRINCIPAL>  { Make.end_program(); }
-   <FPROGRAMME>	{System.out.println("PROUT"); }
+   <FPROGRAMME>
 }
 
 void declFonction() : {}
