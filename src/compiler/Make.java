@@ -166,10 +166,10 @@ public class Make {
 
 			if (id instanceof IdVar) {
 				Yaka.yvm.iload(((IdVar) TabIdent
-						.getIdent(YakaTokenManager.identLu)).getOffset()*2);
+						.getIdent(YakaTokenManager.identLu)).getOffset());
 			} else {
 				Yaka.yvm.iconst(((IdConst) TabIdent
-						.getIdent(YakaTokenManager.identLu)).getVal()*2);
+						.getIdent(YakaTokenManager.identLu)).getVal());
 			}
 		} catch (UnknownIdentException e) {
 			// TODO Auto-generated catch block
