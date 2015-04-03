@@ -200,7 +200,7 @@ void valConst() : {}{
 void declVar() : {}
 {
   <VAR> type()	
-  <ident> { Make.create_var(); }
+  <ident> { Make.create_var();}
   (","
       <ident> { Make.create_var(); }
   )* ";"

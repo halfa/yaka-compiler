@@ -35,7 +35,7 @@ public class Expression {
 	 */
 	
 	public Type getCurrentType() {
-		return types.peek();
+		return types.pop();
 	}
 
 	/**
@@ -279,10 +279,8 @@ public class Expression {
 	}
 
 	public void clear() {
-		ops = new Stack<Operator>();
-		types = new Stack<Type>();
-		// functionCall = new Stack<String>(); FIXME
-		unaryOperator = false;
+		System.out.println("***************************\n"+types.size()+"\n"+ops.size()+"\n***************************");
+		
 	}
 
 	public boolean assertType(Type t) throws BadTypeException {
@@ -292,7 +290,7 @@ public class Expression {
 	}
 
 	public boolean assertAssignementType() throws BadTypeException, UnknownIdentException {
-		Type received = types.peek();//TODO Rename in a significative name
+		Type received = types.pop();
 		Type t = TabIdent.getIdent(Declaration.getCurrentIdent()).getType();
 		
 		if(!t.equals(received) && !received.equals(Type.ERROR))throw new BadTypeException(t,received);
