@@ -15,7 +15,7 @@ public class Make {
 	public static void begin_program() {
 		// Crée le fichier en utilisant * le nom fourni en début de programme
 		//                              * l'extension du language utilisé
-		Yaka.yvm = new YVM(YakaTokenManager.identLu);
+		Yaka.yvm = new YVMasm(YakaTokenManager.identLu);
 		Yaka.expression = new Expression(Yaka.yvm);
 		Yaka.yvm.entete();
 	}
@@ -197,7 +197,7 @@ public class Make {
 	 *****************************************/
 
 	/**
-	 * Retourne 
+	 * Libère l'espace mémoire des paramètres
 	 */
 	public static void putReturn(){
 		Yaka.yvm.ireturn(
