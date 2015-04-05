@@ -302,7 +302,8 @@ public class YVMasm extends YVM {
 	 */
 	public void iload(int offset) {
 		Ecriture.ecrireStringln(flux, ";iload " + offset,indent);
-		Ecriture.ecrireStringln(flux, "push word ptr [bp" + offset + "]",indent);
+		String signe = (offset > 0)? "+":"";
+		Ecriture.ecrireStringln(flux, "push word ptr [bp" + signe + offset + "]",indent);
 	}
 
 	/**
@@ -388,8 +389,7 @@ public class YVMasm extends YVM {
 
 	/**
 	 * Permet d'afficher à l'écran la chaine de caractères placée en paramètre
-	 * 
-	 * @param chaine
+	 * @param chaine chaine à afficher
 	 */
 	public void ecrireChaine(String chaine) {
 		Ecriture.ecrireStringln(flux, ";ecrireChaine \"" + chaine + "\"",indent);
