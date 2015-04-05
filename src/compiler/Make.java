@@ -206,12 +206,14 @@ public class Make {
 
 	/**
 	 * Stocke le nom de la fonction (si elle existe) sur le haut de la pile.
+	 * Réserve également la valeur de retour
 	 */
 	public static void begin_function_call(){
-		try { Yaka.expression.pushFunction(YakaTokenManager.identLu);
+		try { 
+			Yaka.expression.pushFunction(YakaTokenManager.identLu);
+			Yaka.yvm.reserveRetour();
 		} catch (Exception e) { System.err.println(e); e.printStackTrace(); }
 	}
-	
 	
 	public static void pushFunctionType(){
 		Type t;
