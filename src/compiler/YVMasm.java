@@ -350,7 +350,7 @@ public class YVMasm extends YVM {
 	 * .asm
 	 */
 	public void entete() {
-		Ecriture.ecrireStringln(flux, ";entete",indent);
+		Ecriture.ecrireStringln(flux, ";entete",0);
 		Ecriture.ecrireStringln(flux, "extrn lirent:proc",indent);
 		Ecriture.ecrireStringln(flux, "extrn ecrent:proc",indent);
 		Ecriture.ecrireStringln(flux, "extrn ecrbool:proc",indent);
@@ -380,10 +380,10 @@ public class YVMasm extends YVM {
 	 * APPELER A LA FERMETURE D'UN FICHIER .asm Génère la fin d'un fichier .asm
 	 */
 	public void queue() {
-		Ecriture.ecrireStringln(flux, ";queue",indent);
-		Ecriture.ecrireStringln(flux, "nop",indent);
-		Ecriture.ecrireStringln(flux, "EXITCODE",indent);
-		Ecriture.ecrireStringln(flux, "end debut",indent);
+		Ecriture.ecrireStringln(flux, ";queue",0);
+		Ecriture.ecrireStringln(flux, "nop",0);
+		Ecriture.ecrireStringln(flux, "EXITCODE",0);
+		Ecriture.ecrireStringln(flux, "end debut",0);
 		Ecriture.fermer(flux);
 	}
 
