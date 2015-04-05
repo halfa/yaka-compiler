@@ -11,31 +11,37 @@ public class YVM {
 	protected Stack<Integer> labelNameStack = new Stack<Integer>();
 	
 	/**
-	 * Constructeur par défaut d'un YVM vide
+	 * Constructeur par défaut d'un YVM vide.
 	 */
 	public YVM(){
 		flux = null;
 	}
 	
 	/**
-	 * Constructeur d'un YVM à partir d'une chaine de caractères
+	 * Constructeur d'un YVM à partir d'une chaine de caractères.
 	 * @param name
 	 */
 	public YVM (String name){
 		flux = Ecriture.ouvrir(name+this.getFileExtension());
 	}
 	
+	/**
+	 * Débute la fonction principale
+	 */
 	public void begin_principal(){
 		Ecriture.ecrireStringln(flux,"main :",0);
 	}
 	
+	/**
+	 * Débute une fonction classique
+	 * @param name le nom de la fonction 
+	 */
 	public void begin_function(String name){
 		Ecriture.ecrireStringln(flux,name+" :",0);
 	}
 	
 	/**
-	 * En début de fonction, réserve la place pour le nombre de variables
-	 * placé en paramètre
+	 * En début de fonction, réserve la place pour le nombre de variables placé en paramètre.
 	 * @param var le nombre de variables
 	 */
 	public void ouvreBloc(int var){
@@ -43,8 +49,7 @@ public class YVM {
 	}
 	
 	/**
-	 * En fin de fonction, donne la taille du nombre de paramètres
-	 * placé en paramètre
+	 * En fin de fonction, donne la taille du nombre de paramètres placé en paramètre.
 	 * @param param le nombre de paramètres
 	 */
 	public void fermeBloc(int param){
@@ -52,8 +57,7 @@ public class YVM {
 	}
 	
 	/**
-	 * Place le résultat de la fonction, qui en sommet de pile,
-	 * à l'offset donné
+	 * Place le résultat de la fonction, qui en sommet de pile, à l'offset donné.
 	 * @param offset emplacement réservé lors de l'appel
 	 */
 	public void ireturn(int offset){
@@ -61,8 +65,7 @@ public class YVM {
 	}
 	
 	/**
-	 * Instruction à appeler avant l'appel d'une fonction qui 
-	 * retourne un résultat
+	 * Instruction à appeler avant l'appel d'une fonction qui retourne un résultat.
 	 */
 	public void reserveRetour(){
 		Ecriture.ecrireStringln(flux, "reserveRetour", indent);
@@ -86,7 +89,6 @@ public class YVM {
 	
 	/**
 	 * Création de l'étiquette SI pour la CONDITIONNELLE
-	 * 
 	 */
 	public void startIf(){
 		condCounterName++;
@@ -97,7 +99,6 @@ public class YVM {
 	
 	/**
 	 * Création de l'étiquette ALORS pour la CONDITIONNELLE
-	 * 
 	 */
 	public void condIf(){
 		int id = (int)labelNameStack.pop();
@@ -108,7 +109,6 @@ public class YVM {
 	
 	/**
 	 * Création de l'étiquette SINON pour la CONDITIONNELLE
-	 * 
 	 */
 	public void elseIf(){
 		int id = (int)labelNameStack.pop();
@@ -120,7 +120,6 @@ public class YVM {
 		
 	/**
 	 * Création de l'étiquette FSI pour la CONDITIONNELLE
-	 * 
 	 */
 	public void endIf(){
 		int id = (int)labelNameStack.pop(); 
@@ -130,7 +129,6 @@ public class YVM {
 	
 	/**
 	 * Création de l'étiquette pour la boucle TANTQUE
-	 * 
 	 */
 	public void startLoop(){
 		loopCounterName++;
@@ -152,7 +150,6 @@ public class YVM {
 	
 	/**
 	 * Fermeture de la boucle TANTQUE courante
-	 * 
 	 */
 	public void endLoop(){
 		int id = (int)labelNameStack.pop(); 
@@ -356,7 +353,7 @@ public class YVM {
 	/**
 	 * Permet d'afficher à l'écran la chaine de caractères placée en paramètre.
 	 * Les quotes <",'> sont issue du yaka lui-même. #programationParContrat.
-	 * TODO on vérifie le premier et le dernier caractère ?
+	 * TODO vérifier le premier et le dernier caractère ?
 	 * @param s
 	 */
 	public void ecrireChaine(String chaine){
