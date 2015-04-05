@@ -214,7 +214,6 @@ public class Make {
 	
 	
 	public static void pushFunctionType(){
-		
 		Type t;
 		try {
 			t=Yaka.expression.getCurrentFunctionType();
@@ -232,15 +231,6 @@ public class Make {
 		} catch (UnknownFunctionException e) {
 			System.out.println(e.toString());
 		}
-	}
-	/**
-	 * Ajoute un nouveau paramètre à l'appel courant.
-	 *  - evaluer l'expression
-	 * 	- vérifie le type du paramètre
-	 *  - le push au dessus de la pile 
-	 */
-	public static void addParameterToCall(){
-		
 	}
 	
 	/**
