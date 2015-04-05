@@ -274,8 +274,7 @@ public class Expression {
 	}
 
 	public void clear() {
-		System.out.println("***************************\n"+types.size()+"\n"+ops.size()+"\n***************************");
-		
+		//DEBUG System.out.println("***************************\n"+types.size()+"\n"+ops.size()+"\n***************************");
 	}
 
 	public boolean assertType(Type t) throws BadTypeException {
