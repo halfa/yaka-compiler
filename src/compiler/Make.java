@@ -12,7 +12,7 @@ public class Make {
 	/*************************************
 	 * Analyse syntaxique et déclarations.
 	 ************************************/
-	public static void begin_program() {
+	public static void beginProgram() {
 		// Crée le fichier en utilisant * le nom fourni en début de programme
 		//                              * l'extension du language utilisé
 		Yaka.yvm = new YVMasm(YakaTokenManager.identLu);
@@ -20,10 +20,10 @@ public class Make {
 		Yaka.yvm.entete();
 	}
 
-	public static void begin_principal(){
+	public static void beginPrincipal(){
 		Declaration.setCurrentFunction(new IdFPrinc());
 		Declaration.setNameCurrentFunction("main");
-		Yaka.yvm.begin_principal();
+		Yaka.yvm.beginPrincipal();
 	}
 
 	public static void startIf(){
@@ -41,7 +41,7 @@ public class Make {
 		Yaka.yvm.endIf();
 	}
 
-	public static void end_program(){
+	public static void endProgram(){
 		Yaka.yvm.queue();
 	}
 	
@@ -65,19 +65,19 @@ public class Make {
 		Yaka.yvm.condLoop();
 	}
 
-	public static void how_fat_are_you() {
+	public static void howFatAreYou() {
 		Yaka.yvm.ouvreBloc(TabIdent.countLocalVars());
 	}
 
-	public static void define_constant() {
+	public static void defineConstant() {
 		Declaration.setCurrentIdent(YakaTokenManager.identLu);
 	}
 
-	public static void define_int() {
+	public static void defineInt() {
 		Declaration.createConst(YakaTokenManager.entierLu, Type.INTEGER);
 	}
 
-	public static void define_ident() {
+	public static void defineIdent() {
 		try {
 			Declaration.createConst(YakaTokenManager.identLu);
 		} catch (DeclarationException e) {
@@ -85,23 +85,23 @@ public class Make {
 		}
 	}
 
-	public static void define_true() {
+	public static void defineTrue() {
 		Declaration.createConst(-1, Type.BOOLEAN);
 	}
 
-	public static void define_false() {
+	public static void defineFalse() {
 		Declaration.createConst(0, Type.BOOLEAN);
 	}
 
-	public static void create_var() {
+	public static void createVar() {
 		Declaration.createVar(YakaTokenManager.identLu);
 	}
 
-	public static void declare_var_bool() {
+	public static void declareVarBool() {
 		Declaration.setCurrentType(Type.BOOLEAN);
 	}
 
-	public static void declare_var_int() {
+	public static void declareVarInt() {
 		Declaration.setCurrentType(Type.INTEGER);
 	}
 
@@ -130,7 +130,7 @@ public class Make {
 
 	}
 
-	public static void write_expression(Expression e) {
+	public static void writeExpression(Expression e) {
 		switch (e.getCurrentType()){
 		case BOOLEAN :
 			Yaka.yvm.ecrireBool();
@@ -144,7 +144,7 @@ public class Make {
 		
 	}
 
-	public static void write_string() {
+	public static void writeString() {
 		// Enlève touts les guillemets dans la chaine
 		Yaka.yvm.ecrireChaine(YakaTokenManager.chaineLue.replaceAll("\"",""));
 	}
@@ -153,11 +153,11 @@ public class Make {
 		Yaka.yvm.aLaLigne();
 	}
 
-	public static void value_int() {
+	public static void valueInt() {
 		Yaka.yvm.iconst(YakaTokenManager.entierLu);
 	}
 
-	public static void value_ident() {
+	public static void valueIdent() {
 		Ident id;
 		try {
 			id = TabIdent.getIdent(YakaTokenManager.identLu);
@@ -184,11 +184,11 @@ public class Make {
 		}
 	}
 
-	public static void value_true() {
+	public static void valueTrue() {
 		Yaka.yvm.iconst(-1);
 	}
 
-	public static void value_false() {
+	public static void valueFalse() {
 		Yaka.yvm.iconst(0);
 	}
 
@@ -208,7 +208,7 @@ public class Make {
 	 * Stocke le nom de la fonction (si elle existe) sur le haut de la pile.
 	 * Réserve également la valeur de retour
 	 */
-	public static void begin_function_call(){
+	public static void beginFunctionCall(){
 		try { 
 			Yaka.expression.pushFunction(YakaTokenManager.identLu);
 			Yaka.yvm.reserveRetour();
@@ -249,17 +249,17 @@ public class Make {
 	
 	/**
 	 * Créé une nouvelle fonction
-	 * Create_fun fait appel à setNameCurrentFunction(name);
+	 * CreateFun fait appel à setNameCurrentFunction(name);
 	 */
-	public static void create_fun(){
+	public static void createFun(){
 		Declaration.createFun(YakaTokenManager.identLu);
-		Yaka.yvm.begin_function(YakaTokenManager.identLu);
+		Yaka.yvm.beginFunction(YakaTokenManager.identLu);
 	}
 
 	/**
 	 * Créé un nouveau paramètre à la fonction courante
 	 */
-	public static void new_param(){
+	public static void newParam(){
 		Declaration.addParameter(YakaTokenManager.identLu);
 	}
 	

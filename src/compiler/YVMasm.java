@@ -20,13 +20,13 @@ public class YVMasm extends YVM {
 		super(name);
 	}
 	
-	public void begin_principal(){
+	public void beginPrincipal(){
 		Ecriture.ecrireStringln(flux, "debut :",indent);
 		Ecriture.ecrireStringln(flux, "STARTUPCODE",indent);
 		Ecriture.ecrireStringln(flux,"main :",0);
 	}
 	
-	public void begin_function(String name){
+	public void beginFunction(String name){
 		Ecriture.ecrireStringln(flux, name + " :",0);
 	}
 	

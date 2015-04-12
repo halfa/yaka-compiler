@@ -143,17 +143,17 @@ TOKEN  :
 
 void analyse() : {}
 {
-   <PROGRAMME> <ident> { Make.begin_program(); }	
+   <PROGRAMME> <ident> { Make.beginProgram(); }	
    ( declFonction() )*
-   <PRINCIPAL> { Make.begin_principal(); }
+   <PRINCIPAL> { Make.beginPrincipal(); }
    bloc()
-   <FPRINCIPAL>  { Make.end_program(); }
+   <FPRINCIPAL>  { Make.endProgram(); }
    <FPROGRAMME>
 }
 
 void declFonction() : {}
 {
-	type() <FONCTION> <ident> { Make.create_fun(); } 
+	type() <FONCTION> <ident> { Make.createFun(); } 
 	"(" paramForms() ")"
 	bloc()
 	<FFONCTION> { Make.closeBlock(); }
@@ -168,13 +168,13 @@ void paramForms() : {}
 
 void paramForm() : {}
 {
-	type() <ident> { Make.new_param(); }
+	type() <ident> { Make.newParam(); }
 }
 
 void bloc() : {}
 {
  (declConst())*
- (declVar())*	{ Make.how_fat_are_you(); }	
+ (declVar())*	{ Make.howFatAreYou(); }	
    suiteInstr()  // modifié
 }
 
@@ -185,31 +185,31 @@ void declConst() : {}
 
 void defConst() : {}
 {
-  <ident>  { Make.define_constant(); }
+  <ident>  { Make.defineConstant(); }
    "=" valConst() 
 }
 
 void valConst() : {}{
-  <entier> 	{ Make.define_int(); }
- | <ident>	{ Make.define_ident(); }
- | <VRAI> 	{ Make.define_true(); }
- | <FAUX>   { Make.define_false(); }
+  <entier> 	{ Make.defineInt(); }
+ | <ident>	{ Make.defineIdent(); }
+ | <VRAI> 	{ Make.defineTrue(); }
+ | <FAUX>   { Make.defineFalse(); }
 }
 
 
 void declVar() : {}
 {
   <VAR> type()	
-  <ident> { Make.create_var();}
+  <ident> { Make.createVar();}
   (","
-      <ident> { Make.create_var(); }
+      <ident> { Make.createVar(); }
   )* ";"
 }
 
 void type() :{}
 {
-   <ENTIER> { Make.declare_var_int(); }
- | <BOOLEEN> { Make.declare_var_bool(); }
+   <ENTIER> { Make.declareVarInt(); }
+ | <BOOLEEN> { Make.declareVarBool(); }
 }
 /*
  * Syntaxe des instructions.
@@ -258,8 +258,8 @@ void lecture() : {}
 }
 
 void ecriture() :{}
-{ <ECRIRE>( "(" ( expression() {Make.write_expression(Yaka.expression);} 
-| <chaine> { Make.write_string(); } ) ")" ) 
+{ <ECRIRE>( "(" ( expression() {Make.writeExpression(Yaka.expression);} 
+| <chaine> { Make.writeString(); } ) ")" ) 
 | <ALALIGNE> {Make.aLaLigne();} }
 
 /*
@@ -300,11 +300,11 @@ void primaire (): {}
 }
 
 void valeur () : {}
-{ <entier> 	{ Make.value_int();Yaka.expression.pushValue(Type.INTEGER);}
- | <ident> 	( {Make.begin_function_call();Make.pushFunctionType();} "(" argumentsFonction() { Make.callFunction(); } ")" 
-            | /* juste une variable */ { Make.value_ident();Make.pushIdentType();} )
- | <VRAI> 	{ Make.value_true();Yaka.expression.pushValue(Type.BOOLEAN);}
- | <FAUX> 	{ Make.value_false();Yaka.expression.pushValue(Type.BOOLEAN);}
+{ <entier> 	{ Make.valueInt();Yaka.expression.pushValue(Type.INTEGER);}
+ | <ident> 	( {Make.beginFunctionCall();Make.pushFunctionType();} "(" argumentsFonction() { Make.callFunction(); } ")" 
+            | /* juste une variable */ { Make.valueIdent();Make.pushIdentType();} )
+ | <VRAI> 	{ Make.valueTrue();Yaka.expression.pushValue(Type.BOOLEAN);}
+ | <FAUX> 	{ Make.valueFalse();Yaka.expression.pushValue(Type.BOOLEAN);}
 }
 
 void argumentsFonction() :{}

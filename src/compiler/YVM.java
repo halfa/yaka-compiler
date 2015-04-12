@@ -28,7 +28,7 @@ public class YVM {
 	/**
 	 * Débute la fonction principale
 	 */
-	public void begin_principal(){
+	public void beginPrincipal(){
 		Ecriture.ecrireStringln(flux,"main :",0);
 	}
 	
@@ -36,7 +36,7 @@ public class YVM {
 	 * Débute une fonction classique
 	 * @param name le nom de la fonction 
 	 */
-	public void begin_function(String name){
+	public void beginFunction(String name){
 		Ecriture.ecrireStringln(flux,name+" :",0);
 	}
 	
