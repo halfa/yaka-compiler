@@ -10,11 +10,21 @@ Build a compiler for the Yaka language using javacc.
 
 Features
 --------
+### Language
+
+* Typed (integers and booleans)
+* Basic I/O (Display messages and vars, input vars)
+* Functions with typed return value and multiple args
+* Recursivity
+
+### Compiler
+
 The compiler can build yaka code into either
 * Yaka ASM, run on YVM
 * i586 Pentium ASM, run on DosBOX
 
 The compiler is designed for new language files to be easy to write.
+It check types in expressions and functions call, don't allow multiple vars with same names but different type and check function call, trying to display meaningful error messages.
 
 Build
 -----
