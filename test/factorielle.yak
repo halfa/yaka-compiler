@@ -1,0 +1,15 @@
+PROGRAMME factorielle
+
+ENTIER FONCTION factorielle (ENTIER n)
+  SI n<=1 ALORS RETOURNE 1
+  SINON RETOURNE n*factorielle(n-1)
+  FSI
+FFONCTION
+
+PRINCIPAL
+VAR ENTIER i;
+  i=factorielle(5);
+  ECRIRE(i);
+FPRINCIPAL
+
+FPROGRAMME
