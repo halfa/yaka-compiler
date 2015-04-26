@@ -17,8 +17,8 @@ public class Declaration {
 	static private String NameCurrentFunction;
 
 	// Définition pour le type booléen
-	static public int FAUX = 0;
-	static public int VRAI = -1;
+	static public final int FAUX = 0;
+	static public final int VRAI = -1;
 
 	/* GetSet */	
 	public static void setCurrentIdent(String s) { currentIdent = s; }
