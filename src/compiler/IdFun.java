@@ -9,7 +9,8 @@ import java.util.List;
  */
 public class IdFun extends Ident {
 
-	// L'ordre des paramètres est important car c'est TODO il manque un truc là ^^ 
+	// L'ordre des paramètres est important car c'est
+	// lui qui défini l'odre d'appel
 	private List<Parameter> parameters;
 	private int currentParameterIndex = -1; // no parameters
 
