@@ -201,7 +201,7 @@ public class Make {
 	 */
 	public static void putReturn(){
 		Yaka.yvm.ireturn(
-				Declaration.getCurrentFunction().getNumberOfParameters()*2+4);
+				Declaration.getCurrentFunction().getReturnOffset());
 	}
 
 	/**

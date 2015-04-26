@@ -73,11 +73,11 @@ public class IdFun extends Ident {
 	}
 
 	/**
-	 * TODO retourne l'offset de retour de la fonction.
-	 * = sp - n_param*2 ?
+	 * Retourne l'offset de retour de la fonction.
+	 * (n_param + 2) * 2
 	 */
 	public int getReturnOffset(){
-		return 0;
+		return getNumberOfParameters()*2+4;
 	}
 
 	public int getNumberOfParameters(){
