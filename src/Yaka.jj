@@ -156,7 +156,7 @@ void declFonction() : {}
 	type() <FONCTION> <ident> { Make.createFun(); } 
 	"(" paramForms() ")"
 	bloc()
-	<FFONCTION> { Make.closeBlock() }
+	<FFONCTION> { Make.closeBlock(); }
 }
 
 void paramForms() : {}
