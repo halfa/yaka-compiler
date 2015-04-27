@@ -49,11 +49,12 @@ public class Yaka {
       
       analyseur = new Yaka(input);
       analyseur.analyse();
+      Make.checkAnalyse();
       System.out.println("Analyse syntaxique réussie!");
     } catch (ParseException e) {
       String msg = e.getMessage();
       msg = msg.substring(0,msg.indexOf("\n"));
-      System.out.println("Erreur de syntaxe : "+msg);
+      System.err.println("Erreur de syntaxe : "+msg);
     }
   } 
 }
@@ -229,7 +230,7 @@ void instruction() : {}
 
 void retourne() : {}
 {
-	<RETOURNE> expression() { Make.putReturn(); }
+	<RETOURNE> expression() {Make.checkReturn(); Make.putReturn(); }
 }
 
 void conditionnelle() : {}
