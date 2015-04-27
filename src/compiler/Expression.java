@@ -276,7 +276,7 @@ public class Expression {
 	public void clear() {
 		//DEBUG System.out.println("***************************\n"+types.size()+"\n"+ops.size()+"\n***************************");
 	}
-
+	
 	public boolean assertType(Type t) throws BadTypeException {
 		Type expected = types.peek();
 		if(!t.equals(expected))throw new BadTypeException(expected,t);
@@ -293,16 +293,24 @@ public class Expression {
 
 		return true;
 	}
-
-	public void checkArgumentType() throws YakaException, UnknownFunctionException {//TODO UnknownFunctionException to remove
-		IdFun f = TabIdent.getFunction(functionCall.peek());
-		List<Parameter> parameters = f.getParameters();
-		for(int e =parameters.size()-1;e>=0;e--){
+	
+	/**
+	 * Compare la pile de type et les paramètres de la fonction
+	 * @throws YakaException
+	 * @throws UnknownFunctionException
+	 */
+	public void checkArgumentType() throws YakaException, UnknownFunctionException {
+		// Récupère la fonction en haut de la pile d'apppel
+		IdFun currentFunction = TabIdent.getFunction(functionCall.peek());
+		// Récupère ses paramètres
+		List<Parameter> parameters = currentFunction.getParameters();
+		
+		// Compare la liste des paramètres inversé à la pile de type
+		for (int e = parameters.size()-1; e>=0; e--){
 			Type type = types.pop();
 			Type expected = parameters.get(e).getIdent().getType();
-			if(!type.equals(expected))throw new BadTypeException(e,type,expected);
+			if (! type.equals(expected)) throw new BadTypeException(e,type,expected);
 		}
-		
 	}
 
 }
