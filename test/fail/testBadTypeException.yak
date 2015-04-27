@@ -1,0 +1,16 @@
+PROGRAMME factorielle
+
+ENTIER FONCTION factorielle (ENTIER n)
+  SI n<=1 ALORS RETOURNE 1
+  SINON RETOURNE n*factorielle(n-1)
+  FSI
+FFONCTION
+
+PRINCIPAL
+VAR ENTIER i;
+VAR BOOLEEN z;
+z=TRUE;
+i=5+"s";
+  i=factorielle(-1);
+  ECRIRE(i);
+FPRINCIPAL
