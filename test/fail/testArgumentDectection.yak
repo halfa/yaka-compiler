@@ -1,0 +1,19 @@
+PROGRAMME factorielle
+
+ENTIER FONCTION factorielle (ENTIER n, BOOLEEN z)
+
+  SI n<=1 ALORS RETOURNE 1
+  SINON RETOURNE n*factorielle(VRAI)
+  FSI
+FFONCTION
+
+PRINCIPAL
+VAR ENTIER i;
+
+
+i=5;
+  i=factorielle(FAUX);
+  ECRIRE(i);
+FPRINCIPAL
+
+FPROGRAMME
