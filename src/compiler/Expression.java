@@ -294,7 +294,8 @@ public class Expression {
 		return true;
 	}
 
-	public void checkArgumentType() throws YakaException, UnknownFunctionException {//TODO UnknownFunctionException to remove
+	public void checkArgumentType() throws YakaException, UnknownFunctionException {
+		//TODO UnknownFunctionException to remove
 		IdFun f = TabIdent.getFunction(functionCall.peek());
 		List<Parameter> parameters = f.getParameters();
 		for(int e =parameters.size()-1;e>=0;e--){
