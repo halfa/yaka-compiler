@@ -49,7 +49,7 @@ public class Make {
 		try {
 			Yaka.expression.evaluate();
 		} catch (YakaException e) {
-			System.out.println(e.toString());
+			System.err.println(e.toString());
 		}
 	}
 
@@ -81,7 +81,7 @@ public class Make {
 		try {
 			Declaration.createConst(YakaTokenManager.identLu);
 		} catch (DeclarationException e) {
-			System.out.println(e.toString());
+			System.err.println(e.toString());
 		}
 	}
 
@@ -113,7 +113,7 @@ public class Make {
 			Yaka.yvm.lireEnt(((IdVar) (TabIdent
 					.getIdent(YakaTokenManager.identLu))).getOffset());
 		} catch (UnknownIdentException e) {
-			System.out.println(e.toString());
+			System.err.println(e.toString());
 		}
 
 	}
@@ -125,7 +125,7 @@ public class Make {
 
 			Yaka.yvm.istore(((IdVar) i).getOffset());
 		} catch (UnknownIdentException e) {
-			System.out.println(e.toString());
+			System.err.println(e.toString());
 		}
 
 	}
@@ -170,7 +170,7 @@ public class Make {
 						.getIdent(YakaTokenManager.identLu)).getVal());
 			}
 		} catch (UnknownIdentException e) {
-			System.out.println(e.toString());
+			System.err.println(e.toString());
 		}
 	}
 	
@@ -180,7 +180,7 @@ public class Make {
 			id = TabIdent.getIdent(YakaTokenManager.identLu);
 			Yaka.expression.pushValue(id);
 		} catch (UnknownIdentException e) {
-			System.out.println(e.toString());
+			System.err.println(e.toString());
 		}
 	}
 
@@ -221,7 +221,7 @@ public class Make {
 			t=Yaka.expression.getCurrentFunctionType();
 			Yaka.expression.pushValue(t);
 		} catch (UnknownFunctionException e) {
-			System.out.println(e.toString());
+			System.err.println(e.toString());
 		}
 	}
 	
@@ -229,9 +229,9 @@ public class Make {
 		try {
 			Yaka.expression.checkArgumentType();
 		} catch (YakaException e) {
-			System.out.println(e.toString());
+			System.err.println(e.toString());
 		} catch (UnknownFunctionException e) {
-			System.out.println(e.toString());
+			System.err.println(e.toString());
 		}
 	}
 	
@@ -277,7 +277,7 @@ public class Make {
 		try {
 			Yaka.expression.checkReturn();
 		} catch (BadTypeException e) {
-			System.out.println(e.toString());
+			System.err.println(e.toString());
 		}
 	}
 	
@@ -285,7 +285,7 @@ public class Make {
 		try {
 			Yaka.expression.assertType(t);
 		} catch (BadTypeException e) {
-			System.out.println(e.toString());
+			System.err.println(e.toString());
 		}
 	}
 
@@ -294,9 +294,9 @@ public class Make {
 		try {
 			Yaka.expression.assertAssignementType();
 		} catch (BadTypeException e) {
-			System.out.println(e.toString());
+			System.err.println(e.toString());
 		} catch (UnknownIdentException e) {
-			System.out.println(e.toString());
+			System.err.println(e.toString());
 		}
 		
 	}
