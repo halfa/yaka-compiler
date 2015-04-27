@@ -1,5 +1,6 @@
 package exception;
 
+import compiler.Make;
 import compiler.Yaka;
 
 public class YakaException extends Exception {
@@ -8,6 +9,7 @@ public class YakaException extends Exception {
 	int line;
 	public YakaException(String string) {
 		super("At line "+Yaka.token.beginLine+" "+string);
+		Make.error++;
 		
 	}
 
