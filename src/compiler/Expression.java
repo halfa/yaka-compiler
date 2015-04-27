@@ -310,7 +310,7 @@ public class Expression {
 	public void checkReturn() throws BadTypeException {
 		IdFun cf = Declaration.getCurrentFunction();
 		if(!types.peek().equals(cf.type))
-			throw new BadTypeException("Bad return type");
+			throw new BadTypeException("Bad type returned");
 		
 	}
 
