@@ -156,7 +156,7 @@ void declFonction() : {}
 	type() <FONCTION> <ident> { Make.createFun(); } 
 	"(" paramForms() ")"
 	bloc()
-	<FFONCTION> { Make.closeBlock(); }
+	<FFONCTION> { Make.closeBlock() }
 }
 
 void paramForms() : {}
@@ -229,7 +229,7 @@ void instruction() : {}
 
 void retourne() : {}
 {
-	<RETOURNE> expression() { Make.putReturn(); }
+	<RETOURNE> expression() {Make.checkReturn(); Make.putReturn(); }
 }
 
 void conditionnelle() : {}

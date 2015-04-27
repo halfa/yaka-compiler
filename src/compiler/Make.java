@@ -273,6 +273,14 @@ public class Make {
 		IdVar.resetOffset();
 	}
 	
+	public static void checkReturn(){
+		try {
+			Yaka.expression.checkReturn();
+		} catch (BadTypeException e) {
+			System.out.println(e.toString());
+		}
+	}
+	
 	public static void assertType(Type t){
 		try {
 			Yaka.expression.assertType(t);
