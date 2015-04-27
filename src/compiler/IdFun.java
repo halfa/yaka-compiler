@@ -38,7 +38,11 @@ public class IdFun extends Ident {
 
 	}
 
-	// Contructeur de fonction (sans paramètre)
+	/**
+	 * Contructeur de fonction.
+	 * Initialement sans paramètres
+	 * @param t
+	 */
 	public IdFun(Type t) {
 		super(t); // type de retour
 		parameters =  new ArrayList<Parameter>();
@@ -56,7 +60,10 @@ public class IdFun extends Ident {
 		parameters.add(new Parameter(name, p));
 		computeParametersOffets();
 	}
-
+	
+	/**
+	 * Calcul les offsets des paramètres et les assignes.
+	 */
 	public void computeParametersOffets(){
 		int end = parameters.size()*2+2;
 		for (Parameter p : parameters) {
@@ -74,12 +81,16 @@ public class IdFun extends Ident {
 
 	/**
 	 * Retourne l'offset de retour de la fonction.
-	 * (n_param + 2) * 2
+	 * @return (n_param + 2) * 2
 	 */
 	public int getReturnOffset(){
 		return getNumberOfParameters()*2+4;
 	}
 
+	/**
+	 * Retourne le nombre de paramètres de la fonction
+	 * @return nombre de paramètres de la fonction
+	 */
 	public int getNumberOfParameters(){
 		return parameters.size();
 	}
