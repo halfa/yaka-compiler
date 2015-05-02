@@ -69,6 +69,7 @@ public class IdFun extends Ident {
 	
 	/**
 	 * Calcul les offsets des paramètres et les assignes.
+	 * Chaque paramètre fait 2 octets.
 	 */
 	public void computeParametersOffets(){
 		int end = parameters.size()*2+2;
@@ -80,7 +81,7 @@ public class IdFun extends Ident {
 
 	/**
 	 * Retourne le paramètre correspondant à l'appel courant.
-	 * Passe également à l'appel suiva
+	 * Passe également à l'appel suivant.
 	 */
 	public void callParameter(String name){
 		int index = currentParameterIndex.pop();
