@@ -2,6 +2,7 @@ package compiler;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Gestion des fonctions usuelles, de leur paramètres et valeur de retour.
@@ -12,7 +13,13 @@ public class IdFun extends Ident {
 	// L'ordre des paramètres est important car c'est
 	// lui qui défini l'odre d'appel
 	private List<Parameter> parameters;
-	private int currentParameterIndex = -1; // no parameters
+	/**
+	 *  Pile qui indique l'état actuel de l'appel des paramètres pour cette fonction
+	 *  au cours de leur traitement.
+	 *  Il s'agit d'une pile car la fonction peux être rappelé récursivement.
+	 *  Exemple : foo(5, foo(3, 8))
+	 */ 
+	private Stack<Integer> currentParameterIndex = new Stack<Integer>();
 
 	/****************************************
 	 * Sous-classe pour gérer les paramètres.
@@ -56,7 +63,6 @@ public class IdFun extends Ident {
 	 * L'offset est mis à la construction
 	 */
 	public void addParameter(String name, IdVar p){
-		//System.out.println("Add parameter to "+Declaration.getNameCurrentFunction()+"@"+p.getOffset());
 		parameters.add(new Parameter(name, p));
 		computeParametersOffets();
 	}
@@ -74,9 +80,12 @@ public class IdFun extends Ident {
 
 	/**
 	 * Retourne le paramètre correspondant à l'appel courant.
+	 * Passe également à l'appel suiva
 	 */
 	public void callParameter(String name){
-		parameters.get(currentParameterIndex++);
+		int index = currentParameterIndex.pop();
+		parameters.get(index++);
+		currentParameterIndex.push(index);
 	}
 
 	/**
