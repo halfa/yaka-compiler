@@ -28,7 +28,7 @@ public class Expression {
 	
 	
 	/**
-	 * Rend le type de la dernière expression évaluée
+	 * Rend le type de la dernière expression évaluée.
 	 * @return le type de la dernière expression évaluée
 	 */
 	
@@ -37,7 +37,7 @@ public class Expression {
 	}
 
 	/**
-	 * Met la valeur et le type sur le sommet de leur piles respectives
+	 * Met la valeur et le type sur le sommet de leur piles respectives.
 	 * 
 	 * @param i l'identifiant de la variable
 	 * @throws UnknownIdentException
@@ -55,7 +55,7 @@ public class Expression {
 	}
 
 	/**
-	 * Met l'opérateur sur la pile opérateur
+	 * Met l'opérateur donné sur la pile des opérateurs.
 	 */
 	public void pushOp(Operator o) {
 		ops.push(o);
@@ -64,14 +64,14 @@ public class Expression {
 	}
 
 	/**
-	 * Utilisé pour les tests
+	 * Utilisé pour les tests.
 	 */
 	public void pushValue(Type t) {
 		types.push(t);
 	}
 
 	/**
-	 * Retourne l'opérateur en haut de la pile des opérateurs
+	 * Retourne l'opérateur en haut de la pile des opérateurs.
 	 * 
 	 * @return opérateur en haut de pile
 	 */
@@ -80,7 +80,7 @@ public class Expression {
 	}
 
 	/**
-	 * Retourne la valeur en haut de la pile des types
+	 * Retourne la valeur en haut de la pile des types.
 	 * 
 	 * @return valeur en haut de pile
 	 */
@@ -89,8 +89,8 @@ public class Expression {
 	}
 
 	/**
-	 * Ajoute une fonction à la pile d'appel. Met également le compteur de
-	 * paramètres de la fonction à -1
+	 * Ajoute une fonction à la pile d'appel. 
+	 * Met également le compteur de paramètres de la fonction à -1
 	 * 
 	 * @throws UnknownFunctionException
 	 */
@@ -109,7 +109,12 @@ public class Expression {
 	public String popFunction() {
 		return functionCall.pop();
 	}
-
+	
+	/**
+	 * Donne le type de la fonction en haut de la pile d'appel.
+	 * @return Type le type de la fonction
+	 * @throws UnknownFunctionException
+	 */
 	public Type getCurrentFunctionType() throws UnknownFunctionException {
 		String name = functionCall.peek();
 		if (TabIdent.existFunction(name)) {
@@ -120,7 +125,7 @@ public class Expression {
 	}
 
 	/**
-	 * Evalue et test la validitée du typage.
+	 * Évalue et test la validitée du typage.
 	 * 
 	 * @return the type of expression result
 	 * @throws BadTypeException
@@ -213,7 +218,7 @@ public class Expression {
 	}
 
 	/**
-	 * Evalue l'expression sur le haut de la pile
+	 * Evalue l'expression sur le haut de la pile.
 	 * 
 	 * @return true si l'opération se déroule sans erreur
 	 * @return false sinon
@@ -274,7 +279,8 @@ public class Expression {
 	}
 
 	public void clear() {
-		//DEBUG System.out.println("***************************\n"+types.size()+"\n"+ops.size()+"\n***************************");
+		//DEBUG System.out.println("***************************\n"+
+		//types.size()+"\n"+ops.size()+"\n***************************");
 	}
 	
 	public boolean assertType(Type t) throws BadTypeException {
@@ -287,9 +293,11 @@ public class Expression {
 		Type received = types.pop();
 		Type t = TabIdent.getIdent(Declaration.getCurrentIdent()).getType();
 		
-		if(!t.equals(received) && !received.equals(Type.ERROR))throw new BadTypeException(t,received);
+		if(!t.equals(received) && !received.equals(Type.ERROR))
+			throw new BadTypeException(t,received);
 
-		if (received.equals(Type.ERROR))throw new BadTypeException("Evaluation error");
+		if (received.equals(Type.ERROR))
+			throw new BadTypeException("Evaluation error");
 
 		return true;
 	}
@@ -309,17 +317,20 @@ public class Expression {
 		for (int e = parameters.size()-1; e>=0; e--){
 			Type type = types.pop();
 			Type expected = parameters.get(e).getIdent().getType();
-			if (! type.equals(expected)) throw new BadTypeException(e,type,expected);
+			if (! type.equals(expected)) 
+				throw new BadTypeException(e,type,expected);
 		}
 	}
 
 
-
+	/**
+	 * Vérifie la correspondance du type de retour.
+	 * @throws BadTypeException
+	 */
 	public void checkReturn() throws BadTypeException {
 		IdFun cf = Declaration.getCurrentFunction();
 		if(!types.peek().equals(cf.type))
 			throw new BadTypeException("Bad type returned");
-		
 	}
 
 }
