@@ -118,6 +118,10 @@ public class Make {
 	/***************************
 	 * Syntaxe des expressions.
 	 ***************************/
+	
+	/**
+	 * Traduit un nom en identifiant
+	 */
 	public static void reading() {
 		try {
 			Yaka.yvm.lireEnt(((IdVar) (TabIdent
@@ -128,12 +132,14 @@ public class Make {
 		}
 
 	}
-
+	
+	/**
+	 * Asssigne à l'identifiant courant l'ident en haut de pile.
+	 */
 	public static void assignment() {
 		Ident i;
 		try {
 			i = TabIdent.getIdent(Declaration.getCurrentIdent());
-
 			Yaka.yvm.istore(((IdVar) i).getOffset());
 		} catch (UnknownIdentException e) {
 			System.err.println(e.toString());
@@ -142,33 +148,49 @@ public class Make {
 
 	}
 
+	/**
+	 * Écrit le résultat d'une expression sur la sortie.
+	 * @param e
+	 */
 	public static void writeExpression(Expression e) {
 		switch (e.getCurrentType()) {
-		case BOOLEAN:
-			Yaka.yvm.ecrireBool();
-			break;
-		case INTEGER:
-			Yaka.yvm.ecrireEnt();
-			break;
-		default:
-			break;
+			case BOOLEAN:
+				Yaka.yvm.ecrireBool();
+				break;
+			case INTEGER:
+				Yaka.yvm.ecrireEnt();
+				break;
+			default:
+				break;
 		}
 
 	}
-
+	
+	/**
+	 * Écrit une chaine
+	 */
 	public static void writeString() {
 		// Enlève touts les guillemets dans la chaine
 		Yaka.yvm.ecrireChaine(YakaTokenManager.chaineLue.replaceAll("\"", ""));
 	}
-
+	
+	/**
+	 * Va à la ligne
+	 */
 	public static void aLaLigne() {
 		Yaka.yvm.aLaLigne();
 	}
 
+	/**
+	 * Déclare une constante
+	 */
 	public static void valueInt() {
 		Yaka.yvm.iconst(YakaTokenManager.entierLu);
 	}
-
+	
+	/**
+	 * Donne l'instruction permettant de connaître la valeur de l'identifiant.
+	 */
 	public static void valueIdent() {
 		Ident id;
 		try {
@@ -183,10 +205,12 @@ public class Make {
 			}
 		} catch (UnknownIdentException e) {
 			System.err.println(e.toString());
-			
 		}
 	}
-
+	
+	/**
+	 * Met le type de l'indentifiant courant sur la pile.
+	 */
 	public static void pushIdentType() {
 		Ident id;
 		try {
@@ -194,14 +218,19 @@ public class Make {
 			Yaka.expression.pushValue(id);
 		} catch (UnknownIdentException e) {
 			System.err.println(e.toString());
-			
 		}
 	}
-
+	
+	/**
+	 * Valeur pour "VRAI"
+	 */
 	public static void valueTrue() {
 		Yaka.yvm.iconst(-1);
 	}
 
+	/**
+	 * Valeur pour "FAUX"
+	 */
 	public static void valueFalse() {
 		Yaka.yvm.iconst(0);
 	}
@@ -230,7 +259,10 @@ public class Make {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * Met le type de la focntion courante sur le haut de la pile de type.
+	 */
 	public static void pushFunctionType() {
 		Type t;
 		try {
@@ -241,7 +273,10 @@ public class Make {
 			
 		}
 	}
-
+	
+	/**
+	 * Vérifie le type des arguments.
+	 */
 	public static void checkArgumentType() {
 		try {
 			Yaka.expression.checkArgumentType();
@@ -250,7 +285,6 @@ public class Make {
 			
 		} catch (UnknownFunctionException e) {
 			System.err.println(e.toString());
-			
 		}
 	}
 
@@ -267,8 +301,8 @@ public class Make {
 	 *****************************************/
 
 	/**
-	 * Créé une nouvelle fonction CreateFun fait appel à
-	 * setNameCurrentFunction(name);
+	 * Créé une nouvelle fonction 
+	 * CreateFun fait appel à setNameCurrentFunction(name);
 	 */
 	public static void createFun() {
 		Declaration.createFun(YakaTokenManager.identLu);
@@ -292,7 +326,10 @@ public class Make {
 		TabIdent.cleanIdentTable();
 		IdVar.resetOffset();
 	}
-
+	
+	/**
+	 * Vérifie la cohérence du type de retour.
+	 */
 	public static void checkReturn() {
 		try {
 			Yaka.expression.checkReturn();
@@ -301,7 +338,11 @@ public class Make {
 			
 		}
 	}
-
+	
+	/**
+	 * Vérifie la coérence d'un type d'expression
+	 * @param t le type attendu
+	 */
 	public static void assertType(Type t) {
 		try {
 			Yaka.expression.assertType(t);
@@ -311,6 +352,9 @@ public class Make {
 		}
 	}
 
+	/**
+	 * Vérifie la cohérence des types sur les assignenements.
+	 */
 	public static void assertAssignementType() {
 
 		try {
