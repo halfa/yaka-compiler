@@ -87,8 +87,24 @@ Dealine    | Checkpoint
 07/04/2015 | Final code review
 11/05/2015 | Exam
 
-Todo List
----------
+Contribute
+-----------
+
+### Folder structure
+This is a short overview of the folder use:
+```
+├───doc ............ documentation
+├───src ............ java sources
+│   ├───compiler ... compiler package
+│   └───exception .. exeption package 
+└───test ........... test files
+    ├───compiler ... JUnit tests
+    ├───eval ....... Yaka files provided by teacher for 1rst eval 
+    ├───fail ....... Yaka files to test user bad behaviors
+    └───ref ........ reference ASM files provided for the course
+```
+
+### Todo-list
 * Better error handling
 * Multithread
 * String builder for generation
