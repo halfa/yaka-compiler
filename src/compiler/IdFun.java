@@ -16,8 +16,8 @@ public class IdFun extends Ident {
 	/**
 	 *  Pile qui indique l'état actuel de l'appel des paramètres pour cette fonction
 	 *  au cours de leur traitement.
-	 *  Il s'agit d'une pile car la fonction peux être rappelé récursivement.
-	 *  Exemple : foo(5, foo(3, 8))
+	 *  Il s'agit d'une pile car la fonction peut être rappelé récursivement.
+	 *  Exemple : foo(entier i, entier j) peut s'écrire foo(5, foo(3, 8))
 	 */ 
 	private Stack<Integer> currentParameterIndex = new Stack<Integer>();
 
